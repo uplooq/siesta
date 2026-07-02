@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color" content="#5f8a87">
+
+<title>siesta — парусные путешествия и регаты</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Special+Elite&display=swap" rel="stylesheet">
+
+<style>
+/* ===================================================================
+   SIESTA — винтаж «выцветшее фото / плёнка»
+   Один файл. Для Тильды: вставить в блок T123 (HTML-код),
+   картинки загрузить в Тильду и заменить пути ./*.jpeg|png на URL.
+   =================================================================== */
+
+:root {
+    --paper:      #ece3d2;   /* выцветшая бумага        */
+    --paper-deep: #e3d8c2;   /* бумага потемнее         */
+    --ink:        #2c2a24;   /* тёплый «почти чёрный»   */
+    --ink-soft:   #5a554a;   /* приглушённый текст      */
+    --teal:       #5f8a87;   /* выцветший морской       */
+    --teal-deep:  #3f615f;
+    --sepia:      #b08d57;   /* латунь / сепия          */
+    --terra:      #a8553f;   /* выцветший терракот      */
+    --line:       #c3b69b;   /* линии/рамки             */
+
+    --serif:   'Playfair Display', Georgia, serif;
+    --body:    'Cormorant Garamond', 'Times New Roman', serif;
+    --type:    'Special Elite', 'Courier New', monospace;
+
+    /* плёночная обработка фотографий */
+    --film: sepia(0.32) saturate(0.82) contrast(0.96) brightness(1.03);
+}
+
+* { box-sizing: border-box; }
+
+body, html {
+    margin: 0; padding: 0;
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 20px;
+    line-height: 1.55;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+
+/* ---- зерно плёнки: фикс. слой поверх всего ---- */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 9000;
+    pointer-events: none;
+    opacity: 0.05;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+/* лёгкая виньетка по краям экрана */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 8999;
+    pointer-events: none;
+    box-shadow: inset 0 0 220px 40px rgba(44,42,36,0.28);
+}
+
+/* ===================== ОБЩИЕ ЭЛЕМЕНТЫ ===================== */
+
+.wrap { max-width: 1140px; margin: 0 auto; padding: 0 6vw; }
+
+/* надпись-«штамп» машинописью */
+.eyebrow {
+    font-family: var(--type);
+    font-size: 0.72rem;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin: 0 0 22px;
+}
+
+.section-title {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(2rem, 5vw, 3.1rem);
+    line-height: 1.1;
+    margin: 0 0 28px;
+}
+.section-title em { font-style: italic; color: var(--teal-deep); }
+
+/* тонкая декоративная линия с ромбом по центру */
+.rule {
+    display: flex; align-items: center; gap: 14px;
+    color: var(--line);
+    margin: 0 auto;
+}
+.rule::before, .rule::after {
+    content: ""; height: 1px; background: var(--line); flex: 1;
+}
+.rule span { font-size: 0.7rem; color: var(--sepia); }
+
+/* плёночная картинка-карточка с паспарту */
+.plate {
+    position: relative;
+    padding: 12px;
+    background: var(--paper-deep);
+    box-shadow: 0 18px 40px -22px rgba(44,42,36,0.6);
+}
+.plate::after { /* тонкая внутренняя рамка */
+    content: "";
+    position: absolute; inset: 12px;
+    border: 1px solid rgba(255,255,255,0.25);
+    pointer-events: none; z-index: 3;
+}
+.plate img { filter: var(--film); }
+.plate .cap {
+    font-family: var(--type);
+    font-size: 0.66rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink-soft);
+    padding: 12px 2px 2px;
+    text-align: center;
+}
+
+.btn {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-family: var(--type);
+    font-size: 0.78rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--paper);
+    background: var(--ink);
+    text-decoration: none;
+    padding: 18px 34px;
+    border: 1px solid var(--ink);
+    transition: background 0.35s ease, color 0.35s ease, transform 0.35s ease;
+}
+.btn:hover { background: transparent; color: var(--ink); transform: translateY(-2px); }
+.btn.light { color: var(--ink); background: var(--paper); border-color: var(--paper); }
+.btn.light:hover { background: transparent; color: var(--paper); }
+
+/* появление при скролле */
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity 1s ease, transform 1s ease; }
+.reveal.in { opacity: 1; transform: none; }
+
+/* ========================= HERO ========================= */
+.hero {
+    position: relative;
+    height: 100vh; min-height: 620px;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+.hero-bg {
+    position: absolute; inset: 0;
+    background: url('./wmremove-transformed.png') center/cover no-repeat;
+    filter: var(--film);
+}
+.hero-bg::after { /* тёплая дымка поверх фото */
+    content: ""; position: absolute; inset: 0;
+    background:
+        radial-gradient(120% 80% at 50% 18%, rgba(236,227,210,0) 40%, rgba(67,60,46,0.45) 100%),
+        linear-gradient(180deg, rgba(60,72,72,0.18), rgba(40,46,46,0.32));
+}
+.hero-inner { position: relative; z-index: 2; color: #f4ecd9; padding: 0 6vw; }
+.hero .eyebrow { color: #e7c8a8; }
+
+.hero h1 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(4rem, 17vw, 11rem);
+    letter-spacing: 0.16em;
+    margin: 0;
+    text-indent: 0.16em;
+    text-shadow: 0 6px 30px rgba(0,0,0,0.35);
+    line-height: 0.9;
+}
+.hero .tagline {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.15rem, 3vw, 1.7rem);
+    margin: 26px auto 0;
+    max-width: 26ch;
+    color: #f0e6d2;
+}
+/* двойная рамка-паспарту вокруг hero */
+.hero-frame {
+    position: absolute; inset: 22px; z-index: 3;
+    border: 1px solid rgba(244,236,217,0.45);
+    pointer-events: none;
+}
+.hero-frame::before {
+    content: ""; position: absolute; inset: 7px;
+    border: 1px solid rgba(244,236,217,0.22);
+}
+.hero-meta {
+    position: absolute; left: 0; right: 0; bottom: 34px; z-index: 4;
+    display: flex; justify-content: space-between;
+    font-family: var(--type);
+    font-size: 0.66rem; letter-spacing: 0.24em; text-transform: uppercase;
+    color: rgba(244,236,217,0.8);
+    padding: 0 46px;
+}
+.scroll-hint {
+    position: absolute; left: 50%; bottom: 30px; z-index: 5;
+    transform: translateX(-50%);
+    font-family: var(--type); font-size: 0.62rem; letter-spacing: 0.3em;
+    color: rgba(244,236,217,0.85); text-transform: uppercase;
+    animation: bob 2.4s ease-in-out infinite;
+}
+@keyframes bob { 0%,100%{ transform: translate(-50%,0);} 50%{ transform: translate(-50%,8px);} }
+
+/* ========================= ИНТРО ========================= */
+.intro { padding: 120px 0 90px; text-align: center; }
+.intro .lead {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(1.6rem, 3.6vw, 2.5rem);
+    line-height: 1.32;
+    max-width: 20ch;
+    margin: 30px auto;
+}
+.intro p.sub {
+    color: var(--ink-soft);
+    max-width: 56ch; margin: 0 auto;
+    font-size: 1.22rem;
+}
+.intro .rule { max-width: 220px; margin-top: 46px; }
+
+/* ==================== ПЕРЕКЛЮЧАТЕЛЬ ==================== */
+.programs { padding: 60px 0 110px; }
+.programs .head { text-align: center; margin-bottom: 54px; }
+
+.switcher {
+    display: flex; align-items: stretch;
+    height: 540px; width: 100%;
+}
+.panel {
+    flex: 1; position: relative; cursor: pointer; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    transition: flex 0.7s cubic-bezier(0.25,1,0.5,1);
+    border: 1px solid rgba(0,0,0,0.15);
+}
+.panel.travel { clip-path: polygon(0 0,100% 0,calc(100% - 80px) 100%,0 100%); z-index: 1; }
+.panel.race   { clip-path: polygon(80px 0,100% 0,100% 100%,0 100%); margin-left: -76px; z-index: 2; }
+.panel:hover { flex: 1.55; }
+
+.panel-bg {
+    position: absolute; inset: 0;
+    background-size: cover; background-position: center;
+    filter: var(--film);
+    transition: transform 0.8s ease;
+    z-index: 1;
+}
+.panel:hover .panel-bg { transform: scale(1.05); }
+.panel-overlay {
+    position: absolute; inset: 0; z-index: 2;
+    background: linear-gradient(180deg, rgba(44,42,36,0.35), rgba(44,42,36,0.72));
+    transition: opacity 0.5s ease; opacity: 1;
+}
+.panel:hover .panel-overlay { opacity: 0.45; }
+.panel.active .panel-overlay { opacity: 0.5; }
+
+.panel-label { position: relative; z-index: 3; text-align: center; color: #f4ecd9; }
+.panel-label .num {
+    font-family: var(--type); font-size: 0.66rem; letter-spacing: 0.3em;
+    display: block; margin-bottom: 12px; color: #e7c8a8;
+}
+.panel-label .ttl {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(2rem, 3.4vw, 2.9rem); letter-spacing: 0.04em;
+    text-shadow: 0 4px 18px rgba(0,0,0,0.5);
+}
+.panel.travel .panel-label { transform: translateX(-18px); }
+.panel.race   .panel-label { transform: translateX(18px); }
+
+/* подложка-«документ» под текст вкладки */
+.tab-host { max-width: 720px; margin: 56px auto 0; text-align: center; min-height: 190px; position: relative; }
+.tab-content { display: none; }
+.tab-content.active-content { display: block; animation: fade 0.7s ease forwards; }
+.tab-content h3 {
+    font-family: var(--serif); font-style: italic; font-weight: 500;
+    font-size: 2rem; margin: 0 0 18px; color: var(--teal-deep);
+}
+.tab-content p { color: var(--ink-soft); font-size: 1.22rem; margin: 0 auto; max-width: 52ch; }
+.tab-content .tag {
+    display: inline-block; margin-top: 24px;
+    font-family: var(--type); font-size: 0.66rem; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--terra);
+}
+@keyframes fade { from{ opacity:0; transform: translateY(14px);} to{ opacity:1; transform:none;} }
+
+/* ==================== МАРШРУТ ==================== */
+.route { background: var(--paper-deep); padding: 110px 0; position: relative; }
+.route .grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 64px; align-items: center; }
+.route .stops { list-style: none; margin: 0; padding: 0; }
+.route .stops li {
+    position: relative; padding: 18px 0 18px 42px;
+    border-bottom: 1px dashed var(--line);
+    font-family: var(--serif); font-size: 1.5rem;
+}
+.route .stops li:last-child { border-bottom: none; }
+.route .stops li::before {
+    content: ""; position: absolute; left: 6px; top: 28px;
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--paper-deep); border: 2px solid var(--terra);
+}
+.route .stops li span {
+    display: block; font-family: var(--body); font-size: 1.05rem;
+    color: var(--ink-soft); margin-top: 2px;
+}
+
+/* ==================== ПРОГРАММА ==================== */
+.program { padding: 110px 0; }
+.program .head { text-align: center; margin-bottom: 66px; }
+.timeline { max-width: 760px; margin: 0 auto; position: relative; }
+.timeline::before {
+    content: ""; position: absolute; left: 120px; top: 8px; bottom: 8px;
+    width: 1px; background: var(--line);
+}
+.day { display: grid; grid-template-columns: 120px 1fr; gap: 36px; padding: 22px 0; position: relative; }
+.day .when {
+    font-family: var(--type); font-size: 0.72rem; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--terra); text-align: right; padding-top: 6px;
+}
+.day::before {
+    content: ""; position: absolute; left: 116px; top: 30px;
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--paper); border: 2px solid var(--sepia);
+}
+.day h4 { font-family: var(--serif); font-weight: 500; font-size: 1.4rem; margin: 0 0 6px; }
+.day p { margin: 0; color: var(--ink-soft); font-size: 1.12rem; }
+
+/* ==================== КАПИТАНЫ ==================== */
+.captains { background: var(--ink); color: var(--paper); padding: 116px 0; }
+.captains .eyebrow { color: #e7c8a8; }
+.captains .section-title { color: var(--paper); }
+.captains .section-title em { color: #d8b98f; }
+.cap-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 54px; margin-top: 54px; }
+.cap-card { display: flex; gap: 26px; align-items: flex-start; }
+.cap-monogram {
+    flex: none; width: 86px; height: 86px; border-radius: 50%;
+    border: 1px solid var(--sepia); color: #d8b98f;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif); font-size: 1.7rem; font-style: italic;
+}
+.cap-card h4 { font-family: var(--serif); font-weight: 500; font-size: 1.55rem; margin: 6px 0 4px; }
+.cap-card .role {
+    font-family: var(--type); font-size: 0.64rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--sepia); margin-bottom: 12px;
+}
+.cap-card p { color: rgba(236,227,210,0.72); font-size: 1.1rem; margin: 0; }
+
+/* ==================== СТОИМОСТЬ ==================== */
+.pricing { padding: 116px 0; text-align: center; }
+.price-tag {
+    font-family: var(--serif); font-weight: 500;
+    font-size: clamp(3.4rem, 9vw, 6rem); line-height: 1; margin: 18px 0 6px;
+}
+.price-tag small { font-family: var(--body); font-size: 1.3rem; color: var(--ink-soft); display: block; margin-top: 10px; font-weight: 400; }
+.incl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; max-width: 880px; margin: 70px auto 0; text-align: left; }
+.incl h5 {
+    font-family: var(--type); font-size: 0.72rem; letter-spacing: 0.2em;
+    text-transform: uppercase; margin: 0 0 20px; padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+}
+.incl.yes h5 { color: var(--teal-deep); }
+.incl.no h5 { color: var(--terra); }
+.incl ul { list-style: none; margin: 0; padding: 0; }
+.incl li { padding: 9px 0 9px 28px; position: relative; font-size: 1.14rem; color: var(--ink-soft); }
+.incl.yes li::before { content: "✦"; position: absolute; left: 0; color: var(--teal); }
+.incl.no  li::before { content: "—"; position: absolute; left: 2px; color: var(--terra); }
+
+/* ==================== CTA / КОНТАКТ ==================== */
+.cta { position: relative; padding: 130px 0; text-align: center; overflow: hidden; }
+.cta-bg { position: absolute; inset: 0; background: url('./free_transform.jpeg') center/cover no-repeat; filter: var(--film); }
+.cta-bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(40,46,46,0.55), rgba(44,42,36,0.78)); }
+.cta-inner { position: relative; z-index: 2; color: #f4ecd9; }
+.cta .eyebrow { color: #e7c8a8; }
+.cta h2 {
+    font-family: var(--serif); font-weight: 400; font-style: italic;
+    font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 14px; line-height: 1.1;
+}
+.cta p { max-width: 44ch; margin: 0 auto 40px; color: rgba(244,236,217,0.85); font-size: 1.25rem; }
+
+/* ==================== FOOTER ==================== */
+footer { background: var(--paper-deep); padding: 54px 0; }
+footer .row { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+footer .logo { font-family: var(--serif); font-size: 1.7rem; letter-spacing: 0.16em; }
+footer .meta { font-family: var(--type); font-size: 0.66rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-soft); }
+footer a { text-decoration: none; border-bottom: 1px solid var(--line); }
+
+/* ==================== АДАПТИВ ==================== */
+@media (max-width: 860px) {
+    body { font-size: 18px; }
+    .route .grid { grid-template-columns: 1fr; gap: 40px; }
+    .cap-grid { grid-template-columns: 1fr; gap: 40px; }
+    .incl-grid { grid-template-columns: 1fr; gap: 34px; }
+    .hero-meta { padding: 0 24px; font-size: 0.58rem; }
+    .timeline::before { left: 8px; }
+    .day { grid-template-columns: 1fr; gap: 6px; padding-left: 34px; }
+    .day .when { text-align: left; }
+    .day::before { left: 4px; top: 12px; }
+}
+@media (max-width: 768px) {
+    .switcher { flex-direction: column; height: 620px; }
+    .panel { width: 100%; height: 50%; flex: none !important; }
+    .panel.travel { clip-path: polygon(0 0,100% 0,100% calc(100% - 40px),0 100%); z-index: 2; }
+    .panel.race { clip-path: polygon(0 40px,100% 0,100% 100%,0 100%); margin-left: 0; margin-top: -36px; z-index: 1; }
+    .panel.travel .panel-label { transform: translateY(-8px); }
+    .panel.race .panel-label { transform: translateY(8px); }
+}
+</style>
+</head>
+<body>
+
+<!-- ======================= HERO ======================= -->
+<section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-frame"></div>
+    <div class="hero-inner">
+        <p class="eyebrow">под парусом по средиземноморью</p>
+        <h1>siesta</h1>
+        <p class="tagline">Парусные путешествия и регаты для тех, кто слышит ветер</p>
+    </div>
+    <div class="hero-meta">
+        <span>est. — соль · ветер · тишина</span>
+        <span>Mediterranean sea</span>
+    </div>
+    <div class="scroll-hint">пролистай ↓</div>
+</section>
+
+<!-- ======================= ИНТРО ======================= -->
+<section class="intro">
+    <div class="wrap reveal">
+        <p class="eyebrow">наша идея</p>
+        <p class="lead">Море по-особенному — под звёздами, с солёным ветром и мягким шумом волн.</p>
+        <p class="sub">Мы собираем небольшие команды и уходим в море на неделю. Уединённые бухты, неспешные завтраки на палубе, закаты без связи и суеты. Кому-то — покой, кому-то — азарт регаты. Выбор за тобой.</p>
+        <div class="rule"><span>✦</span></div>
+    </div>
+</section>
+
+<!-- ================= ПЕРЕКЛЮЧАТЕЛЬ ================= -->
+<section class="programs">
+    <div class="wrap">
+        <div class="head reveal">
+            <p class="eyebrow">два настроения</p>
+            <h2 class="section-title">Выбери свой <em>курс</em></h2>
+        </div>
+
+        <div class="switcher reveal">
+            <div class="panel travel active" onclick="switchTab('travel', this)">
+                <div class="panel-bg" style="background-image:url('./free_transform.jpeg');"></div>
+                <div class="panel-overlay"></div>
+                <div class="panel-label">
+                    <span class="num">I</span>
+                    <div class="ttl">Путешествия</div>
+                </div>
+            </div>
+            <div class="panel race" onclick="switchTab('race', this)">
+                <div class="panel-bg" style="background-image:url('./race-transform.jpeg');"></div>
+                <div class="panel-overlay"></div>
+                <div class="panel-label">
+                    <span class="num">II</span>
+                    <div class="ttl">Гонки</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-host">
+            <div id="travel-content" class="tab-content active-content">
+                <h3>Релакс и эстетика</h3>
+                <p>Уединённые бухты, неспешные завтраки на палубе и полное единение с морем. Авторские маршруты для тех, кто ценит комфорт, вкусную еду и потрясающие закаты в кругу близких людей.</p>
+                <span class="tag">снорклинг · сап · тихие стоянки</span>
+            </div>
+            <div id="race-content" class="tab-content">
+                <h3>Драйв и адреналин</h3>
+                <p>Стань частью команды. Настоящие спортивные регаты — скорость, ветер и борьба за победу. Опыт не обязателен: два профессиональных капитана обучат всем тонкостям управления яхтой.</p>
+                <span class="tag">регата · тренировки · команда</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ======================= МАРШРУТ ======================= -->
+<section class="route">
+    <div class="wrap">
+        <div class="grid">
+            <div class="reveal">
+                <p class="eyebrow">маршрут недели</p>
+                <h2 class="section-title">От бухты <em>к бухте</em></h2>
+                <ul class="stops">
+                    <li>Старт · марина<span>Приёмка яхты, первый ужин на борту и инструктаж команды</span></li>
+                    <li>Дикие острова<span>Коралловые рифы, снорклинг и стоянки вдали от людей</span></li>
+                    <li>Белые пляжи<span>Купание на рассвете, завтрак на палубе, прогулки по берегу</span></li>
+                    <li>Скрытые лагуны<span>Трекинг, водопады и закаты в тишине без связи</span></li>
+                    <li>Возвращение<span>Финальный переход под парусом и прощальный вечер</span></li>
+                </ul>
+            </div>
+            <div class="plate reveal">
+                <img src="./wmremove-transformed.png" alt="Яхта в бухте">
+                <div class="cap">Тихая стоянка · 8 дней под парусом</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ======================= ПРОГРАММА ======================= -->
+<section class="program">
+    <div class="wrap">
+        <div class="head reveal">
+            <p class="eyebrow">8 дней в море</p>
+            <h2 class="section-title">Программа <em>путешествия</em></h2>
+        </div>
+        <div class="timeline">
+            <div class="day reveal"><div class="when">День 1</div><div><h4>Встреча и отплытие</h4><p>Приёмка яхты, знакомство команды, первый ужин и выход в открытое море.</p></div></div>
+            <div class="day reveal"><div class="when">Дни 2–3</div><div><h4>Острова и рифы</h4><p>Снорклинг у коралловых рифов, стоянки в уединённых бухтах, сап-прогулки.</p></div></div>
+            <div class="day reveal"><div class="when">Дни 4–5</div><div><h4>Берег и трекинг</h4><p>Белоснежные пляжи, водопады, исследование диких троп и заброшенных мест.</p></div></div>
+            <div class="day reveal"><div class="when">Дни 6–7</div><div><h4>Свобода и ветер</h4><p>Длинные переходы под парусом, обучение управлению яхтой, закаты в море.</p></div></div>
+            <div class="day reveal"><div class="when">День 8</div><div><h4>Возвращение</h4><p>Утренний переход в марину, выселение и прощальный кофе на причале.</p></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ======================= КАПИТАНЫ ======================= -->
+<section class="captains">
+    <div class="wrap">
+        <div class="reveal">
+            <p class="eyebrow">кто ведёт яхту</p>
+            <h2 class="section-title">Твои <em>капитаны</em></h2>
+        </div>
+        <div class="cap-grid">
+            <div class="cap-card reveal">
+                <div class="cap-monogram">ИМ</div>
+                <div>
+                    <h4>Игорь Магдеев</h4>
+                    <div class="role">капитан · 20+ лет в море</div>
+                    <p>Тысячи миль маршрутов по Средиземноморью, Турции и Греции. Спокойствие, опыт и чувство моря, которым хочется довериться.</p>
+                </div>
+            </div>
+            <div class="cap-card reveal">
+                <div class="cap-monogram">СШ</div>
+                <div>
+                    <h4>Софья Шпильберг</h4>
+                    <div class="role">капитан · призёр регат</div>
+                    <p>12 лет под парусом и десятки гонок за плечами. Научит держать курс, читать ветер и чувствовать яхту как продолжение себя.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ======================= СТОИМОСТЬ ======================= -->
+<section class="pricing">
+    <div class="wrap reveal">
+        <p class="eyebrow">стоимость недели</p>
+        <div class="price-tag">2000 €<small>с человека · двухместная каюта</small></div>
+        <div class="incl-grid">
+            <div class="incl yes">
+                <h5>В стоимость входит</h5>
+                <ul>
+                    <li>Двухместная каюта на яхте</li>
+                    <li>Маршрут и вся программа</li>
+                    <li>Команда — два капитана</li>
+                    <li>Снорклинг и сап-борд</li>
+                    <li>Полотенца, бельё, Wi-Fi</li>
+                    <li>Топливо и стоянки</li>
+                </ul>
+            </div>
+            <div class="incl no">
+                <h5>Оплачивается отдельно</h5>
+                <ul>
+                    <li>Питание и напитки · ~150 €</li>
+                    <li>Входы в нацпарки · ~50 €</li>
+                    <li>Дайвинг и активности на берегу</li>
+                    <li>Билеты до точки старта и трансфер</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ======================= CTA ======================= -->
+<section class="cta">
+    <div class="cta-bg"></div>
+    <div class="cta-inner wrap reveal">
+        <p class="eyebrow">свободные места ограничены</p>
+        <h2>Готов выйти в море?</h2>
+        <p>Напиши нам — расскажем про ближайшие даты, подберём каюту и составим индивидуальный маршрут для группы от 4 человек.</p>
+        <a class="btn light" href="https://t.me/shpiilberg" target="_blank" rel="noopener">Связаться в Telegram →</a>
+    </div>
+</section>
+
+<!-- ======================= FOOTER ======================= -->
+<footer>
+    <div class="wrap row">
+        <div class="logo">siesta</div>
+        <div class="meta">парусные туры и регаты · средиземное море</div>
+        <div class="meta"><a href="https://t.me/shpiilberg" target="_blank" rel="noopener">t.me/shpiilberg</a></div>
+    </div>
+</footer>
+
+<script>
+    // переключение вкладок Путешествия / Гонки
+    function switchTab(tabId, el) {
+        document.querySelectorAll('.tab-content').forEach(function (c) {
+            c.classList.remove('active-content');
+        });
+        document.getElementById(tabId + '-content').classList.add('active-content');
+        document.querySelectorAll('.panel').forEach(function (p) { p.classList.remove('active'); });
+        if (el) el.classList.add('active');
+    }
+
+    // мягкое появление секций при скролле
+    var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(function (n) { io.observe(n); });
+</script>
+
+</body>
+</html>
