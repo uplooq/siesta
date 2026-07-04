@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<title>Siesta-map</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/maplibre-gl@4/dist/maplibre-gl.css" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+  /* --- специфика MapLibre-версии --- */
+  #map{cursor:grab;background:#d6d5d1}
+  .maplibregl-canvas{outline:none}
+  /* точки как HTML-маркеры (повторяют постерный вид) */
+  .mk{position:absolute;display:flex;align-items:center;justify-content:center;cursor:pointer}
+      /* position:absolute обязателен: иначе MapLibre-маркеры встают в поток и съезжают вниз.
+         Центрирование и анимацию позиции MapLibre задаёт сам (anchor:'center'). */
+  .mk .node{display:flex;align-items:center;justify-content:center;background:#fff;
+      border:1.6px solid var(--ink);color:var(--ink);font-weight:700;font-size:12px;
+      border-radius:99px;min-width:22px;height:22px;padding:0 6px;line-height:1;white-space:nowrap}
+  .mk .cap{position:absolute;font-weight:700;font-size:12px;color:var(--ink);letter-spacing:.04em;
+      white-space:nowrap;text-transform:uppercase;text-shadow:0 0 3px #fff,0 0 3px #fff,0 0 3px #fff}
+  .mk.cap-right .cap{left:100%;margin-left:7px}
+  .mk.cap-left  .cap{right:100%;margin-right:7px}
+  .mk.cap-top   .cap{bottom:100%;margin-bottom:6px;left:50%;transform:translateX(-50%)}
+  .mk.cap-bottom .cap{top:100%;margin-top:6px;left:50%;transform:translateX(-50%)}
+  .mk.sel  .node{box-shadow:0 0 0 3px var(--accent-soft);outline:2px dashed var(--accent);outline-offset:2px}
+  .mk.from .node{box-shadow:0 0 0 3px var(--accent)}
+  /* узлы редактирования пути линии */
+  .wp{width:14px;height:14px;border-radius:50%;background:var(--accent);border:2px solid #fff;
+      box-shadow:0 1px 4px rgba(0,0,0,.35);cursor:grab}
+  .wp:active{cursor:grabbing}
+  .wp.ghost{width:11px;height:11px;background:#fff;border:2px solid var(--accent);opacity:.55}
+  /* оверлей постера: заголовок + компас */
+  .poster{position:absolute;inset:0;pointer-events:none;z-index:2}
+  .poster .title{position:absolute;top:14px;right:20px;text-align:right;color:var(--muted);
+      font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+  .poster .title .l1{font-size:15px}
+  .poster .title .l2{font-size:12px;opacity:.85}
+  .poster .compass{position:absolute;left:30px;bottom:46px;color:var(--ink);text-align:center}
+  .poster .compass b{font-size:16px;font-weight:800;display:block;margin-bottom:2px}
+  .poster .compass svg{width:22px;height:40px;fill:var(--ink)}
+  /* список переключаемых слоёв в инспекторе */
+  .layers .row{display:flex;align-items:center;justify-content:space-between;gap:8px;
+      font-size:12px;font-weight:600;color:#444;padding:6px 0}
+  .layers .row:not(:last-child){border-bottom:1px solid var(--line)}
+  /* поиск городов / морей / океанов */
+  .search{position:absolute;z-index:4;top:14px;left:14px;width:300px;max-width:62vw}
+  .search .ic{position:absolute;left:11px;top:10px;width:16px;height:16px;color:#8b95a7;pointer-events:none}
+  .search input{width:100%;padding:10px 12px 10px 34px;border:1px solid var(--line);border-radius:10px;
+      background:#fff;font-size:13px;box-shadow:0 2px 8px rgba(0,0,0,.08);font-family:inherit;color:#222}
+  .search input:focus{outline:2px solid var(--accent-soft);border-color:var(--accent)}
+  .search .results{margin-top:6px;background:#fff;border:1px solid var(--line);border-radius:10px;
+      box-shadow:0 6px 20px rgba(0,0,0,.12);overflow:hidden;display:none}
+  .search .results.show{display:block}
+  .search .res{padding:9px 12px;cursor:pointer}
+  .search .res:not(:last-child){border-bottom:1px solid var(--line)}
+  .search .res:hover,.search .res.active{background:var(--panel)}
+  .search .res .t{font-size:13px;font-weight:600;color:var(--ink)}
+  .search .res .s{font-size:11px;color:var(--muted);margin-top:1px}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="brand">
+    <div class="mark">N</div>
+    <div><h1>Siesta-map</h1><small>конструктор маршрутов</small></div>
+  </div>
+
+  <div class="tools" id="tools">
+    <button class="tool active" data-tool="select" title="Двигать (V)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3l14 7-6 2-2 6z"/></svg>Выбрать</button>
+    <button class="tool" data-tool="point" title="Поставить точку (P)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"/><path d="M12 21c5-5 7-8 7-11a7 7 0 1 0-14 0c0 3 2 6 7 11z"/></svg>Точка</button>
+    <button class="tool" data-tool="connect" title="Соединить (L)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="3 3"><path d="M5 19L19 5"/><circle cx="5" cy="19" r="2" fill="currentColor" stroke="none"/><circle cx="19" cy="5" r="2" fill="currentColor" stroke="none"/></svg>Линия</button>
+    <button class="tool" data-tool="delete" title="Удалить (D)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg>Удалить</button>
+  </div>
+
+  <div class="spacer"></div>
+
+  <div class="menu" id="menu">
+    <div class="group">
+      <select class="sel" id="styleSel" title="Стиль подложки">
+        <option value="poster">Постер (серый)</option>
+        <option value="positron">Positron</option>
+        <option value="liberty">Liberty</option>
+        <option value="bright">Bright</option>
+      </select>
+      <button class="ghost" id="fitWorld" title="Показать весь мир">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>Мир</button>
+    </div>
+    <div class="group">
+      <button class="ghost" id="historyBtn" title="История маршрутов">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 4v4h4"/><path d="M12 8v4l3 2"/></svg>История</button>
+      <button class="ghost" id="importBtn" title="Открыть проект">Открыть</button>
+      <button class="ghost" id="saveBtn" title="Сохранить проект (.json)">Сохранить</button>
+      <button class="ghost" id="pngBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v3h16v-3"/></svg>PNG</button>
+    </div>
+  </div>
+
+  <button class="menu-toggle" id="menuToggle" aria-label="Меню">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+  </button>
+  <input type="file" id="fileInput" accept="application/json" hidden>
+</div>
+
+<div class="app">
+  <div class="stage">
+    <div id="map"></div>
+    <div class="poster" id="poster"></div>
+    <div class="hint" id="hint"></div>
+    <div class="zoomctl">
+      <button id="zin">+</button>
+      <button id="zout">−</button>
+    </div>
+    <button class="fab fab-style" id="styleFab" aria-label="Настройки карты">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-1.8-.3 1.6 1.6 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.6 1.6 0 0 0-1-1.5 1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0 .3-1.8 1.6 1.6 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.6 1.6 0 0 0 1.5-1 1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3H9a1.6 1.6 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8V9a1.6 1.6 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1z"/></svg>
+    </button>
+  </div>
+
+  <aside class="inspector" id="inspector">
+    <div class="sheet-handle" id="sheetHandle"><span class="grabber"></span></div>
+    <div class="insp-body" id="inspBody"></div>
+  </aside>
+</div>
+
+<div class="scrim" id="scrim"></div>
+
+<script src="https://unpkg.com/maplibre-gl@4/dist/maplibre-gl.js"></script>
+<script src="js/maplibre-app.js?v=11"></script>
+</body>
+</html>

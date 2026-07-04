@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<title>Картограф · конструктор маршрутов</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+</head>
+<body>
+<div class="topbar">
+  <div class="brand">
+    <div class="mark">N</div>
+    <div><h1>Картограф</h1><small>конструктор маршрутов</small></div>
+  </div>
+
+  <div class="tools" id="tools">
+    <button class="tool active" data-tool="select" title="Выбрать и двигать (V)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3l14 7-6 2-2 6z"/></svg>Выбрать</button>
+    <button class="tool" data-tool="point" title="Поставить точку (P)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"/><path d="M12 21c5-5 7-8 7-11a7 7 0 1 0-14 0c0 3 2 6 7 11z"/></svg>Точка</button>
+    <button class="tool" data-tool="connect" title="Соединить линией (L)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="3 3"><path d="M5 19L19 5"/><circle cx="5" cy="19" r="2" fill="currentColor" stroke="none"/><circle cx="19" cy="5" r="2" fill="currentColor" stroke="none"/></svg>Линия</button>
+    <button class="tool" data-tool="delete" title="Удалить (D)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg>Удалить</button>
+  </div>
+
+  <div class="spacer"></div>
+
+  <div class="menu" id="menu">
+    <div class="group">
+      <select class="sel" id="proj" title="Проекция">
+        <option value="naturalEarth1">Natural Earth</option>
+        <option value="equalEarth">Equal Earth</option>
+        <option value="mercator">Mercator</option>
+        <option value="orthographic">Глобус</option>
+      </select>
+      <button class="ghost" id="fitWorld" title="Показать весь мир">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>Мир</button>
+    </div>
+    <div class="group">
+      <button class="ghost" id="historyBtn" title="История маршрутов">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 4v4h4"/><path d="M12 8v4l3 2"/></svg>История</button>
+      <button class="ghost" id="importBtn" title="Открыть проект">Открыть</button>
+      <button class="ghost" id="saveBtn" title="Сохранить проект (.json)">Сохранить</button>
+      <button class="ghost" id="pngBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v3h16v-3"/></svg>PNG</button>
+      <button class="ghost" id="svgBtn">SVG</button>
+    </div>
+  </div>
+
+  <button class="menu-toggle" id="menuToggle" aria-label="Меню">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+  </button>
+
+  <input type="file" id="fileInput" accept="application/json" hidden>
+</div>
+
+<div class="app">
+  <div class="stage">
+    <svg id="map"></svg>
+    <div class="hint" id="hint"></div>
+    <div class="zoomctl">
+      <button id="zin">+</button>
+      <button id="zout">−</button>
+    </div>
+    <button class="fab fab-style" id="styleFab" aria-label="Стиль карты">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-1.8-.3 1.6 1.6 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.6 1.6 0 0 0-1-1.5 1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0 .3-1.8 1.6 1.6 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.6 1.6 0 0 0 1.5-1 1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3H9a1.6 1.6 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8V9a1.6 1.6 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1z"/></svg>
+    </button>
+  </div>
+
+  <aside class="inspector" id="inspector">
+    <div class="sheet-handle" id="sheetHandle"><span class="grabber"></span></div>
+    <div class="insp-body" id="inspBody"></div>
+  </aside>
+</div>
+
+<div class="scrim" id="scrim"></div>
+
+<script src="js/world-data.js"></script>
+<script src="js/topojson-client.min.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
