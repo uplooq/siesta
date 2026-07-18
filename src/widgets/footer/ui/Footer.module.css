@@ -1,0 +1,51 @@
+.foot {
+  background: var(--sea-abyss);
+  color: var(--on-dark-mut);
+  padding: clamp(50px, 7vw, 80px) 6vw clamp(36px, 5vw, 50px);
+}
+
+.inner {
+  max-width: 1320px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 30px;
+}
+
+.mark {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  letter-spacing: 0.14em;
+  color: #fff;
+}
+
+.nav {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.nav a {
+  text-decoration: none;
+  font-size: 0.95rem;
+  color: var(--on-dark-mut);
+  transition: color 0.3s;
+}
+
+.nav a:hover {
+  color: var(--coral);
+}
+
+.copy {
+  width: 100%;
+  margin-top: 34px;
+  padding-top: 22px;
+  border-top: 1px solid oklch(0.965 0.008 196 / 0.1);
+  font-size: 0.82rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}

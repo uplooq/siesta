@@ -401,7 +401,7 @@ function inspMap(){
       <div class="field"><label>Размер точек · ${state.pointR}px</label>
         <div class="range"><input type="range" id="pr" min="7" max="18" value="${state.pointR}"></div></div>
     </div>
-    <div class="empty">Инструменты сверху: <b>Точка</b> — поставить, <b>Линия</b> — соединить, <b>Выбрать</b> — двигать и редактировать. Клавиши <span class="kbd">V</span> <span class="kbd">P</span> <span class="kbd">L</span> <span class="kbd">D</span>.</div>`;
+    <div class="empty">Инструменты сверху: <b>Точка</b> — поставить, <b>Линия</b> — соединить, <b>Выбрать</b> — двигать и редактировать. Клавиши <span class="kbd">V</span> <span class="kbd">P</span> <span class="kbd">L</span> <span class="kbd">D</span>. Готовый маршрут можно сразу показать нам: кнопка <b>«Отправить капитанам»</b> в меню сверху.</div>`;
   inspEl.querySelectorAll('[data-lay]').forEach(b=>b.onclick=()=>{
     const k=b.dataset.lay; state.layers[k]=!state.layers[k];
     applyLayerToggle(k,state.layers[k]); b.classList.toggle('on',state.layers[k]); persistCurrent();
@@ -477,7 +477,8 @@ function applyState(s){
 }
 
 const LS_CUR='kartograf:current', LS_HIST='kartograf:routes';
-function persistCurrent(){ try{ localStorage.setItem(LS_CUR,JSON.stringify(state)); }catch(e){} }
+let bootReady=false; // до инициализации (load + seed) состояние не сохраняем, иначе пустой автосейв затирает демо
+function persistCurrent(){ if(!bootReady) return; try{ localStorage.setItem(LS_CUR,JSON.stringify(state)); }catch(e){} }
 function loadCurrent(){
   try{ const raw=localStorage.getItem(LS_CUR); if(!raw) return false; applyState(JSON.parse(raw)); return true; }
   catch(e){ return false; }
@@ -518,6 +519,69 @@ function inspHistory(){
   inspEl.querySelectorAll('.hist-del').forEach(b=>b.onclick=()=>{ deleteFromHistory(b.dataset.id); inspHistory(); });
 }
 function openHistory(){ selected=null; inspHistory(); openSheet(); }
+
+// ======================= отправка маршрута капитанам =======================
+const SIESTA={tg:'siesta_sail', email:'hello@siesta.sail'};
+const plural=(n,forms)=>forms[n%10===1&&n%100!==11?0:(n%10>=2&&n%10<=4&&(n%100<10||n%100>=20)?1:2)];
+function validSegments(){ return state.segments.filter(s=>ptById(s.a)&&ptById(s.b)); }
+function totalNM(){ let d=0; for(const s of validSegments()) d+=segDistNM(s); return d; }
+function routeSummary(){
+  const title=(state.title[0]||'').trim()||'Мой маршрут';
+  const L=['Маршрут для siesta: «'+title+'»',''];
+  L.push('Точки:');
+  state.points.forEach((p,i)=>{
+    const name=(p.caption||'').trim()||('точка '+(p.label||i+1));
+    L.push((p.label||i+1)+'. '+name+' · '+p.ll[1].toFixed(3)+', '+p.ll[0].toFixed(3));
+  });
+  const segs=validSegments();
+  if(segs.length){
+    L.push('');
+    L.push('Переходы: '+segs.map(s=>ptById(s.a).label+'→'+ptById(s.b).label+' '+distText(s)).join('; '));
+    L.push('Итого: ~'+totalNM().toLocaleString('ru-RU',{maximumFractionDigits:0})+' nm');
+  }
+  return L.join('\n');
+}
+function inspSend(){
+  const segs=validSegments();
+  if(state.points.length<2||!segs.length){
+    inspEl.innerHTML=`<div class="insp-head">Отправить капитанам</div>
+      <div class="empty">Пока отправлять нечего. Поставьте хотя бы две точки инструментом <b>Точка</b>, соедините их <b>Линией</b> и возвращайтесь: мы посмотрим маршрут, посчитаем мили и ответим с датами и ценой.</div>`;
+    return;
+  }
+  const sum=routeSummary();
+  const title=(state.title[0]||'').trim()||'Мой маршрут';
+  const nm=totalNM().toLocaleString('ru-RU',{maximumFractionDigits:0});
+  const stats=state.points.length+' '+plural(state.points.length,['точка','точки','точек'])
+    +' · '+segs.length+' '+plural(segs.length,['переход','перехода','переходов'])+' · ~'+nm+' nm';
+  inspEl.innerHTML=`<div class="insp-head">Отправить капитанам</div>
+    <div class="card">
+      <h3>${esc(title)}</h3>
+      <div class="field"><label>Итог</label>
+        <div style="font-size:13px;color:#444;font-weight:600">${esc(stats)}</div></div>
+      <div class="field"><label>Описание для капитанов</label>
+        <textarea id="sumTxt" rows="9" readonly>${esc(sum)}</textarea></div>
+    </div>
+    <button class="primary" id="sendTg" style="margin-bottom:8px">Отправить в Telegram</button>
+    <div class="sendrow">
+      <button class="ghost" id="dlJson">Скачать файл маршрута (.json)</button>
+      <button class="ghost" id="sendMail">Отправить письмом</button>
+      <button class="ghost" id="copySum">Скопировать описание</button>
+    </div>
+    <div class="empty">В Telegram откроется чат с готовым сообщением: останется нажать «Отправить». Чтобы передать маршрут со всеми изгибами, приложите к сообщению скачанный файл.</div>`;
+  byId('sendTg').onclick=()=>{ window.open('https://t.me/'+SIESTA.tg+'?text='+encodeURIComponent(sum),'_blank','noopener'); };
+  byId('sendMail').onclick=()=>{ location.href='mailto:'+SIESTA.email
+    +'?subject='+encodeURIComponent('Маршрут для siesta: '+title)
+    +'&body='+encodeURIComponent(sum); };
+  byId('copySum').onclick=e=>{
+    if(!navigator.clipboard) return;
+    navigator.clipboard.writeText(sum).then(()=>{
+      e.target.textContent='Скопировано ✓';
+      setTimeout(()=>{ e.target.textContent='Скопировать описание'; },1600);
+    });
+  };
+  byId('dlJson').onclick=()=>download(new Blob([JSON.stringify({v:1,state})],{type:'application/json'}),'siesta-route.json');
+}
+function openSend(){ selected=null; clearHandles(); inspSend(); openSheet(); }
 
 // ======================= экспорт PNG =======================
 function exportPNG(){
@@ -570,6 +634,7 @@ function setMapStyle(name){
 map.doubleClickZoom.disable();          // двойной клик используется для узлов линии, а не для зума
 map.on('load',()=>{
   if(!loadCurrent()) seed();
+  bootReady=true;
   state.styleName='poster';            // страница всегда стартует в сером постере
   byId('styleSel').value='poster';
   afterStyle();                        // база poster = liberty (уже загружена) → просто перекрашиваем
@@ -667,11 +732,12 @@ byId('fileInput').onchange=e=>{
 };
 byId('pngBtn').onclick=exportPNG;
 byId('historyBtn').onclick=openHistory;
+byId('sendBtn').onclick=openSend;
 byId('styleFab').onclick=()=>{ selectNone(); renderPoints(); renderInspector(); openSheet(); };
 
 // мобильное меню + шторка
 byId('menuToggle').onclick=e=>{ e.stopPropagation(); document.body.classList.toggle('menu-open'); };
-byId('menu').addEventListener('click',e=>{ if(e.target.closest('.ghost')) document.body.classList.remove('menu-open'); });
+byId('menu').addEventListener('click',e=>{ if(e.target.closest('.ghost,.send')) document.body.classList.remove('menu-open'); });
 document.addEventListener('click',e=>{
   if(document.body.classList.contains('menu-open')&&!e.target.closest('#menu')&&!e.target.closest('#menuToggle'))
     document.body.classList.remove('menu-open');

@@ -1,0 +1,150 @@
+.captains {
+  background: var(--shell-2);
+  border-top: 1px solid var(--hairline);
+  padding: clamp(70px, 9vw, 120px) 6vw;
+}
+
+.inner {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.head {
+  max-width: 44ch;
+  margin-bottom: clamp(40px, 6vw, 68px);
+  display: grid;
+  gap: 20px;
+}
+
+.title {
+  font-size: clamp(1.9rem, 1.3rem + 2.4vw, 3rem);
+}
+
+.head p {
+  color: var(--muted);
+  margin: 0;
+}
+
+.rows {
+  display: grid;
+  gap: clamp(44px, 6vw, 76px);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(20px, 3.5vw, 52px);
+  align-items: center;
+}
+
+.photo {
+  margin: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  box-shadow: 0 30px 60px -46px oklch(0.315 0.04 197 / 0.5);
+}
+
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photoFallback {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+  background:
+    radial-gradient(circle at 50% 35%, oklch(0.615 0.043 194 / 0.14), transparent 60%),
+    var(--shell);
+  border: 1px dashed var(--hairline);
+  border-radius: 8px;
+}
+
+.copy {
+  display: grid;
+  gap: 10px;
+  max-width: 46ch;
+}
+
+.copy h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.7rem, 1.3rem + 1.6vw, 2.4rem);
+  line-height: 1.1;
+  color: var(--ink);
+  margin: 0;
+}
+
+.role {
+  color: var(--coral-ink);
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.copy p {
+  color: var(--body);
+  line-height: 1.7;
+  margin: 6px 0 0;
+}
+
+@media (min-width: 820px) {
+  .row {
+    grid-template-columns: 1.05fr 0.95fr;
+  }
+
+  .flip .photo {
+    order: 2;
+  }
+
+  .flip .copy {
+    justify-self: end;
+  }
+}
+
+.note {
+  margin-top: clamp(48px, 7vw, 84px);
+  padding-top: clamp(30px, 4vw, 46px);
+  border-top: 1px solid var(--hairline);
+  display: grid;
+  gap: clamp(20px, 3vw, 48px);
+}
+
+.noteLead {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.3rem, 1.1rem + 1vw, 1.8rem);
+  color: var(--ink);
+  line-height: 1.4;
+  margin: 0;
+  text-wrap: balance;
+}
+
+.noteBody {
+  display: grid;
+  gap: 14px;
+  max-width: 56ch;
+}
+
+.noteBody p {
+  color: var(--body);
+  line-height: 1.7;
+  margin: 0;
+}
+
+@media (min-width: 880px) {
+  .note {
+    grid-template-columns: 0.9fr 1.1fr;
+    align-items: start;
+  }
+
+  .noteLead {
+    max-width: 18ch;
+  }
+}

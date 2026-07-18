@@ -11,7 +11,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <script>
     // Progressive-enhancement flags. Content stays fully visible without JS.
@@ -19,43 +19,23 @@
     if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) {
         document.documentElement.classList.add('reduce-motion');
     }
-    // Восстановить выбранный шрифт заголовков до отрисовки (без мигания)
-    try {
-        var savedFont = localStorage.getItem('siesta-font');
-        if (savedFont) document.documentElement.setAttribute('data-font', savedFont);
-    } catch (e) {}
 </script>
 
 <style>
-    /* ================= КАСТОМНЫЕ ШРИФТЫ (self-hosted) =================
-       Положите файлы в ./fonts/ — шрифты подхватятся автоматически.
-       Пока файла нет, соответствующий вариант откатывается на Playfair Display. */
+    /* ================= ДИСПЛЕЙНЫЙ ШРИФТ (self-hosted) =================
+       Vetrino — контрастная антиква с полной кириллицей, несёт весь бренд. */
     @font-face {
-        font-family: 'Petale';
-        src: url('./fonts/Petale-Thin.otf') format('opentype');
-        font-weight: 100 900;   /* один файл на все веса — без faux-bold */
-        font-style: normal;
-        font-display: swap;
-    }
-    @font-face {
-        font-family: 'Petale';
-        src: url('./fonts/Petale-Thin-Italic.otf') format('opentype');
-        font-weight: 100 900;
-        font-style: italic;
-        font-display: swap;
-    }
-    @font-face {
-        font-family: 'Vertino';           /* файл VETRINO (befonts, free for commercial) */
+        font-family: 'Vetrino';
         src: url('./fonts/Vetrino-Regular.otf') format('opentype');
-        font-weight: 400 700;
+        font-weight: 400;
         font-style: normal;
         font-display: swap;
     }
 
     /* ================= ДИЗАЙН-СИСТЕМА (токены) ================= */
     :root {
-        /* Дисплейный шрифт заголовков (ниже hero). По умолчанию — текущий Playfair. */
-        --font-display: 'Playfair Display', serif;
+        /* Дисплейный шрифт бренда */
+        --font-display: 'Vetrino', 'Playfair Display', serif;
 
         /* Море — сохранённый бирюзовый бренда #639697 как якорь */
         --sea:        oklch(0.615 0.043 194);
@@ -90,11 +70,6 @@
         --measure: 66ch;
     }
 
-    /* Переключатель шрифта заголовков (data-font на <html>) */
-    :root[data-font="petale"]  { --font-display: 'Petale', 'Playfair Display', serif; }
-    :root[data-font="vertino"] { --font-display: 'Vertino', 'Playfair Display', serif; }
-    :root[data-font="playfair"]{ --font-display: 'Playfair Display', serif; }
-
     /* ================= БАЗОВЫЕ СТИЛИ ================= */
     * { box-sizing: border-box; }
 
@@ -108,6 +83,8 @@
         scroll-behavior: smooth;
         -webkit-font-smoothing: antialiased;
         text-rendering: optimizeLegibility;
+        /* Vetrino — один вес: гасим faux-bold, держим лёгкость (курсив-акценты остаются) */
+        font-synthesis-weight: none;
     }
 
     .t-rec { margin: 0 !important; padding: 0 !important; }
@@ -174,10 +151,10 @@
 
     .display {
         font-family: var(--font-display);
-        font-weight: 500;
+        font-weight: 400;
         color: var(--ink);
-        line-height: 1.06;
-        letter-spacing: -0.01em;
+        line-height: 1.1;
+        letter-spacing: -0.005em;
         text-wrap: balance;
     }
 
@@ -208,9 +185,9 @@
         gap: 0.6em;
         text-decoration: none;
         transition: background 0.4s var(--ease-out), transform 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out);
-        box-shadow: 0 10px 30px -12px oklch(0.705 0.125 46 / 0.55);
+        box-shadow: 0 8px 26px -14px oklch(0.705 0.125 46 / 0.4);
     }
-    .btn:hover { background: var(--coral-deep); transform: translateY(-2px); box-shadow: 0 16px 40px -14px oklch(0.705 0.125 46 / 0.7); }
+    .btn:hover { background: var(--coral-deep); transform: translateY(-2px); box-shadow: 0 14px 36px -16px oklch(0.705 0.125 46 / 0.5); }
     .btn:focus-visible { outline: 2px solid var(--coral-ink); outline-offset: 3px; }
 
     .btn.ghost {
@@ -402,7 +379,7 @@
         border-radius: 8px;
         overflow: hidden;
         aspect-ratio: 5 / 4;
-        box-shadow: 0 40px 80px -50px oklch(0.315 0.04 197 / 0.7);
+        box-shadow: 0 30px 60px -46px oklch(0.315 0.04 197 / 0.5);
     }
     .detail-figure img { width: 100%; height: 100%; object-fit: cover; }
     .detail-figure figcaption {
@@ -454,6 +431,8 @@
     .route-head { max-width: 52ch; display: grid; gap: 20px; margin-bottom: clamp(28px, 4vw, 44px); }
     .route-head h2.display { font-size: clamp(1.9rem, 1.3rem + 2.4vw, 3rem); }
     .route-head p { color: var(--muted); margin: 0; }
+    .route-map-btn { justify-self: start; margin-top: 4px; }
+    .route-map-btn svg { width: 19px; height: 19px; }
 
     /* селектор маршрутов, сгруппированный по программам */
     .route-select { display: flex; flex-wrap: wrap; gap: 22px 44px; margin-bottom: clamp(30px, 4vw, 48px); }
@@ -548,6 +527,24 @@
     .captain h3 { font-family: var(--font-display); font-weight: 500; font-size: 1.6rem; color: var(--ink); margin: 0; }
     .captain .role { color: var(--coral-ink); font-size: 0.82rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; margin-top: 6px; display: block; }
     .captain p { color: var(--body); line-height: 1.65; margin: 12px 0 0; }
+
+    .captains-note {
+        margin-top: clamp(36px, 5vw, 60px);
+        padding-top: clamp(26px, 3.5vw, 40px);
+        border-top: 1px solid var(--hairline);
+        max-width: 60ch;
+        display: grid;
+        gap: 16px;
+    }
+    .captains-note .cn-lead {
+        font-family: var(--font-display);
+        font-style: italic;
+        font-size: clamp(1.25rem, 1.05rem + 0.9vw, 1.65rem);
+        color: var(--ink);
+        line-height: 1.4;
+        margin: 0;
+    }
+    .captains-note p { color: var(--body); line-height: 1.7; margin: 0; }
 
     /* ================= 4. ХРОНИКА (галерея) ================= */
     .chronicle {
@@ -706,7 +703,6 @@
     .book-log .val.coord { font-variant-numeric: tabular-nums; letter-spacing: 0.02em; }
 
     /* прямые контакты: почта / Telegram / Instagram */
-    .contacts { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
     .contact-btn {
         display: inline-flex; align-items: center; gap: 11px;
         padding: 8px 18px 8px 8px; border-radius: 999px;
@@ -757,33 +753,17 @@
     }
     .manifest-head .tag { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--on-dark-mut); }
 
-    .manifest-grid { display: grid; gap: 22px; grid-template-columns: 1fr 1fr; }
-    .field { display: grid; gap: 8px; }
-    .field.wide { grid-column: 1 / -1; }
-    .field label { font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--on-dark-mut); }
-    .field input, .field select {
-        appearance: none; -webkit-appearance: none;
-        background: transparent; color: var(--on-dark);
-        border: 0; border-bottom: 1px solid oklch(0.965 0.008 196 / 0.28);
-        border-radius: 0; padding: 9px 0; font-family: inherit; font-size: 1.05rem;
-        transition: border-color 0.3s var(--ease-out);
+    /* карточка прямого контакта (вместо формы) */
+    .manifest-lead { color: var(--on-dark-mut); line-height: 1.65; margin: 0 0 26px; font-size: 1.04rem; }
+    .manifest .btn.tg {
+        width: 100%; justify-content: center;
+        --btn-bg: var(--coral); --btn-fg: var(--sea-abyss);
     }
-    .field select {
-        background-image: linear-gradient(45deg, transparent 50%, var(--on-dark-mut) 50%),
-                          linear-gradient(135deg, var(--on-dark-mut) 50%, transparent 50%);
-        background-position: right 4px center, right 0px center;
-        background-size: 5px 5px, 5px 5px;
-        background-repeat: no-repeat;
-        padding-right: 20px;
-    }
-    .field select option { color: #14302f; }
-    .field input::placeholder { color: oklch(0.86 0.012 197 / 0.78); }
-    @media (max-width: 460px) { .manifest-grid { grid-template-columns: 1fr; } }
-    .field input:focus, .field select:focus { outline: none; border-bottom-color: var(--coral); }
-    .field input:focus-visible, .field select:focus-visible { outline: none; }
-
-    .manifest .btn { width: 100%; justify-content: center; margin-top: 4px; }
-    .manifest-note { font-size: 0.88rem; color: var(--on-dark-mut); margin: 14px 0 0; text-align: center; }
+    .manifest .btn.tg svg { width: 19px; height: 19px; }
+    .contacts-sub { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .contacts-sub .contact-btn { flex: 1 1 40%; justify-content: center; padding: 8px 16px; }
+    .manifest-note { font-size: 0.86rem; color: var(--on-dark-mut); margin: 22px 0 0; line-height: 1.55; }
+    @media (max-width: 460px) { .contacts-sub .contact-btn { flex: 1 1 100%; } }
 
     /* ================= FOOTER ================= */
     .foot {
@@ -821,55 +801,6 @@
     @media (prefers-reduced-motion: reduce) {
         *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
         html { scroll-behavior: auto; }
-    }
-
-    /* ================= ПЕРЕКЛЮЧАТЕЛЬ ШРИФТА (превью-виджет) ================= */
-    .font-switch {
-        position: fixed;
-        right: 20px;
-        bottom: 20px;
-        z-index: var(--z-sticky);
-        display: flex;
-        align-items: center;
-        gap: 4px;
-        padding: 6px;
-        border-radius: 999px;
-        background: oklch(0.245 0.032 200 / 0.82);
-        backdrop-filter: blur(10px);
-        box-shadow: 0 12px 34px -14px oklch(0.245 0.032 200 / 0.9);
-        border: 1px solid oklch(0.965 0.008 196 / 0.14);
-    }
-    .font-switch .fs-label {
-        font-size: 0.66rem;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: var(--on-dark-mut);
-        padding: 0 8px 0 10px;
-        white-space: nowrap;
-    }
-    .font-switch button {
-        appearance: none;
-        border: 0;
-        cursor: pointer;
-        font-family: 'Playfair Display', serif;
-        font-size: 0.92rem;
-        color: var(--on-dark-mut);
-        background: transparent;
-        padding: 7px 14px;
-        border-radius: 999px;
-        transition: color 0.3s var(--ease-out), background 0.3s var(--ease-out);
-    }
-    .font-switch button:hover { color: #fff; }
-    .font-switch button[aria-pressed="true"] {
-        color: var(--sea-abyss);
-        background: var(--on-dark);
-    }
-    .font-switch button:focus-visible { outline: 2px solid var(--coral); outline-offset: 2px; }
-
-    @media (max-width: 560px) {
-        .font-switch { right: 10px; bottom: 10px; padding: 5px; }
-        .font-switch .fs-label { display: none; }
-        .font-switch button { padding: 6px 11px; font-size: 0.86rem; }
     }
 </style>
 </head>
@@ -938,12 +869,13 @@
             <h3 class="display">Релакс и эстетика</h3>
             <p>Уединённые бухты, неспешные завтраки на палубе и полное единение с морем. Авторские маршруты для тех, кто ценит комфорт, хорошую еду и закаты в кругу близких. Мы не гонимся за расстоянием — мы даём морю распорядиться днём.</p>
             <ul class="included">
-                <li><span class="k">Борт</span><span>Парусная яхта до 8 гостей, две-три каюты, шкипер и хостес</span></li>
-                <li><span class="k">Стол</span><span>Завтраки на воде, ужины в портовых тавернах, местное вино</span></li>
-                <li><span class="k">Ритм</span><span>2–3 часа перехода в день, остальное — купания и стоянки</span></li>
+                <li><span class="k">Борт</span><span>Парусная яхта до 8 гостей, 3–4 каюты, проживание в двухместных комфортабельных каютах</span></li>
+                <li><span class="k">Комфорт</span><span>Душ, туалет, кухня и уютное место на палубе для отдыха</span></li>
+                <li><span class="k">Питание</span><span>Завтраки на воде, ужины в портовых тавернах, ресторанах и на яхте, местное вино</span></li>
+                <li><span class="k">Ритм</span><span>2–5 часов переходов в день, остальное — купания, прогулки по городу и шопинг</span></li>
             </ul>
             <div class="detail-cta">
-                <div class="price"><span class="p">от 1 200 €</span><span class="u">за гостя / неделя</span></div>
+                <div class="price"><span class="p">от 1 350 €</span><span class="u">за гостя / неделя</span></div>
                 <a href="#book" class="btn">Забронировать место</a>
             </div>
         </div>
@@ -964,7 +896,7 @@
                 <li><span class="k">Финиш</span><span>Хронометраж, разбор гонки и ужин команды в марине</span></li>
             </ul>
             <div class="detail-cta">
-                <div class="price"><span class="p">от 890 €</span><span class="u">за гостя / регата</span></div>
+                <div class="price"><span class="p">от 150 000 ₽</span><span class="u">за гостя / регата</span></div>
                 <a href="#book" class="btn">Забронировать место</a>
             </div>
         </div>
@@ -977,6 +909,12 @@
         <span class="kicker">Маршрут сезона</span>
         <h2 class="display" id="route-title">Куда ведёт вода</h2>
         <p>Под каждую программу — свои нитки. Выберите маршрут: покажем опорные точки, а финальный план с датами пришлём при бронировании.</p>
+        <a href="../map/" class="btn route-map-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M9 4L3.5 6v14L9 18l6 2 5.5-2V4L15 6 9 4z"/><path d="M9 4v14"/><path d="M15 6v14"/>
+            </svg>
+            Открыть интерактивную карту
+        </a>
     </div>
 
     <div class="route-select reveal" role="group" aria-label="Выбор маршрута" style="--d:0.08s">
@@ -1001,7 +939,7 @@
     <div class="route-panel active" id="route-t1">
         <div class="route-info">
             <h3>Фетхие — Гёджек</h3>
-            <div class="rmeta"><span>Путешествия</span><span><b>7</b> дней</span><span><b>~60</b> миль</span></div>
+            <div class="rmeta"><span>Путешествия</span><span><b>7</b> дней</span><span><b>~60</b> миль</span><span><b>6–13</b> сентября 2026</span><span><b>от 1 350 €</b> за гостя</span></div>
             <p>Сосновые бухты залива Гёджек и цепочка островов: короткие переходы, купания в бирюзовых заводях и стоянки у самого берега.</p>
             <ul class="route-legend">
                 <li><span class="dot"></span><span>Порт старта и финиша</span></li>
@@ -1015,7 +953,7 @@
     <div class="route-panel" id="route-t2">
         <div class="route-info">
             <h3>Мармарис — Датча</h3>
-            <div class="rmeta"><span>Путешествия</span><span><b>10</b> дней</span><span><b>~90</b> миль</span></div>
+            <div class="rmeta"><span>Путешествия</span><span><b>10</b> дней</span><span><b>~90</b> миль</span><span><b>25 сентября — 5 октября</b> 2026</span><span><b>от 1 850 €</b> за гостя</span></div>
             <p>Дикий полуостров Датча: уединённые бухты, рыбацкие деревни и переходы подлиннее для тех, кто хочет уйти подальше от марин.</p>
             <ul class="route-legend">
                 <li><span class="dot"></span><span>Порт старта и финиша</span></li>
@@ -1029,7 +967,7 @@
     <div class="route-panel" id="route-r1">
         <div class="route-info">
             <h3>Кубок залива</h3>
-            <div class="rmeta"><span>Гонки</span><span><b>3</b> дня</span><span><b>4</b> гонки</span></div>
+            <div class="rmeta"><span>Гонки</span><span><b>3</b> дня</span><span><b>4</b> гонки</span><span><b>18–20</b> сентября 2026</span><span><b>от 150 000 ₽</b> за гостя</span></div>
             <p>Короткие гонки в закрытой акватории залива: старты каждый день, разбор манёвров вечером. Хороший вход в регаты для новичков.</p>
             <ul class="route-legend">
                 <li><span class="dot"></span><span>Линия старта</span></li>
@@ -1043,7 +981,7 @@
     <div class="route-panel" id="route-r2">
         <div class="route-info">
             <h3>Осенняя регата</h3>
-            <div class="rmeta"><span>Гонки</span><span><b>5</b> дней</span><span><b>вокруг</b> островов</span></div>
+            <div class="rmeta"><span>Гонки</span><span><b>5</b> дней</span><span><b>вокруг</b> островов</span><span><b>5–9</b> октября 2026</span><span><b>от 150 000 ₽</b> за гостя</span></div>
             <p>Длинная дистанция вокруг островов с ночными переходами и настоящей тактикой. Для тех, кто уже стоял на руле и хочет борьбы.</p>
             <ul class="route-legend">
                 <li><span class="dot"></span><span>Линия старта</span></li>
@@ -1112,27 +1050,32 @@
         <div class="captains-head reveal">
             <span class="kicker">Кто на борту</span>
             <h2 class="display" id="captains-title">Два капитана</h2>
-            <p>В каждом выходе — двое: пока один ведёт яхту, второй занимается гостями и обучением. Так спокойнее и в тихой бухте, и на гоночной дистанции.</p>
+            <p>На борту вас сопровождают два опытных капитана, создающие атмосферу уверенности, уюта и вдохновения.</p>
         </div>
         <div class="captains-grid reveal" style="--d:0.1s">
             <!-- Капитан 1 — замените .captain-photo на <img src="./captain-1.jpg" alt="..."> -->
             <article class="captain">
                 <div class="captain-photo">фото капитана</div>
                 <div>
-                    <h3>Имя Фамилия</h3>
-                    <span class="role">Шкипер · маршруты</span>
-                    <p>Короткое описание: годы под парусом, любимые бухты, лицензии. Пару предложений о том, почему с ним спокойно в море.</p>
+                    <h3>Игорь Магдеев</h3>
+                    <span class="role">Шкипер · авторские маршруты</span>
+                    <p>Более 20 лет под парусами. Опыт маршрутов в Таиланде, Турции, Греции и России. Специалист по организации авторских яхтенных путешествий.</p>
                 </div>
             </article>
             <!-- Капитан 2 -->
             <article class="captain">
                 <div class="captain-photo">фото капитана</div>
                 <div>
-                    <h3>Имя Фамилия</h3>
+                    <h3>Софья Шпильберг</h3>
                     <span class="role">Шкипер · регаты</span>
-                    <p>Короткое описание: спортивный опыт, регаты, чему учит на борту. Пару предложений о характере и подходе к команде.</p>
+                    <p>12 лет парусного опыта, призёр международных регат и шкипер международного уровня. Создаёт атмосферу лёгкости, заботится о безопасности и помогает гостям почувствовать радость морской жизни.</p>
                 </div>
             </article>
+        </div>
+        <div class="captains-note reveal" style="--d:0.15s">
+            <p class="cn-lead">Вместе они сделают ваше путешествие тёплым, безопасным и незабываемым. <span aria-hidden="true">🌊</span></p>
+            <p>Мы — опытные капитаны и уже который месяц живём морем. Сейчас наш маршрут пролегает через солнечный Таиланд — и это просто магия: бирюзовая вода, тихие бухты, свежие фрукты и чувство свободы.</p>
+            <p>Мы любим делиться этой атмосферой и помогаем другим спланировать морские маршруты — будь то короткий отдых на яхте или настоящее путешествие по островам.</p>
         </div>
     </div>
 </section>
@@ -1170,26 +1113,32 @@
         <div class="reveal">
             <span class="kicker" style="color: var(--coral);">Курс проложен</span>
             <h2 class="display" id="book-title" style="margin-top:22px;">Занять место на борту</h2>
-            <p class="lead">Оставьте заявку: сверим даты, подберём борт и маршрут под вашу команду. Мест в сезоне немного, экипажи маленькие, и это принципиально.</p>
+            <p class="lead">Напишите нам — сверим даты, подберём борт и маршрут под вашу команду. Мест в сезоне немного, экипажи маленькие, и это принципиально.</p>
             <div class="book-log">
                 <div><span class="lbl">Порт приписки</span><span class="val">Гёджек, Турция</span></div>
                 <div><span class="lbl">Координаты</span><span class="val coord">36°45′N · 28°57′E</span></div>
                 <div><span class="lbl">Навигация</span><span class="val">Май — октябрь</span></div>
                 <div><span class="lbl">На борту</span><span class="val">до 8 гостей</span></div>
             </div>
-            <div class="contacts" aria-label="Прямые контакты">
+        </div>
+
+        <div class="manifest reveal" style="--d:0.1s">
+            <div class="manifest-head">
+                <h3>Связаться</h3>
+                <span class="tag">Прямой контакт</span>
+            </div>
+            <p class="manifest-lead">Быстрее всего — в Telegram: ответим в течение дня, обсудим даты и подберём маршрут под вашу компанию.</p>
+            <a class="btn tg" href="https://t.me/siesta_sail" target="_blank" rel="noopener" aria-label="Написать в Telegram siesta_sail">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 4.6l-2.9 13.7c-.2 1-.8 1.2-1.6.8l-4.5-3.3-2.2 2.1c-.24.24-.44.44-.9.44l.32-4.6L18.3 6.8c.37-.33-.08-.5-.56-.18L7.4 13.1l-4.4-1.4c-.96-.3-.98-.96.2-1.42l17.2-6.6c.8-.3 1.5.18 1.5 1.32z"/></svg>
+                Написать в Telegram
+            </a>
+            <div class="contacts-sub" aria-label="Другие контакты">
                 <a class="contact-btn" href="mailto:hello@siesta.sail" aria-label="Написать на почту hello@siesta.sail">
                     <span class="ci" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="3" y="5" width="18" height="14" rx="2.6"/><path d="M4 7.5l8 5.5 8-5.5"/>
                         </svg>
                     </span>Почта</a>
-                <a class="contact-btn" href="https://t.me/siesta_sail" target="_blank" rel="noopener" aria-label="Открыть Telegram siesta_sail">
-                    <span class="ci" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M21.9 4.6l-2.9 13.7c-.2 1-.8 1.2-1.6.8l-4.5-3.3-2.2 2.1c-.24.24-.44.44-.9.44l.32-4.6L18.3 6.8c.37-.33-.08-.5-.56-.18L7.4 13.1l-4.4-1.4c-.96-.3-.98-.96.2-1.42l17.2-6.6c.8-.3 1.5.18 1.5 1.32z"/>
-                        </svg>
-                    </span>Telegram</a>
                 <a class="contact-btn" href="https://instagram.com/siesta_sail" target="_blank" rel="noopener" aria-label="Открыть Instagram siesta_sail">
                     <span class="ci" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
@@ -1197,44 +1146,8 @@
                         </svg>
                     </span>Instagram</a>
             </div>
+            <p class="manifest-note">Порт приписки — Гёджек, Турция. Навигация с мая по октябрь.</p>
         </div>
-
-        <form class="manifest reveal" id="boarding-form" style="--d:0.1s" novalidate>
-            <div class="manifest-head">
-                <h3>Заявка на борт</h3>
-                <span class="tag">Судовая роль</span>
-            </div>
-            <div class="manifest-grid">
-                <div class="field wide">
-                    <label for="bf-name">Кто на борту</label>
-                    <input id="bf-name" name="name" type="text" autocomplete="name" placeholder="Имя и фамилия" required>
-                </div>
-                <div class="field">
-                    <label for="bf-program">Программа</label>
-                    <select id="bf-program" name="program">
-                        <option>Путешествия</option>
-                        <option>Гонки</option>
-                        <option>Пока выбираю</option>
-                    </select>
-                </div>
-                <div class="field">
-                    <label for="bf-guests">Гостей</label>
-                    <input id="bf-guests" name="guests" type="number" min="1" max="8" inputmode="numeric" placeholder="2">
-                </div>
-                <div class="field wide">
-                    <label for="bf-dates">Удобные даты</label>
-                    <input id="bf-dates" name="dates" type="text" placeholder="Например, первая половина июня">
-                </div>
-                <div class="field wide">
-                    <label for="bf-contact">Как связаться</label>
-                    <input id="bf-contact" name="contact" type="text" placeholder="Почта, телефон или Telegram" required>
-                </div>
-                <div class="field wide">
-                    <button type="submit" class="btn">Занять место</button>
-                    <p class="manifest-note">Ответим в течение дня. Кнопка откроет готовое письмо в вашей почте.</p>
-                </div>
-            </div>
-        </form>
     </div>
 </section>
 
@@ -1246,6 +1159,7 @@
             <a href="#intro-title">О нас</a>
             <a href="#exp-title">Программы</a>
             <a href="#route">Маршрут</a>
+            <a href="../map/">Карта</a>
             <a href="#captains">Капитаны</a>
             <a href="#chron-title">Хроника</a>
             <a href="#book">Бронирование</a>
@@ -1259,57 +1173,10 @@
     </div>
 </footer>
 
-<!-- Переключатель шрифта заголовков (превью-виджет, можно удалить перед запуском) -->
-<div class="font-switch" role="group" aria-label="Шрифт заголовков">
-    <span class="fs-label" aria-hidden="true">Шрифт</span>
-    <button type="button" data-font-set="playfair">Playfair</button>
-    <button type="button" data-font-set="petale">Petale</button>
-    <button type="button" data-font-set="vertino">Vertino</button>
-</div>
-
 <!-- ============ JS ============ -->
 <script>
 (function () {
     'use strict';
-
-    /* ---- Переключатель шрифта заголовков ---- */
-    var fontBtns = Array.prototype.slice.call(document.querySelectorAll('[data-font-set]'));
-    function applyFont(name, persist) {
-        document.documentElement.setAttribute('data-font', name);
-        fontBtns.forEach(function (b) {
-            b.setAttribute('aria-pressed', b.getAttribute('data-font-set') === name ? 'true' : 'false');
-        });
-        if (persist) { try { localStorage.setItem('siesta-font', name); } catch (e) {} }
-    }
-    var current = document.documentElement.getAttribute('data-font') || 'playfair';
-    applyFont(current, false);
-    fontBtns.forEach(function (b) {
-        b.addEventListener('click', function () { applyFont(b.getAttribute('data-font-set'), true); });
-    });
-
-    /* ---- Заявка на борт: собираем письмо через mailto ---- */
-    var boarding = document.getElementById('boarding-form');
-    if (boarding) {
-        boarding.addEventListener('submit', function (e) {
-            e.preventDefault();
-            var g = function (n) { var el = boarding.elements[n]; return el ? el.value.trim() : ''; };
-            if (!g('name') || !g('contact')) {
-                var miss = !g('name') ? boarding.elements['name'] : boarding.elements['contact'];
-                if (miss) miss.focus();
-                return;
-            }
-            var body = [
-                'Кто на борту: ' + g('name'),
-                'Программа: ' + g('program'),
-                'Гостей: ' + (g('guests') || 'не указано'),
-                'Удобные даты: ' + (g('dates') || 'не указаны'),
-                'Как связаться: ' + g('contact')
-            ].join('\n');
-            window.location.href = 'mailto:hello@siesta.sail'
-                + '?subject=' + encodeURIComponent('Заявка на борт siesta')
-                + '&body=' + encodeURIComponent(body);
-        });
-    }
 
     /* ---- Маршруты: переключение карт по программам ---- */
     var routeChips = Array.prototype.slice.call(document.querySelectorAll('.route-chip'));

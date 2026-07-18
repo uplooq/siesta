@@ -1,0 +1,47 @@
+.dialog {
+  border: 0;
+  padding: 0;
+  background: var(--shell);
+  color: var(--body);
+  border-radius: 14px;
+  width: min(92vw, 880px);
+  max-height: min(88dvh, 720px);
+  overflow: hidden;
+  box-shadow: 0 40px 90px -40px oklch(0.15 0.02 205 / 0.55);
+}
+
+.dialog::backdrop {
+  background: oklch(0.17 0.02 205 / 0.52);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .dialog[open] {
+    animation: panelIn 0.5s var(--ease-out) both;
+  }
+
+  .dialog[open]::backdrop {
+    animation: backdropIn 0.35s ease-out both;
+  }
+}
+
+@keyframes panelIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes backdropIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

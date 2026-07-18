@@ -1,0 +1,248 @@
+.chronicle {
+  background: var(--shell-2);
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+  padding: clamp(70px, 9vw, 120px) 6vw;
+}
+
+.inner {
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+.head {
+  max-width: 46ch;
+  margin-bottom: clamp(34px, 5vw, 56px);
+  display: grid;
+  gap: 20px;
+}
+
+.title {
+  font-size: clamp(1.9rem, 1.3rem + 2.4vw, 3rem);
+}
+
+.head p {
+  color: var(--muted);
+  margin: 0;
+}
+
+.carousel {
+  position: relative;
+}
+
+.scroller {
+  position: relative;
+  display: flex;
+  gap: clamp(12px, 2vw, 20px);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding: 6px 0;
+}
+
+.scroller::-webkit-scrollbar {
+  display: none;
+}
+
+.slide {
+  flex: 0 0 min(86%, 720px);
+  margin: 0;
+  scroll-snap-align: center;
+}
+
+.slideBtn {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--sea-deep);
+  font-family: inherit;
+  text-align: left;
+  color: #fff;
+  isolation: isolate;
+}
+
+.slideBtn img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  transition: transform 0.9s var(--ease-out);
+}
+
+.slideBtn:hover img {
+  transform: scale(1.03);
+}
+
+.slideBtn:focus-visible {
+  outline: 3px solid var(--coral);
+  outline-offset: 3px;
+}
+
+.shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, oklch(0.2 0.03 205 / 0.62), transparent 40%);
+  pointer-events: none;
+}
+
+.count {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+  padding: 4px 11px;
+  border-radius: 999px;
+  background: oklch(0.2 0.03 205 / 0.55);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+.tag {
+  position: absolute;
+  left: 14px;
+  bottom: 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: calc(100% - 28px);
+  font-size: 0.9rem;
+}
+
+.tag svg {
+  width: 15px;
+  height: 15px;
+  flex: none;
+  color: var(--coral);
+}
+
+.tagName {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.tagCta {
+  color: oklch(0.94 0.01 196 / 0.75);
+  white-space: nowrap;
+  transition: color 0.3s var(--ease-out);
+}
+
+.slideBtn:hover .tagCta {
+  color: oklch(0.94 0.01 196 / 1);
+}
+
+.navBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: var(--z-base);
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  background: var(--shell);
+  color: var(--ink);
+  box-shadow: 0 10px 30px -12px oklch(0.315 0.04 197 / 0.5);
+  transition:
+    background 0.3s var(--ease-out),
+    opacity 0.3s var(--ease-out),
+    transform 0.3s var(--ease-out);
+}
+
+.navBtn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.navBtn:hover {
+  background: #fff;
+  transform: translateY(-50%) scale(1.05);
+}
+
+.navBtn:focus-visible {
+  outline: 2px solid var(--coral);
+  outline-offset: 3px;
+}
+
+.navBtn:disabled {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .navBtn {
+    display: none;
+  }
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  margin-top: 14px;
+}
+
+.dot {
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+  background: transparent;
+  display: grid;
+  place-items: center;
+}
+
+.dot::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--hairline);
+  transition:
+    background 0.3s var(--ease-out),
+    transform 0.3s var(--ease-out);
+}
+
+.dot:hover::before {
+  background: var(--muted);
+}
+
+.dot[aria-current='true']::before {
+  background: var(--coral);
+  transform: scale(1.3);
+}
+
+.dot:focus-visible {
+  outline: 2px solid var(--coral);
+  outline-offset: 2px;
+  border-radius: 50%;
+}
+
+@media (min-width: 768px) {
+  .slideBtn img {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navBtn:hover {
+    transform: translateY(-50%);
+  }
+}
