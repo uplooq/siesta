@@ -16,8 +16,12 @@ export const Modal = ({ open, onClose, label, children, className }: ModalProps)
   useEffect(() => {
     const dialog = ref.current
     if (!dialog) return
-    if (open && !dialog.open) dialog.showModal()
-    else if (!open && dialog.open) dialog.close()
+    if (open && !dialog.open) {
+      dialog.showModal()
+      dialog.querySelector<HTMLElement>('[data-autofocus]')?.focus()
+    } else if (!open && dialog.open) {
+      dialog.close()
+    }
   }, [open])
 
   useEffect(() => {

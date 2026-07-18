@@ -1,18 +1,52 @@
 .dialog {
-  width: min(92vw, 760px);
+  width: min(94vw, 1060px);
 }
 
 .frame {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  max-height: min(88dvh, 760px);
+}
+
+.mapCol {
+  flex: none;
+  height: clamp(190px, 32dvh, 280px);
 }
 
 .scroll {
   overflow-y: auto;
   overscroll-behavior: contain;
-  max-height: min(88dvh, 720px);
+  min-height: 0;
   padding: clamp(28px, 4vw, 48px);
   display: grid;
   gap: 24px;
+}
+
+.scroll:focus {
+  outline: none;
+}
+
+.scroll:focus-visible {
+  outline: 2px solid var(--coral);
+  outline-offset: -2px;
+}
+
+@media (min-width: 880px) {
+  .frame {
+    display: grid;
+    grid-template-columns: 5fr 6fr;
+    height: min(88dvh, 680px);
+    max-height: none;
+  }
+
+  .mapCol {
+    height: 100%;
+  }
+
+  .scroll {
+    max-height: 100%;
+  }
 }
 
 .head {
@@ -63,11 +97,13 @@
 }
 
 .dayLabel {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 1.05rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   color: var(--sea);
-  line-height: 1.45;
+  line-height: 1.6;
+  font-variant-numeric: tabular-nums;
 }
 
 .dayBody h4 {

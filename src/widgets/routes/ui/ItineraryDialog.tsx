@@ -1,5 +1,6 @@
 import type { Route } from '@/entities/route'
 import { Modal } from '@/shared/ui/modal'
+import { RouteMap } from './RouteMap'
 import styles from './ItineraryDialog.module.css'
 
 interface ItineraryDialogProps {
@@ -29,6 +30,9 @@ export const ItineraryDialog = ({ route, onClose }: ItineraryDialogProps) => (
   >
     {route && (
       <div className={styles.frame}>
+        <div className={styles.mapCol}>
+          <RouteMap route={route} />
+        </div>
         <div className={styles.scroll}>
           <header className={styles.head}>
             <p className={styles.eyebrow}>
@@ -52,6 +56,7 @@ export const ItineraryDialog = ({ route, onClose }: ItineraryDialogProps) => (
         </div>
         <button
           type="button"
+          data-autofocus
           className={styles.close}
           onClick={onClose}
           aria-label="Закрыть программу"

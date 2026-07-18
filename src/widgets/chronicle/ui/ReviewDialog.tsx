@@ -41,6 +41,7 @@ export const ReviewDialog = ({ review, onClose }: ReviewDialogProps) => (
         </div>
         <button
           type="button"
+          data-autofocus
           className={styles.close}
           onClick={onClose}
           aria-label="Закрыть отзыв"
