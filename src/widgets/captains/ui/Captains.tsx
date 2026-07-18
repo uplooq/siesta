@@ -2,6 +2,7 @@ import { captains } from '@/entities/captain'
 import { Kicker } from '@/shared/ui/kicker'
 import { Reveal } from '@/shared/ui/reveal'
 import { cx } from '@/shared/lib/cx'
+import { withBase } from '@/shared/lib/withBase'
 import styles from './Captains.module.css'
 
 export const Captains = () => (
@@ -28,7 +29,7 @@ export const Captains = () => (
             <figure className={styles.photo}>
               {captain.photo ? (
                 <img
-                  src={captain.photo}
+                  src={withBase(captain.photo)}
                   alt={captain.photoAlt ?? captain.name}
                   loading="lazy"
                   style={captain.photoPosition ? { objectPosition: captain.photoPosition } : undefined}

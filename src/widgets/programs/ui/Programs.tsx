@@ -3,6 +3,7 @@ import { programs, type ProgramId } from '@/entities/program'
 import { Button } from '@/shared/ui/button'
 import { Reveal } from '@/shared/ui/reveal'
 import { cx } from '@/shared/lib/cx'
+import { withBase } from '@/shared/lib/withBase'
 import styles from './Programs.module.css'
 
 export const Programs = () => {
@@ -62,7 +63,7 @@ export const Programs = () => {
                 >
                   <span
                     className={styles.panelBg}
-                    style={{ backgroundImage: `url('${program.cover}')` }}
+                    style={{ backgroundImage: `url('${withBase(program.cover)}')` }}
                   />
                   <span className={styles.panelOverlay} />
                   <span className={styles.panelInner}>
@@ -89,7 +90,7 @@ export const Programs = () => {
             hidden={program.id !== activeId}
           >
             <figure className={styles.detailFigure}>
-              <img src={program.detail.image} alt={program.detail.imageAlt} />
+              <img src={withBase(program.detail.image)} alt={program.detail.imageAlt} />
               <figcaption>{program.detail.imageCaption}</figcaption>
             </figure>
             <div className={styles.detailCopy}>

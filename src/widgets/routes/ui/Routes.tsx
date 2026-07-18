@@ -4,6 +4,7 @@ import { Button } from '@/shared/ui/button'
 import { Kicker } from '@/shared/ui/kicker'
 import { Reveal } from '@/shared/ui/reveal'
 import { cx } from '@/shared/lib/cx'
+import { withBase } from '@/shared/lib/withBase'
 import { ItineraryDialog } from './ItineraryDialog'
 import styles from './Routes.module.css'
 
@@ -97,7 +98,7 @@ export const Routes = () => {
           </div>
           <figure className={styles.figure}>
             {route.mapImage ? (
-              <img src={route.mapImage} alt={route.mapImageAlt ?? route.mapCaption} />
+              <img src={withBase(route.mapImage)} alt={route.mapImageAlt ?? route.mapCaption} />
             ) : (
               <div className={styles.placeholder}>
                 <span className={styles.pin} aria-hidden="true">
@@ -126,7 +127,7 @@ export const Routes = () => {
           </p>
         </div>
         <div className={styles.builderCta}>
-          <Button href="/map/">Собрать свой маршрут</Button>
+          <Button href={withBase('/map/')}>Собрать свой маршрут</Button>
           <p className={styles.builderNote}>Кнопка «Отправить капитанам» уже на карте</p>
         </div>
       </Reveal>

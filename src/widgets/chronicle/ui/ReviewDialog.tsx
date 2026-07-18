@@ -1,5 +1,6 @@
 import type { Review } from '@/entities/review'
 import { Modal } from '@/shared/ui/modal'
+import { withBase } from '@/shared/lib/withBase'
 import styles from './ReviewDialog.module.css'
 
 interface ReviewDialogProps {
@@ -29,7 +30,7 @@ export const ReviewDialog = ({ review, onClose }: ReviewDialogProps) => (
     {review && (
       <div className={styles.layout}>
         <figure className={styles.photo}>
-          <img src={review.photo} alt={review.photoAlt} />
+          <img src={withBase(review.photo)} alt={review.photoAlt} />
         </figure>
         <div className={styles.body}>
           <header className={styles.header}>

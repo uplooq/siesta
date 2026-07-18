@@ -4,7 +4,8 @@ import { fileURLToPath, URL } from 'node:url'
 
 const mapDirIndex = (): Plugin => {
   const rewrite = (req: { url?: string }) => {
-    if (req.url === '/map' || req.url === '/map/') req.url = '/map/index.html'
+    const match = (req.url ?? '').match(/^(.*\/map)\/?$/)
+    if (match) req.url = `${match[1]}/index.html`
   }
   return {
     name: 'map-dir-index',

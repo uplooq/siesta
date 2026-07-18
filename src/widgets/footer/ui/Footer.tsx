@@ -1,10 +1,11 @@
+import { withBase } from '@/shared/lib/withBase'
 import styles from './Footer.module.css'
 
 const nav = [
   { href: '#intro-title', label: 'О нас' },
   { href: '#exp-title', label: 'Программы' },
   { href: '#route', label: 'Маршрут' },
-  { href: '/map/', label: 'Карта' },
+  { href: withBase('/map/'), label: 'Карта' },
   { href: '#captains', label: 'Капитаны' },
   { href: '#chron-title', label: 'Хроника' },
   { href: '#book', label: 'Бронирование' },

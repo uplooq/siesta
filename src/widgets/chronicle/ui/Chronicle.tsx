@@ -3,6 +3,7 @@ import { reviews } from '@/entities/review'
 import { Kicker } from '@/shared/ui/kicker'
 import { Reveal } from '@/shared/ui/reveal'
 import { cx } from '@/shared/lib/cx'
+import { withBase } from '@/shared/lib/withBase'
 import { ReviewDialog } from './ReviewDialog'
 import styles from './Chronicle.module.css'
 
@@ -117,7 +118,7 @@ export const Chronicle = () => {
                     aria-haspopup="dialog"
                     aria-label={`Открыть отзыв: ${review.author}`}
                   >
-                    <img loading="lazy" src={review.photo} alt={review.photoAlt} />
+                    <img loading="lazy" src={withBase(review.photo)} alt={review.photoAlt} />
                     <span className={styles.shade} aria-hidden="true" />
                     <span className={styles.count} aria-hidden="true">
                       {i + 1}/{reviews.length}
