@@ -10,7 +10,7 @@ export interface Review {
 export const reviews: Review[] = [
   {
     id: 'marina-oleg',
-    photo: '/photos/archipelago-aerial.jpg',
+    photo: '/photos/archipelago-aerial.webp',
     photoAlt: 'Аэросъёмка архипелага на золотом часе: острова, песчаная коса и десятки яхт на якоре',
     author: 'Марина и Олег',
     meta: 'Фетхие — Гёджек · сентябрь 2025',
@@ -18,7 +18,7 @@ export const reviews: Review[] = [
   },
   {
     id: 'daria',
-    photo: '/photos/catamaran-cove.jpg',
+    photo: '/photos/catamaran-cove.webp',
     photoAlt: 'Катамаран и гулет у каменного пирса в тихой зелёной бухте',
     author: 'Дарья',
     meta: 'Путешествие · июль 2025',
@@ -26,7 +26,7 @@ export const reviews: Review[] = [
   },
   {
     id: 'kovalyova',
-    photo: '/photos/horseshoe-bay.jpg',
+    photo: '/photos/horseshoe-bay.webp',
     photoAlt: 'Подковообразная бухта с бирюзовыми отмелями и одинокой яхтой, вид сверху',
     author: 'Аня Ковалёва',
     meta: 'Путешествие с сыном · август 2025',
@@ -34,7 +34,7 @@ export const reviews: Review[] = [
   },
   {
     id: 'anton',
-    photo: '/photos/ancient-ruins.jpg',
+    photo: '/photos/ancient-ruins.webp',
     photoAlt: 'Античные руины у самой кромки бирюзовой воды среди сосен',
     author: 'Антон',
     meta: 'Мармарис — Датча · октябрь 2025',
@@ -42,7 +42,7 @@ export const reviews: Review[] = [
   },
   {
     id: 'lena-pasha',
-    photo: '/photos/cove-anchorage.jpg',
+    photo: '/photos/cove-anchorage.webp',
     photoAlt: 'Гулеты на якоре в сосновой бухте, зеркальная вода и зелёные склоны',
     author: 'Лена и Паша',
     meta: 'Фетхие — Гёджек · сентябрь 2025',
@@ -50,7 +50,7 @@ export const reviews: Review[] = [
   },
   {
     id: 'kirill',
-    photo: '/photos/under-sail.jpg',
+    photo: '/photos/under-sail.webp',
     photoAlt: 'Вид с палубы под парусом на глубокую синь открытого моря',
     author: 'Кирилл',
     meta: 'Осенняя регата · октябрь 2025',
@@ -58,7 +58,7 @@ export const reviews: Review[] = [
   },
   {
     id: 'nastya',
-    photo: '/photos/sunset-regatta.jpg',
+    photo: '/photos/sunset-regatta.webp',
     photoAlt: 'Оранжевый закат над морем, силуэты парусников у гористого берега',
     author: 'Настя',
     meta: 'Кубок залива · сентябрь 2025',
