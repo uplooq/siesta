@@ -6,7 +6,7 @@ import { cx } from '@/shared/lib/cx'
 import styles from './Booking.module.css'
 
 const log = [
-  { label: 'Порт приписки', value: 'Гёджек, Турция' },
+  { label: 'Порт приписки', value: 'Гёчек, Турция' },
   { label: 'Координаты', value: '36°45′N · 28°57′E', coord: true },
   { label: 'Навигация', value: 'Май — октябрь' },
   { label: 'На борту', value: 'до 8 гостей' },
@@ -127,7 +127,7 @@ export const Booking = () => (
             Instagram
           </a>
         </div>
-        <p className={styles.note}>Порт приписки — Гёджек, Турция. Навигация с мая по октябрь.</p>
+        <p className={styles.note}>Порт приписки — Гёчек, Турция. Навигация с мая по октябрь.</p>
       </Reveal>
     </div>
   </section>

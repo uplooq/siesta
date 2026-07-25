@@ -3,12 +3,6 @@ import { Reveal } from '@/shared/ui/reveal'
 import { cx } from '@/shared/lib/cx'
 import styles from './Intro.module.css'
 
-const stats = [
-  { num: '8', label: 'гостей на борту, не больше' },
-  { num: '5–12', label: 'дней в море' },
-  { num: '2', label: 'капитана в каждом выходе' },
-]
-
 export const Intro = () => (
   <section className={styles.intro} aria-labelledby="intro-title">
     <Reveal className={styles.head}>
@@ -23,14 +17,6 @@ export const Intro = () => (
         карте, а качество тишины между ними. Небольшие команды, живой контакт с морем и два
         капитана, которые знают побережье наизусть.
       </p>
-      <div className={styles.meta}>
-        {stats.map((s) => (
-          <div key={s.label}>
-            <span className={styles.num}>{s.num}</span>
-            <span className={styles.lbl}>{s.label}</span>
-          </div>
-        ))}
-      </div>
     </Reveal>
   </section>
 )

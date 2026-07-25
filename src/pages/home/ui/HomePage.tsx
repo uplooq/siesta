@@ -1,23 +1,27 @@
+import { Header } from '@/widgets/header'
 import { Hero } from '@/widgets/hero'
+import { Trips } from '@/widgets/trips'
 import { Intro } from '@/widgets/intro'
-import { Programs } from '@/widgets/programs'
-import { Routes } from '@/widgets/routes'
 import { Chronicle } from '@/widgets/chronicle'
 import { Captains } from '@/widgets/captains'
-import { Voice } from '@/widgets/voice'
+import { Reviews } from '@/widgets/reviews'
+import { Builder } from '@/widgets/builder'
 import { Booking } from '@/widgets/booking'
 import { Footer } from '@/widgets/footer'
 
 export const HomePage = () => (
   <>
-    <Hero />
-    <Intro />
-    <Programs />
-    <Routes />
-    <Chronicle />
-    <Captains />
-    <Voice />
-    <Booking />
+    <Header />
+    <main>
+      <Hero />
+      <Trips />
+      <Intro />
+      <Chronicle />
+      <Captains />
+      <Reviews />
+      <Builder />
+      <Booking />
+    </main>
     <Footer />
   </>
 )

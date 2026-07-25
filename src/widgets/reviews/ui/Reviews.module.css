@@ -1,0 +1,45 @@
+.reviews {
+  padding: clamp(70px, 9vw, 120px) 6vw;
+}
+
+.inner {
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+.head {
+  max-width: 52ch;
+  margin-bottom: clamp(30px, 4vw, 48px);
+  display: grid;
+  gap: 20px;
+}
+
+.title {
+  font-size: clamp(1.9rem, 1.3rem + 2.4vw, 3rem);
+}
+
+.head p {
+  color: var(--muted);
+  margin: 0;
+}
+
+.wall {
+  columns: 1;
+  column-gap: 18px;
+}
+
+.wall > * {
+  margin-bottom: 18px;
+}
+
+@media (min-width: 720px) {
+  .wall {
+    columns: 2;
+  }
+}
+
+@media (min-width: 1100px) {
+  .wall {
+    columns: 3;
+  }
+}

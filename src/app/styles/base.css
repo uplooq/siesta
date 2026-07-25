@@ -37,6 +37,10 @@ a {
   color: inherit;
 }
 
+:where(section[id], h2[id]) {
+  scroll-margin-top: 76px;
+}
+
 .display {
   font-family: var(--font-display);
   font-weight: 400;

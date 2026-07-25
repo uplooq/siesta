@@ -2,13 +2,14 @@ import { withBase } from '@/shared/lib/withBase'
 import styles from './Footer.module.css'
 
 const nav = [
+  { href: '#travel', label: 'Путешествия' },
+  { href: '#race', label: 'Гонки' },
   { href: '#intro-title', label: 'О нас' },
-  { href: '#exp-title', label: 'Программы' },
-  { href: '#route', label: 'Маршрут' },
-  { href: withBase('/map/'), label: 'Карта' },
+  { href: '#chronicle', label: 'Фотоотчёты' },
   { href: '#captains', label: 'Капитаны' },
-  { href: '#chron-title', label: 'Хроника' },
-  { href: '#book', label: 'Бронирование' },
+  { href: '#reviews', label: 'Отзывы' },
+  { href: withBase('/map/'), label: 'Карта' },
+  { href: '#book', label: 'Связаться' },
 ]
 
 export const Footer = () => (
