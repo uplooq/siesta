@@ -146,13 +146,13 @@ export const Trips = () => {
                   <span className={styles.cardShade} />
                   <span className={styles.cardInner}>
                     <span className={styles.cardEyebrow}>
-                      {g.noun} · {trip.duration}
+                      {g.noun} · {trip.departures[0].route.duration}
                     </span>
                     <span className={styles.cardTitle}>{trip.geo}</span>
                     <span className={styles.cardDates}>
-                      {trip.departures.map((dates) => (
-                        <span key={dates} className={styles.date}>
-                          {dates}
+                      {trip.departures.map((departure) => (
+                        <span key={departure.id} className={styles.date}>
+                          {departure.dates}
                         </span>
                       ))}
                       <span className={styles.year}>{trip.year}</span>

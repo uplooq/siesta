@@ -1,14 +1,15 @@
 import { useEffect, useRef, useState } from 'react'
-import type { Trip } from '@/entities/trip'
+import type { TripRoute } from '@/entities/trip'
 import styles from './TripMap.module.css'
 
-export const TripMap = ({ trip }: { trip: Trip }) => {
+export const TripMap = ({ route }: { route: TripRoute }) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const [failed, setFailed] = useState(false)
 
   useEffect(() => {
     let cancelled = false
     let map: { remove: () => void } | undefined
+    setFailed(false)
 
     const boot = async () => {
       try {
@@ -18,8 +19,8 @@ export const TripMap = ({ trip }: { trip: Trip }) => {
         ])
         if (cancelled || !containerRef.current) return
 
-        const points = trip.mapPoints
-        const coords = trip.mapClosed
+        const points = route.mapPoints
+        const coords = route.mapClosed
           ? [...points.map((p) => p.ll), points[0].ll]
           : points.map((p) => p.ll)
 
@@ -84,16 +85,16 @@ export const TripMap = ({ trip }: { trip: Trip }) => {
       cancelled = true
       map?.remove()
     }
-  }, [trip])
+  }, [route])
 
   if (failed) {
     return (
       <div className={styles.fallback}>
         <span aria-hidden="true">📍</span>
-        <span>{trip.mapCaption}</span>
+        <span>{route.mapCaption}</span>
       </div>
     )
   }
 
-  return <div ref={containerRef} className={styles.map} aria-label={trip.mapCaption} />
+  return <div ref={containerRef} className={styles.map} aria-label={route.mapCaption} />
 }

@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { programs } from '@/entities/program'
 import { reviews, ReviewCard } from '@/entities/review'
 import { tripGroups, type Trip } from '@/entities/trip'
@@ -27,9 +28,19 @@ const CloseIcon = () => (
 )
 
 export const TripDialog = ({ trip, onClose }: TripDialogProps) => {
+  const [departureId, setDepartureId] = useState<string | null>(null)
+
+  useEffect(() => {
+    setDepartureId(null)
+  }, [trip?.id])
+
   const noun = tripGroups.find((g) => g.id === trip?.group)?.noun ?? 'Путешествие'
   const conditions = programs.find((p) => p.id === trip?.group)?.detail.included ?? []
   const tripReviews = trip ? reviews.filter((r) => trip.reviewIds.includes(r.id)) : []
+  const departure =
+    trip?.departures.find((d) => d.id === departureId) ?? trip?.departures[0] ?? null
+  const route = departure?.route ?? null
+  const multiRoute = trip ? new Set(trip.departures.map((d) => d.route)).size > 1 : false
 
   return (
     <Modal
@@ -38,15 +49,15 @@ export const TripDialog = ({ trip, onClose }: TripDialogProps) => {
       label={trip ? `${noun}: ${trip.geo}` : noun}
       className={styles.dialog}
     >
-      {trip && (
+      {trip && route && departure && (
         <div className={styles.frame}>
           <div className={styles.mapCol}>
-            <TripMap trip={trip} />
+            <TripMap route={route} />
           </div>
           <div className={styles.scroll}>
             <header className={styles.head}>
               <p className={styles.eyebrow}>
-                {noun} · {trip.name}
+                {noun} · {route.name}
               </p>
               <h3 className={styles.title}>{trip.geo}</h3>
               <p className={styles.tagline}>{trip.tagline}</p>
@@ -55,18 +66,41 @@ export const TripDialog = ({ trip, onClose }: TripDialogProps) => {
             <div className={styles.facts}>
               <div className={styles.fact}>
                 <span className={styles.factLabel}>Даты · {trip.year}</span>
-                <span className={styles.dates}>
-                  {trip.departures.map((dates) => (
-                    <span key={dates} className={styles.date}>
-                      {dates}
-                    </span>
-                  ))}
-                </span>
+                {trip.departures.length > 1 ? (
+                  <span
+                    className={styles.dates}
+                    role="group"
+                    aria-label="Выбор даты выхода"
+                  >
+                    {trip.departures.map((d) => (
+                      <button
+                        key={d.id}
+                        type="button"
+                        className={styles.dateBtn}
+                        aria-pressed={d.id === departure.id}
+                        onClick={() => setDepartureId(d.id)}
+                      >
+                        {d.dates}
+                      </button>
+                    ))}
+                  </span>
+                ) : (
+                  <span className={styles.dates}>
+                    <span className={styles.date}>{departure.dates}</span>
+                  </span>
+                )}
+                {multiRoute && (
+                  <span className={styles.datesNote}>у каждой даты — своя нитка</span>
+                )}
+              </div>
+              <div className={styles.fact}>
+                <span className={styles.factLabel}>Маршрут</span>
+                <span className={styles.factValue}>{route.name}</span>
               </div>
               <div className={styles.fact}>
                 <span className={styles.factLabel}>В море</span>
                 <span className={styles.factValue}>
-                  {trip.duration} · {trip.extent}
+                  {route.duration} · {route.extent}
                 </span>
               </div>
               <div className={styles.fact}>
@@ -91,9 +125,9 @@ export const TripDialog = ({ trip, onClose }: TripDialogProps) => {
 
             <section className={styles.block} aria-label="Программа по дням">
               <h4 className={styles.blockTitle}>Программа по дням</h4>
-              <p className={styles.intro}>{trip.itinerary.intro}</p>
+              <p className={styles.intro}>{route.itinerary.intro}</p>
               <ol className={styles.days}>
-                {trip.itinerary.days.map((day) => (
+                {route.itinerary.days.map((day) => (
                   <li key={day.label}>
                     <span className={styles.dayLabel}>{day.label}</span>
                     <div className={styles.dayBody}>
@@ -103,7 +137,7 @@ export const TripDialog = ({ trip, onClose }: TripDialogProps) => {
                   </li>
                 ))}
               </ol>
-              <p className={styles.note}>{trip.itinerary.note}</p>
+              <p className={styles.note}>{route.itinerary.note}</p>
             </section>
 
             <section className={styles.block} aria-label="Фотографии">
