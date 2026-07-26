@@ -124,7 +124,7 @@ const breezeRoute1010: TripRoute = {
 }
 
 const pendingRoute: TripRoute = {
-  name: 'Маршрут шьётся',
+  name: 'Шьётся',
   duration: '7 дней',
   extent: 'нитка уточняется',
   legend: travelLegend,

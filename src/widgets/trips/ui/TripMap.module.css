@@ -26,6 +26,17 @@
   object-fit: contain;
 }
 
+@media (max-width: 879px) {
+  .imageWrap {
+    height: auto;
+  }
+
+  .image {
+    display: block;
+    height: auto;
+  }
+}
+
 .stitch {
   width: min(240px, 70%);
   color: var(--sea);

@@ -32,7 +32,12 @@ export const TripDialog = ({ trip, onClose }: TripDialogProps) => {
 
   useEffect(() => {
     setDepartureId(null)
-  }, [trip?.id])
+    trip?.departures.forEach((d) => {
+      if (d.route.mapImage) {
+        new Image().src = withBase(d.route.mapImage)
+      }
+    })
+  }, [trip])
 
   const noun = tripGroups.find((g) => g.id === trip?.group)?.noun ?? 'Путешествие'
   const conditions = programs.find((p) => p.id === trip?.group)?.detail.included ?? []
