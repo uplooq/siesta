@@ -1,12 +1,30 @@
 import { useEffect, useRef, useState } from 'react'
 import type { TripRoute } from '@/entities/trip'
+import { withBase } from '@/shared/lib/withBase'
 import styles from './TripMap.module.css'
+
+const StitchSketch = () => (
+  <svg className={styles.stitch} viewBox="0 0 320 120" aria-hidden="true">
+    <path
+      d="M16 96 C 90 20, 200 116, 304 34"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeDasharray="1 10"
+      strokeLinecap="round"
+    />
+    <circle cx="16" cy="96" r="6" fill="none" stroke="currentColor" strokeWidth="2" />
+    <circle cx="160" cy="70" r="6" fill="none" stroke="currentColor" strokeWidth="2" />
+    <circle cx="304" cy="34" r="6" fill="none" stroke="currentColor" strokeWidth="2" />
+  </svg>
+)
 
 export const TripMap = ({ route }: { route: TripRoute }) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const [failed, setFailed] = useState(false)
 
   useEffect(() => {
+    if (route.mapImage || route.mapPoints.length === 0) return
     let cancelled = false
     let map: { remove: () => void } | undefined
     setFailed(false)
@@ -86,6 +104,27 @@ export const TripMap = ({ route }: { route: TripRoute }) => {
       map?.remove()
     }
   }, [route])
+
+  if (route.mapImage) {
+    return (
+      <div className={styles.imageWrap}>
+        <img
+          className={styles.image}
+          src={withBase(route.mapImage)}
+          alt={route.mapImageAlt ?? route.mapCaption}
+        />
+      </div>
+    )
+  }
+
+  if (route.mapPoints.length === 0) {
+    return (
+      <div className={styles.fallback}>
+        <StitchSketch />
+        <span>{route.mapCaption}</span>
+      </div>
+    )
+  }
 
   if (failed) {
     return (

@@ -126,17 +126,19 @@ export const TripDialog = ({ trip, onClose }: TripDialogProps) => {
             <section className={styles.block} aria-label="Программа по дням">
               <h4 className={styles.blockTitle}>Программа по дням</h4>
               <p className={styles.intro}>{route.itinerary.intro}</p>
-              <ol className={styles.days}>
-                {route.itinerary.days.map((day) => (
-                  <li key={day.label}>
-                    <span className={styles.dayLabel}>{day.label}</span>
-                    <div className={styles.dayBody}>
-                      <h5>{day.title}</h5>
-                      <p>{day.text}</p>
-                    </div>
-                  </li>
-                ))}
-              </ol>
+              {route.itinerary.days.length > 0 && (
+                <ol className={styles.days}>
+                  {route.itinerary.days.map((day) => (
+                    <li key={day.label}>
+                      <span className={styles.dayLabel}>{day.label}</span>
+                      <div className={styles.dayBody}>
+                        <h5>{day.title}</h5>
+                        <p>{day.text}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ol>
+              )}
               <p className={styles.note}>{route.itinerary.note}</p>
             </section>
 
