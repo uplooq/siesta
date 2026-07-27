@@ -23,18 +23,8 @@
 .image {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-}
-
-@media (max-width: 879px) {
-  .imageWrap {
-    height: auto;
-  }
-
-  .image {
-    display: block;
-    height: auto;
-  }
+  object-fit: cover;
+  object-position: center;
 }
 
 .stitch {

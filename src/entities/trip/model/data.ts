@@ -111,7 +111,7 @@ const breezeRoute2609: TripRoute = {
   extent: '6 стоянок',
   legend: travelLegend,
   mapCaption: 'Карта маршрута «Осенний бриз»',
-  mapImage: '/routes/osenniy-briz-2609.png',
+  mapImage: '/routes/osenniy-briz-1010.png',
   mapImageAlt:
     'Схема маршрута «Осенний бриз»: Гёчек — Сарсала — Дальян — Олюдениз — Гемилер — Бойнуз Боку',
   mapPoints: [],

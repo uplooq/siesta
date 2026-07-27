@@ -12,13 +12,7 @@
 
 .mapCol {
   flex: none;
-  height: clamp(200px, 36dvh, 320px);
-}
-
-@media (max-width: 879px) {
-  .mapCol:has(img) {
-    height: auto;
-  }
+  height: clamp(240px, 42dvh, 340px);
 }
 
 .scroll {
