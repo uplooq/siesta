@@ -1,16 +1,10 @@
+import { useSelectedTrip } from '@/entities/trip'
 import { contacts } from '@/shared/config/contacts'
 import { Button } from '@/shared/ui/button'
 import { Kicker } from '@/shared/ui/kicker'
 import { Reveal } from '@/shared/ui/reveal'
 import { cx } from '@/shared/lib/cx'
 import styles from './Booking.module.css'
-
-const log = [
-  { label: 'Порт приписки', value: 'Гёчек, Турция' },
-  { label: 'Координаты', value: '36°45′N · 28°57′E', coord: true },
-  { label: 'Навигация', value: 'Май — октябрь' },
-  { label: 'На борту', value: 'до 8 гостей' },
-]
 
 const CompassRose = () => (
   <svg className={styles.compass} viewBox="0 0 200 200" aria-hidden="true" fill="currentColor">
@@ -61,74 +55,84 @@ const InstagramIcon = () => (
   </svg>
 )
 
-export const Booking = () => (
-  <section className={styles.book} id="book" aria-labelledby="book-title">
-    <CompassRose />
-    <div className={styles.inner}>
-      <Reveal>
-        <Kicker style={{ color: 'var(--coral)' }}>Курс проложен</Kicker>
-        <h2 className={cx('display', styles.title)} id="book-title">
-          Занять место на борту
-        </h2>
-        <p className={cx('lead', styles.lead)}>
-          Напишите нам — сверим даты, подберём борт и маршрут под вашу команду. Мест в сезоне
-          немного, экипажи маленькие, и это принципиально.
-        </p>
-        <div className={styles.log}>
-          {log.map((row) => (
-            <div key={row.label}>
-              <span className={styles.lbl}>{row.label}</span>
-              <span className={cx(styles.val, row.coord && styles.coord)}>{row.value}</span>
-            </div>
-          ))}
-        </div>
-      </Reveal>
+export const Booking = () => {
+  const { harbor } = useSelectedTrip()
+  const log = [
+    { label: 'Порт приписки', value: harbor.port },
+    { label: 'Координаты', value: harbor.coords, coord: true },
+    { label: 'Навигация', value: harbor.season },
+    { label: 'На борту', value: harbor.crew },
+  ]
 
-      <Reveal className={styles.manifest} delay={0.1}>
-        <div className={styles.manifestHead}>
-          <h3>Связаться</h3>
-          <span className={styles.tag}>Прямой контакт</span>
-        </div>
-        <p className={styles.manifestLead}>
-          Быстрее всего — в Telegram: ответим в течение дня, обсудим даты и подберём маршрут под
-          вашу компанию.
-        </p>
-        <Button
-          href={contacts.telegram}
-          target="_blank"
-          rel="noopener"
-          className={styles.tg}
-          aria-label={`Написать в Telegram ${contacts.telegramLabel}`}
-        >
-          <TelegramIcon />
-          Написать в Telegram
-        </Button>
-        <div className={styles.sub} aria-label="Другие контакты">
-          <a
-            className={styles.contactBtn}
-            href={`mailto:${contacts.email}`}
-            aria-label={`Написать на почту ${contacts.email}`}
-          >
-            <span className={styles.ci} aria-hidden="true">
-              <MailIcon />
-            </span>
-            Почта
-          </a>
-          <a
-            className={styles.contactBtn}
-            href={contacts.instagram}
+  return (
+    <section className={styles.book} id="book" aria-labelledby="book-title">
+      <CompassRose />
+      <div className={styles.inner}>
+        <Reveal>
+          <Kicker style={{ color: 'var(--coral)' }}>Курс проложен</Kicker>
+          <h2 className={cx('display', styles.title)} id="book-title">
+            Занять место на борту
+          </h2>
+          <p className={cx('lead', styles.lead)}>
+            Напишите нам — сверим даты, подберём борт и маршрут под вашу команду. Мест в сезоне
+            немного, экипажи маленькие, и это принципиально.
+          </p>
+          <div className={styles.log}>
+            {log.map((row) => (
+              <div key={row.label}>
+                <span className={styles.lbl}>{row.label}</span>
+                <span className={cx(styles.val, row.coord && styles.coord)}>{row.value}</span>
+              </div>
+            ))}
+          </div>
+        </Reveal>
+
+        <Reveal className={styles.manifest} delay={0.1}>
+          <div className={styles.manifestHead}>
+            <h3>Связаться</h3>
+            <span className={styles.tag}>Прямой контакт</span>
+          </div>
+          <p className={styles.manifestLead}>
+            Быстрее всего — в Telegram: ответим в течение дня, обсудим даты и подберём маршрут под
+            вашу компанию.
+          </p>
+          <Button
+            href={contacts.telegram}
             target="_blank"
             rel="noopener"
-            aria-label={`Открыть Instagram ${contacts.instagramLabel}`}
+            className={styles.tg}
+            aria-label={`Написать в Telegram ${contacts.telegramLabel}`}
           >
-            <span className={styles.ci} aria-hidden="true">
-              <InstagramIcon />
-            </span>
-            Instagram
-          </a>
-        </div>
-        <p className={styles.note}>Порт приписки — Гёчек, Турция. Навигация с мая по октябрь.</p>
-      </Reveal>
-    </div>
-  </section>
-)
+            <TelegramIcon />
+            Написать в Telegram
+          </Button>
+          <div className={styles.sub} aria-label="Другие контакты">
+            <a
+              className={styles.contactBtn}
+              href={`mailto:${contacts.email}`}
+              aria-label={`Написать на почту ${contacts.email}`}
+            >
+              <span className={styles.ci} aria-hidden="true">
+                <MailIcon />
+              </span>
+              Почта
+            </a>
+            <a
+              className={styles.contactBtn}
+              href={contacts.instagram}
+              target="_blank"
+              rel="noopener"
+              aria-label={`Открыть Instagram ${contacts.instagramLabel}`}
+            >
+              <span className={styles.ci} aria-hidden="true">
+                <InstagramIcon />
+              </span>
+              Instagram
+            </a>
+          </div>
+          <p className={styles.note}>{harbor.note}</p>
+        </Reveal>
+      </div>
+    </section>
+  )
+}

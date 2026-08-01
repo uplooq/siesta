@@ -114,6 +114,13 @@ export const TripDialog = ({ trip, onClose }: TripDialogProps) => {
                   <b>{trip.price}</b> {trip.priceUnit}
                 </span>
               </div>
+              <p className={styles.priceNotes}>
+                {[trip.priceNote, 'перелёт в стоимость не входит']
+                  .filter(Boolean)
+                  .map((note) => (
+                    <span key={note}>{note}</span>
+                  ))}
+              </p>
             </div>
 
             <section className={styles.block} aria-label="Условия">
@@ -184,7 +191,10 @@ export const TripDialog = ({ trip, onClose }: TripDialogProps) => {
             <footer className={styles.cta}>
               <div className={styles.price}>
                 <span className={styles.p}>{trip.price}</span>
-                <span className={styles.u}>{trip.priceUnit}</span>
+                <span className={styles.u}>
+                  {trip.priceUnit}
+                  {trip.priceNote && ` · ${trip.priceNote}`}
+                </span>
               </div>
               <Button
                 href={contacts.telegram}

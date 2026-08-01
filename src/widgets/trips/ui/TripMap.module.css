@@ -15,15 +15,17 @@
 .imageWrap {
   width: 100%;
   height: 100%;
-  display: grid;
-  place-items: center;
   background: var(--shell-2);
+  overflow: hidden;
 }
 
+/* Нитку показываем целиком: карты приходят и почти квадратными, и сильно
+   вытянутыми, а обрезанный маршрут читать невозможно. */
 .image {
+  display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
 }
 

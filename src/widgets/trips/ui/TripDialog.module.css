@@ -12,7 +12,7 @@
 
 .mapCol {
   flex: none;
-  height: clamp(240px, 42dvh, 340px);
+  height: clamp(260px, 46dvh, 380px);
 }
 
 .scroll {
@@ -164,6 +164,19 @@
   color: var(--muted);
 }
 
+/* Оговорки по деньгам живут строкой под всем блоком, а не в узкой колонке цены:
+   там они переносятся по два слова и слипаются в абзац. */
+.priceNotes {
+  flex-basis: 100%;
+  margin: 0;
+  display: grid;
+  gap: 3px;
+  justify-items: start;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
 .block {
   display: grid;
   gap: 14px;
@@ -266,31 +279,25 @@
   line-height: 1.6;
 }
 
+/* Кадры приходят вертикальными и горизонтальными вперемешку — кладка по колонкам
+   показывает каждый в родных пропорциях, без кропа под общую сетку. */
 .gallery {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  columns: 2;
+  column-gap: 10px;
 }
 
 .gallery figure {
-  margin: 0;
+  margin: 0 0 10px;
+  break-inside: avoid;
   display: grid;
   gap: 7px;
 }
 
-.gallery figure:first-child {
-  grid-column: 1 / -1;
-}
-
 .gallery img {
+  display: block;
   width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
+  height: auto;
   border-radius: 10px;
-}
-
-.gallery figure:first-child img {
-  aspect-ratio: 16 / 9;
 }
 
 .gallery figcaption {

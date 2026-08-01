@@ -1,3 +1,4 @@
+import { reviews } from '@/entities/review'
 import { withBase } from '@/shared/lib/withBase'
 import styles from './Footer.module.css'
 
@@ -7,7 +8,7 @@ const nav = [
   { href: '#intro-title', label: 'О нас' },
   { href: '#chronicle', label: 'Фотоотчёты' },
   { href: '#captains', label: 'Капитаны' },
-  { href: '#reviews', label: 'Отзывы' },
+  ...(reviews.length > 0 ? [{ href: '#reviews', label: 'Отзывы' }] : []),
   { href: withBase('/map/'), label: 'Карта' },
   { href: '#book', label: 'Связаться' },
 ]

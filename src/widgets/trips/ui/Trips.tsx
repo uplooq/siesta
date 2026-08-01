@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
-import { trips, tripGroups, type TripGroup } from '@/entities/trip'
+import { trips, tripGroups, selectTrip, type TripGroup } from '@/entities/trip'
 import { Kicker } from '@/shared/ui/kicker'
 import { Reveal } from '@/shared/ui/reveal'
 import { cx } from '@/shared/lib/cx'
@@ -24,6 +24,7 @@ export const Trips = () => {
       const match = location.hash.match(tripHash)
       if (match && trips.some((trip) => trip.id === match[1])) {
         setOpenId(match[1])
+        selectTrip(match[1])
         return
       }
       pushedRef.current = false
@@ -43,6 +44,7 @@ export const Trips = () => {
 
   const openTrip = (id: string) => {
     setOpenId(id)
+    selectTrip(id)
     history.pushState(null, '', `#trip-${id}`)
     pushedRef.current = true
   }
@@ -82,7 +84,7 @@ export const Trips = () => {
   return (
     <section className={styles.trips} id="trips" ref={sectionRef} aria-labelledby="trips-title">
       <Reveal className={styles.head}>
-        <Kicker>Сезон 2026</Kicker>
+        <Kicker>Сезон 2026–2027</Kicker>
         <h2 className={cx('display', styles.title)} id="trips-title">
           Куда пойдём под парусом
         </h2>
