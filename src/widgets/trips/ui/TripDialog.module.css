@@ -405,14 +405,6 @@
     gap: 6px;
   }
 
-  .gallery {
-    grid-template-columns: 1fr;
-  }
-
-  .gallery img,
-  .gallery figure:first-child img {
-    aspect-ratio: 4 / 3;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -147,22 +147,26 @@ export const Trips = () => {
                   />
                   <span className={styles.cardShade} />
                   <span className={styles.cardInner}>
-                    <span className={styles.cardEyebrow}>
-                      {g.noun} · {trip.departures[0].route.duration}
+                    <span className={styles.cardMain}>
+                      <span className={styles.cardEyebrow}>
+                        {g.noun} · {trip.departures[0].route.duration}
+                      </span>
+                      <span className={styles.cardTitle}>{trip.geo}</span>
+                      <span className={styles.cardDates}>
+                        {trip.departures.map((departure) => (
+                          <span key={departure.id} className={styles.date}>
+                            {departure.dates}
+                          </span>
+                        ))}
+                        <span className={styles.year}>{trip.year}</span>
+                      </span>
                     </span>
-                    <span className={styles.cardTitle}>{trip.geo}</span>
-                    <span className={styles.cardDates}>
-                      {trip.departures.map((departure) => (
-                        <span key={departure.id} className={styles.date}>
-                          {departure.dates}
-                        </span>
-                      ))}
-                      <span className={styles.year}>{trip.year}</span>
+                    <span className={styles.cardSide}>
+                      <span className={styles.cardMeta}>
+                        {trip.price} <span className={styles.cardMetaUnit}>{trip.priceUnit}</span>
+                      </span>
+                      <span className={styles.cardHint}>Смотреть программу</span>
                     </span>
-                    <span className={styles.cardMeta}>
-                      {trip.price} <span className={styles.cardMetaUnit}>{trip.priceUnit}</span>
-                    </span>
-                    <span className={styles.cardHint}>Смотреть программу</span>
                   </span>
                 </button>
               ))}

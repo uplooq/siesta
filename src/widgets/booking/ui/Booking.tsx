@@ -32,21 +32,6 @@ const TelegramIcon = () => (
   </svg>
 )
 
-const MailIcon = () => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.6"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden="true"
-  >
-    <rect x="3" y="5" width="18" height="14" rx="2.6" />
-    <path d="M4 7.5l8 5.5 8-5.5" />
-  </svg>
-)
-
 const InstagramIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
     <rect x="3" y="3" width="18" height="18" rx="5" />
@@ -106,17 +91,7 @@ export const Booking = () => {
             <TelegramIcon />
             Написать в Telegram
           </Button>
-          <div className={styles.sub} aria-label="Другие контакты">
-            <a
-              className={styles.contactBtn}
-              href={`mailto:${contacts.email}`}
-              aria-label={`Написать на почту ${contacts.email}`}
-            >
-              <span className={styles.ci} aria-hidden="true">
-                <MailIcon />
-              </span>
-              Почта
-            </a>
+          <div className={styles.sub}>
             <a
               className={styles.contactBtn}
               href={contacts.instagram}

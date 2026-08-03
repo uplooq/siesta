@@ -82,16 +82,12 @@
   }
 }
 
+/* Направления читаются списком, а не сеткой: каждое занимает полную строку,
+   поэтому фото работает панорамой, а не миниатюрой. */
 .grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 14px;
-}
-
-@media (min-width: 760px) {
-  .grid {
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr));
-  }
 }
 
 .card {
@@ -108,8 +104,14 @@
   font-family: inherit;
   color: #fff;
   background: var(--sea-deep);
-  min-height: clamp(320px, 38vw, 420px);
+  min-height: clamp(300px, 44vw, 360px);
   isolation: isolate;
+}
+
+@media (min-width: 760px) {
+  .card {
+    min-height: clamp(280px, 27vw, 380px);
+  }
 }
 
 .card:focus-visible {
@@ -134,11 +136,14 @@
 .cardShade {
   position: absolute;
   inset: 0;
+  /* Обложки бывают светлыми (белый корпус, закатное небо): подложка держит
+     контраст подписей, оставляя верх кадра почти нетронутым. */
   background: linear-gradient(
     to top,
-    oklch(0.2 0.03 205 / 0.85) 0%,
-    oklch(0.2 0.03 205 / 0.35) 48%,
-    oklch(0.2 0.03 205 / 0.1) 100%
+    oklch(0.2 0.03 205 / 0.88) 0%,
+    oklch(0.2 0.03 205 / 0.52) 38%,
+    oklch(0.2 0.03 205 / 0.16) 68%,
+    oklch(0.2 0.03 205 / 0.04) 100%
   );
   z-index: var(--z-overlay);
 }
@@ -148,8 +153,30 @@
   z-index: var(--z-content);
   padding: clamp(20px, 2.6vw, 32px);
   display: grid;
-  gap: 10px;
+  gap: 14px;
   width: 100%;
+}
+
+.cardMain,
+.cardSide {
+  display: grid;
+  gap: 10px;
+  align-content: end;
+}
+
+/* Полная строка даёт место развести факты по краям: маршрут и даты ведут,
+   цена и приглашение отвечают им справа. */
+@media (min-width: 760px) {
+  .cardInner {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    column-gap: clamp(28px, 5vw, 72px);
+  }
+
+  .cardSide {
+    justify-items: end;
+    text-align: right;
+  }
 }
 
 .cardEyebrow {
@@ -228,5 +255,19 @@
   .cardHint {
     opacity: 1;
     transform: none;
+  }
+}
+
+/* В строке приглашение держит правый столбец: без него цена повисает
+   в стороне от дат, а половина ширины остаётся пустой. */
+@media (min-width: 760px) {
+  .cardHint {
+    opacity: 0.82;
+    transform: none;
+  }
+
+  .card:hover .cardHint,
+  .card:focus-visible .cardHint {
+    opacity: 1;
   }
 }
