@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react'
 import { captains } from '@/entities/captain'
 import { Kicker } from '@/shared/ui/kicker'
 import { Reveal } from '@/shared/ui/reveal'
@@ -26,7 +27,14 @@ export const Captains = () => (
             className={cx(styles.row, index % 2 === 1 && styles.flip)}
             delay={0.05}
           >
-            <figure className={styles.photo}>
+            <figure
+              className={styles.photo}
+              style={
+                captain.photoRatio
+                  ? ({ '--photo-ratio': captain.photoRatio } as CSSProperties)
+                  : undefined
+              }
+            >
               {captain.photo ? (
                 <img
                   src={withBase(captain.photo)}

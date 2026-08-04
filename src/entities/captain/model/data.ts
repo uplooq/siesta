@@ -5,6 +5,7 @@ export interface Captain {
   photo?: string
   photoAlt?: string
   photoPosition?: string
+  photoRatio?: number
 }
 
 export const captains: Captain[] = [
@@ -13,8 +14,8 @@ export const captains: Captain[] = [
     role: 'Шкипер',
     bio: 'Более 20 лет под парусами. Опыт маршрутов в Таиланде, Турции, Греции и России. Специалист по организации авторских яхтенных путешествий.',
     photo: '/captains/igor.webp',
-    photoAlt: 'Игорь на палубе гоночной яхты во время регаты, улыбается в камеру',
-    photoPosition: '100% 45%',
+    photoAlt: 'Игорь в спасательном жилете и очках сидит у борта гоночной яхты и смотрит вверх на паруса',
+    photoRatio: 707 / 812,
   },
   {
     name: 'Софья Шпильберг',

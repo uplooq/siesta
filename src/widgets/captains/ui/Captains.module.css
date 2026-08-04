@@ -38,10 +38,16 @@
 }
 
 .photo {
+  --photo-ratio: 1.6;
+  --photo-max-height: 520px;
+
   margin: 0;
   border-radius: 8px;
   overflow: hidden;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: var(--photo-ratio);
+  width: 100%;
+  max-width: calc(var(--photo-max-height) * var(--photo-ratio));
+  justify-self: center;
   box-shadow: 0 30px 60px -46px oklch(0.315 0.04 197 / 0.5);
 }
 
@@ -99,8 +105,13 @@
     grid-template-columns: 1.05fr 0.95fr;
   }
 
+  .photo {
+    justify-self: start;
+  }
+
   .flip .photo {
     order: 2;
+    justify-self: end;
   }
 
   .flip .copy {
