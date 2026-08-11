@@ -25,6 +25,7 @@ const mapDirIndex = (): Plugin => {
 }
 
 export default defineConfig({
+  base: '/',
   plugins: [react(), mapDirIndex()],
   resolve: {
     alias: {
