@@ -1,3 +1,8 @@
+// Собирается Vite как вторая страница (map/index.html): MapLibre идёт из npm-зависимости,
+// без внешних CDN, и попадает под CSP script-src 'self'.
+import maplibregl from 'maplibre-gl'
+import 'maplibre-gl/dist/maplibre-gl.css'
+
 // «Свой Яндекс» на MapLibre GL + бесплатные векторные тайлы OpenFreeMap.
 // Полный порт планировщика из d3-версии: инструменты, точки (drag, подписи, стороны),
 // геодезические линии-дуги, подписи дистанций, инспектор, история, save/load,
@@ -521,7 +526,7 @@ function inspHistory(){
 function openHistory(){ selected=null; inspHistory(); openSheet(); }
 
 // ======================= отправка маршрута капитанам =======================
-const SIESTA={tg:'siesta_sail', email:'hello@siesta.sail'};
+const SIESTA={tg:'shpiilberg'}; // тот же контакт, что в src/shared/config/contacts.ts
 const plural=(n,forms)=>forms[n%10===1&&n%100!==11?0:(n%10>=2&&n%10<=4&&(n%100<10||n%100>=20)?1:2)];
 function validSegments(){ return state.segments.filter(s=>ptById(s.a)&&ptById(s.b)); }
 function totalNM(){ let d=0; for(const s of validSegments()) d+=segDistNM(s); return d; }
@@ -564,14 +569,10 @@ function inspSend(){
     <button class="primary" id="sendTg" style="margin-bottom:8px">Отправить в Telegram</button>
     <div class="sendrow">
       <button class="ghost" id="dlJson">Скачать файл маршрута (.json)</button>
-      <button class="ghost" id="sendMail">Отправить письмом</button>
       <button class="ghost" id="copySum">Скопировать описание</button>
     </div>
     <div class="empty">В Telegram откроется чат с готовым сообщением: останется нажать «Отправить». Чтобы передать маршрут со всеми изгибами, приложите к сообщению скачанный файл.</div>`;
   byId('sendTg').onclick=()=>{ window.open('https://t.me/'+SIESTA.tg+'?text='+encodeURIComponent(sum),'_blank','noopener'); };
-  byId('sendMail').onclick=()=>{ location.href='mailto:'+SIESTA.email
-    +'?subject='+encodeURIComponent('Маршрут для siesta: '+title)
-    +'&body='+encodeURIComponent(sum); };
   byId('copySum').onclick=e=>{
     if(!navigator.clipboard) return;
     navigator.clipboard.writeText(sum).then(()=>{
