@@ -215,6 +215,31 @@
   padding-bottom: 0;
 }
 
+.subTitle {
+  margin: 6px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--hairline);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.02rem;
+  color: var(--sea-deep);
+}
+
+.includedPlain {
+  margin: 0;
+  padding: 0 0 0 1.1em;
+  display: grid;
+  gap: 6px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--body);
+}
+
+.includedPlain li::marker {
+  color: var(--coral);
+}
+
 .k {
   font-family: var(--font-display);
   font-style: italic;
