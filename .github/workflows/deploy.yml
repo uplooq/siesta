@@ -1,8 +1,10 @@
-name: Deploy to GitHub Pages
+name: Deploy prod (sieesta.ru)
 
+# Прод выкатывается только тегом: git tag v1.2.0 && git push origin v1.2.0
+# Откат — тег на старом коммите или Re-run старого запуска этого workflow.
 on:
   push:
-    branches: [main]
+    tags: ['v*']
   workflow_dispatch:
 
 permissions:
