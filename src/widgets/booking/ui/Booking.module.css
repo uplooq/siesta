@@ -153,9 +153,17 @@
   font-size: 1.04rem;
 }
 
+.tgRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
 .tg {
-  width: 100%;
+  flex: 1 1 40%;
   justify-content: center;
+  padding-inline: 1.2em;
+  white-space: nowrap;
 }
 
 .tg svg {
@@ -238,6 +246,7 @@
 }
 
 @media (max-width: 460px) {
+  .tg,
   .sub .contactBtn {
     flex: 1 1 100%;
   }

@@ -147,6 +147,9 @@ export const siteSchema = z.object({
   contacts: z.object({
     telegram: z.string().url(),
     telegramLabel: text,
+    telegramIgor: z.string().url(),
+    telegramIgorLabel: text,
+    whatsapp: z.string().url(),
     instagram: z.string().url(),
     instagramLabel: text,
   }),
@@ -154,8 +157,16 @@ export const siteSchema = z.object({
     links: z.array(link.extend({ wide: z.boolean().optional() })),
     cta: text,
   }),
+  hero: z.object({
+    kicker: text,
+    // каждая строка заголовка — отдельный элемент
+    title: z.array(text).min(1),
+    lead: text,
+    cta: text,
+  }),
   trips: z.object({ kicker: text, title: text, lead: text }),
-  intro: z.object({ kicker: text, title: text, titleAccent: text, lead: text }),
+  // lead — абзацы текста
+  intro: z.object({ kicker: text, title: text, titleAccent: text, lead: z.array(text).min(1) }),
   chronicle: z.object({ kicker: text, title: text, lead: text }),
   captains: z.object({
     kicker: text,
@@ -173,7 +184,8 @@ export const siteSchema = z.object({
     contactTitle: text,
     contactTag: text,
     contactLead: text,
-    telegramCta: text,
+    telegramCtaSofia: text,
+    telegramCtaIgor: text,
   }),
   footer: z.object({
     links: z.array(link),

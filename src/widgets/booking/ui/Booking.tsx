@@ -32,6 +32,17 @@ const TelegramIcon = () => (
   </svg>
 )
 
+const WhatsAppIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+    <path d="M3.6 20.4l1.2-3.9a8.6 8.6 0 1 1 3.3 3z" strokeLinejoin="round" />
+    <path
+      fill="currentColor"
+      stroke="none"
+      d="M9.2 7.6c.2-.4.4-.4.6-.4h.5c.2 0 .4 0 .5.4l.7 1.6c.1.2.1.4 0 .6l-.4.6c-.1.2-.1.3 0 .5.5.9 1.2 1.6 2.1 2.1.2.1.4.1.5 0l.6-.6c.2-.2.4-.2.6-.1l1.5.7c.3.1.4.3.4.5 0 .6-.3 1.3-.9 1.6-.6.3-1.5.4-2.9-.2-1.6-.7-2.9-2-3.7-3.5-.6-1.2-.5-2.1-.1-2.8z"
+    />
+  </svg>
+)
+
 const InstagramIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
     <rect x="3" y="3" width="18" height="18" rx="5" />
@@ -77,17 +88,41 @@ export const Booking = () => {
             <span className={styles.tag}>{copy.contactTag}</span>
           </div>
           <p className={styles.manifestLead}>{copy.contactLead}</p>
-          <Button
-            href={contacts.telegram}
-            target="_blank"
-            rel="noopener"
-            className={styles.tg}
-            aria-label={`Написать в Telegram ${contacts.telegramLabel}`}
-          >
-            <TelegramIcon />
-            {copy.telegramCta}
-          </Button>
+          <div className={styles.tgRow}>
+            <Button
+              href={contacts.telegram}
+              target="_blank"
+              rel="noopener"
+              className={styles.tg}
+              aria-label={`${copy.telegramCtaSofia} в Telegram ${contacts.telegramLabel}`}
+            >
+              <TelegramIcon />
+              {copy.telegramCtaSofia}
+            </Button>
+            <Button
+              href={contacts.telegramIgor}
+              target="_blank"
+              rel="noopener"
+              className={styles.tg}
+              aria-label={`${copy.telegramCtaIgor} в Telegram ${contacts.telegramIgorLabel}`}
+            >
+              <TelegramIcon />
+              {copy.telegramCtaIgor}
+            </Button>
+          </div>
           <div className={styles.sub}>
+            <a
+              className={styles.contactBtn}
+              href={contacts.whatsapp}
+              target="_blank"
+              rel="noopener"
+              aria-label="Написать в WhatsApp"
+            >
+              <span className={styles.ci} aria-hidden="true">
+                <WhatsAppIcon />
+              </span>
+              WhatsApp
+            </a>
             <a
               className={styles.contactBtn}
               href={contacts.instagram}

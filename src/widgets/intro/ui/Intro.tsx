@@ -15,7 +15,11 @@ export const Intro = () => (
       </h2>
     </Reveal>
     <Reveal className={styles.body} delay={0.1}>
-      <p className="lead">{copy.lead}</p>
+      {copy.lead.map((paragraph) => (
+        <p key={paragraph} className="lead">
+          {paragraph}
+        </p>
+      ))}
     </Reveal>
   </section>
 )
