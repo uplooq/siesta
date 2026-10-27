@@ -251,6 +251,39 @@
   overflow-wrap: anywhere;
 }
 
+.summary {
+  display: grid;
+  gap: 4px;
+  max-width: 58ch;
+}
+
+.summaryTitle {
+  margin: 0;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.stops {
+  margin: 0;
+  line-height: 1.65;
+  color: var(--body);
+  text-wrap: pretty;
+}
+
+.stops {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 0.35em;
+}
+
+.stop {
+  white-space: nowrap;
+}
+
+.dash {
+  color: var(--coral-ink);
+}
+
 .intro {
   color: var(--muted);
   line-height: 1.65;

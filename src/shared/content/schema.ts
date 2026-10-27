@@ -23,7 +23,9 @@ export const itineraryDaySchema = z.object({
 
 export const itinerarySchema = z.object({
   title: text,
-  intro: text,
+  // короткая сводка нитки: «Кольцо по островам …» и точки через тире
+  summary: z.object({ title: text, stops: z.array(text).min(2) }).optional(),
+  intro: text.optional(),
   days: z.array(itineraryDaySchema),
   note: text,
 })
@@ -73,6 +75,8 @@ export const tripSchema = z
     coverAlt: text,
     photos: z.array(photoSchema),
     included: z.array(text).optional(),
+    // свои пункты «Условий»: заменяют пункт программы с тем же label, новые добавляются в конец
+    conditions: z.array(z.object({ label: text, text: text })).optional(),
     video: z.object({ href: z.string().url(), label: text }).optional(),
     reviewIds: z.array(z.string()).default([]),
     harbor: harborSchema,

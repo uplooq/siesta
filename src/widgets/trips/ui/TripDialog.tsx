@@ -40,7 +40,12 @@ export const TripDialog = ({ trip, onClose }: TripDialogProps) => {
   }, [trip])
 
   const noun = tripGroups.find((g) => g.id === trip?.group)?.noun ?? 'Путешествие'
-  const conditions = programs.find((p) => p.id === trip?.group)?.detail.included ?? []
+  const baseConditions = programs.find((p) => p.id === trip?.group)?.detail.included ?? []
+  const ownConditions = trip?.conditions ?? []
+  const conditions = [
+    ...baseConditions.map((c) => ownConditions.find((o) => o.label === c.label) ?? c),
+    ...ownConditions.filter((o) => !baseConditions.some((c) => c.label === o.label)),
+  ]
   const tripReviews = trip ? reviews.filter((r) => trip.reviewIds.includes(r.id)) : []
   const departure =
     trip?.departures.find((d) => d.id === departureId) ?? trip?.departures[0] ?? null
@@ -147,7 +152,20 @@ export const TripDialog = ({ trip, onClose }: TripDialogProps) => {
 
             <section className={styles.block} aria-label="Программа по дням">
               <h4 className={styles.blockTitle}>Программа по дням</h4>
-              <p className={styles.intro}>{route.itinerary.intro}</p>
+              {route.itinerary.summary && (
+                <div className={styles.summary}>
+                  <p className={styles.summaryTitle}>{route.itinerary.summary.title}</p>
+                  <p className={styles.stops}>
+                    {route.itinerary.summary.stops.map((stop, i, all) => (
+                      <span key={`${stop}-${i}`} className={styles.stop}>
+                        {stop}
+                        {i < all.length - 1 && <span className={styles.dash}> —</span>}
+                      </span>
+                    ))}
+                  </p>
+                </div>
+              )}
+              {route.itinerary.intro && <p className={styles.intro}>{route.itinerary.intro}</p>}
               {route.itinerary.days.length > 0 && (
                 <ol className={styles.days}>
                   {route.itinerary.days.map((day) => (
