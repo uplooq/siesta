@@ -28,6 +28,9 @@
   .frame {
     display: grid;
     grid-template-columns: 5fr 7fr;
+    /* единственный ряд ровно по высоте рамки: иначе колонка со скроллом
+       вырастает по контенту и её низ обрезается за краем диалога */
+    grid-template-rows: minmax(0, 1fr);
     height: min(92dvh, 780px);
     max-height: none;
   }
@@ -37,7 +40,7 @@
   }
 
   .scroll {
-    max-height: 100%;
+    height: 100%;
   }
 }
 
@@ -213,6 +216,31 @@
 .included li:last-child {
   border-bottom: 0;
   padding-bottom: 0;
+}
+
+.subTitle {
+  margin: 6px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--hairline);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.02rem;
+  color: var(--sea-deep);
+}
+
+.includedPlain {
+  margin: 0;
+  padding: 0 0 0 1.1em;
+  display: grid;
+  gap: 6px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--body);
+}
+
+.includedPlain li::marker {
+  color: var(--coral);
 }
 
 .k {

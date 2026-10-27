@@ -1,5 +1,5 @@
 import { useSelectedTrip } from '@/entities/trip'
-import { contacts } from '@/shared/config/contacts'
+import { contacts, site } from '@/shared/content'
 import { Button } from '@/shared/ui/button'
 import { Kicker } from '@/shared/ui/kicker'
 import { Reveal } from '@/shared/ui/reveal'
@@ -40,6 +40,8 @@ const InstagramIcon = () => (
   </svg>
 )
 
+const copy = site.booking
+
 export const Booking = () => {
   const { harbor } = useSelectedTrip()
   const log = [
@@ -54,14 +56,11 @@ export const Booking = () => {
       <CompassRose />
       <div className={styles.inner}>
         <Reveal>
-          <Kicker style={{ color: 'var(--coral)' }}>Курс проложен</Kicker>
+          <Kicker style={{ color: 'var(--coral)' }}>{copy.kicker}</Kicker>
           <h2 className={cx('display', styles.title)} id="book-title">
-            Занять место на борту
+            {copy.title}
           </h2>
-          <p className={cx('lead', styles.lead)}>
-            Напишите нам — сверим даты, подберём борт и маршрут под вашу команду. Мест в сезоне
-            немного, экипажи маленькие, и это принципиально.
-          </p>
+          <p className={cx('lead', styles.lead)}>{copy.lead}</p>
           <div className={styles.log}>
             {log.map((row) => (
               <div key={row.label}>
@@ -74,13 +73,10 @@ export const Booking = () => {
 
         <Reveal className={styles.manifest} delay={0.1}>
           <div className={styles.manifestHead}>
-            <h3>Связаться</h3>
-            <span className={styles.tag}>Прямой контакт</span>
+            <h3>{copy.contactTitle}</h3>
+            <span className={styles.tag}>{copy.contactTag}</span>
           </div>
-          <p className={styles.manifestLead}>
-            Быстрее всего — в Telegram: ответим в течение дня, обсудим даты и подберём маршрут под
-            вашу компанию.
-          </p>
+          <p className={styles.manifestLead}>{copy.contactLead}</p>
           <Button
             href={contacts.telegram}
             target="_blank"
@@ -89,7 +85,7 @@ export const Booking = () => {
             aria-label={`Написать в Telegram ${contacts.telegramLabel}`}
           >
             <TelegramIcon />
-            Написать в Telegram
+            {copy.telegramCta}
           </Button>
           <div className={styles.sub}>
             <a

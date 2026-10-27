@@ -1,22 +1,17 @@
 import { reviews } from '@/entities/review'
+import { site } from '@/shared/content'
 import { withBase } from '@/shared/lib/withBase'
 import styles from './Footer.module.css'
 
-const nav = [
-  { href: '#travel', label: 'Путешествия' },
-  { href: '#race', label: 'Гонки' },
-  { href: '#intro-title', label: 'О нас' },
-  { href: '#chronicle', label: 'Фотоотчёты' },
-  { href: '#captains', label: 'Капитаны' },
-  ...(reviews.length > 0 ? [{ href: '#reviews', label: 'Отзывы' }] : []),
-  { href: withBase('/map/'), label: 'Карта' },
-  { href: '#book', label: 'Связаться' },
-]
+// Ссылка на отзывы скрывается, пока отзывов нет; абсолютные пути получают base.
+const nav = site.footer.links
+  .filter((link) => link.href !== '#reviews' || reviews.length > 0)
+  .map((link) => (link.href.startsWith('/') ? { ...link, href: withBase(link.href) } : link))
 
 export const Footer = () => (
   <footer className={styles.foot}>
     <div className={styles.inner}>
-      <div className={styles.mark}>siesta</div>
+      <div className={styles.mark}>{site.brand}</div>
       <nav className={styles.nav} aria-label="Разделы">
         {nav.map((link) => (
           <a key={link.href} href={link.href}>
@@ -25,8 +20,8 @@ export const Footer = () => (
         ))}
       </nav>
       <div className={styles.copy}>
-        <span>© 2026 siesta · Средиземноморье под парусом</span>
-        <span>Фотографии: архив siesta</span>
+        <span>{site.footer.copyright}</span>
+        <span>{site.footer.credits}</span>
       </div>
     </div>
   </footer>

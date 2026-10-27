@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { programs } from '@/entities/program'
 import { reviews, ReviewCard } from '@/entities/review'
 import { tripGroups, type Trip } from '@/entities/trip'
-import { contacts } from '@/shared/config/contacts'
+import { contacts } from '@/shared/content'
 import { Button } from '@/shared/ui/button'
 import { Modal } from '@/shared/ui/modal'
 import { withBase } from '@/shared/lib/withBase'
@@ -133,6 +133,16 @@ export const TripDialog = ({ trip, onClose }: TripDialogProps) => {
                   </li>
                 ))}
               </ul>
+              {trip.included && trip.included.length > 0 && (
+                <>
+                  <h5 className={styles.subTitle}>Включено в стоимость</h5>
+                  <ul className={styles.includedPlain}>
+                    {trip.included.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </>
+              )}
             </section>
 
             <section className={styles.block} aria-label="Программа по дням">

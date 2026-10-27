@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "check:content": "node --experimental-strip-types tools/check-content.ts",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview"
   },
@@ -18,6 +19,7 @@
     "@types/react-dom": "^19.1.6",
     "@vitejs/plugin-react": "^5.0.0",
     "typescript": "~5.9.2",
-    "vite": "^7.1.0"
+    "vite": "^7.1.0",
+    "zod": "^4.6.7"
   }
 }

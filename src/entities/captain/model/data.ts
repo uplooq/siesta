@@ -1,27 +1,8 @@
-export interface Captain {
-  name: string
-  role: string
-  bio: string
-  photo?: string
-  photoAlt?: string
-  photoPosition?: string
-  photoRatio?: number
-}
+import { collect } from '@/shared/content/collection'
+import type { CaptainContent } from '@/shared/content/schema'
 
-export const captains: Captain[] = [
-  {
-    name: 'Игорь Магдеев',
-    role: 'Шкипер',
-    bio: 'Более 20 лет под парусами. Опыт маршрутов в Таиланде, Турции, Греции и России. Специалист по организации авторских яхтенных путешествий.',
-    photo: '/captains/igor.webp',
-    photoAlt: 'Игорь в спасательном жилете и очках сидит у борта гоночной яхты и смотрит вверх на паруса',
-    photoRatio: 707 / 812,
-  },
-  {
-    name: 'Софья Шпильберг',
-    role: 'Шкипер',
-    bio: '12 лет парусного опыта, призёр международных регат и шкипер международного уровня. Создаёт атмосферу лёгкости, заботится о безопасности и помогает гостям почувствовать радость морской жизни.',
-    photo: '/captains/sofia.webp',
-    photoAlt: 'Софья за штурвалом яхты на ходу, позади синее море и горный берег',
-  },
-]
+export type Captain = CaptainContent
+
+export const captains: Captain[] = collect<CaptainContent>(
+  import.meta.glob('/content/captains/*.json', { eager: true, import: 'default' }),
+)

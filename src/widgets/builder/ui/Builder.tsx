@@ -1,3 +1,4 @@
+import { site } from '@/shared/content'
 import { Button } from '@/shared/ui/button'
 import { Reveal } from '@/shared/ui/reveal'
 import { cx } from '@/shared/lib/cx'
@@ -20,23 +21,21 @@ const RouteSketch = () => (
   </svg>
 )
 
+const copy = site.builder
+
 export const Builder = () => (
   <section className={styles.wrap} id="builder" aria-labelledby="builder-title">
     <Reveal className={styles.builder}>
       <RouteSketch />
       <div className={styles.copy}>
         <h2 className={cx('display', styles.title)} id="builder-title">
-          Придумайте свою нитку
+          {copy.title}
         </h2>
-        <p className={styles.text}>
-          Готовые маршруты — не предел. В конструкторе на карте можно ставить точки, соединять
-          переходы и сразу видеть мили. Соберите маршрут мечты и отправьте нам на рассмотрение
-          прямо с карты: проверим стоянки, посчитаем дни и вернёмся с датами и ценой.
-        </p>
+        <p className={styles.text}>{copy.text}</p>
       </div>
       <div className={styles.cta}>
-        <Button href={withBase('/map/')}>Собрать свой маршрут</Button>
-        <p className={styles.note}>Кнопка «Отправить капитанам» уже на карте</p>
+        <Button href={withBase('/map/')}>{copy.cta}</Button>
+        <p className={styles.note}>{copy.note}</p>
       </div>
     </Reveal>
   </section>

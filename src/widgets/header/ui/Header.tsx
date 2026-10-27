@@ -1,14 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
+import { site } from '@/shared/content'
 import { Button } from '@/shared/ui/button'
 import { cx } from '@/shared/lib/cx'
 import styles from './Header.module.css'
 
-const links = [
-  { href: '#travel', label: 'Путешествия' },
-  { href: '#race', label: 'Гонки' },
-  { href: '#builder', label: 'Маршруты', wide: true },
-  { href: '#chronicle', label: 'Фотоотчёты', wide: true },
-]
+const { links, cta } = site.header
 
 export const Header = () => {
   const [shown, setShown] = useState(false)
@@ -34,8 +30,8 @@ export const Header = () => {
   return (
     <header className={cx(styles.header, shown && styles.shown)}>
       <div className={styles.inner}>
-        <a className={styles.brand} href="#top" aria-label="siesta — к началу страницы">
-          siesta
+        <a className={styles.brand} href="#top" aria-label={`${site.brand} — к началу страницы`}>
+          {site.brand}
         </a>
         <nav className={styles.nav} aria-label="Разделы сайта">
           {links.map((link) => (
@@ -49,7 +45,7 @@ export const Header = () => {
           ))}
         </nav>
         <Button href="#book" className={styles.cta}>
-          Связаться
+          {cta}
         </Button>
       </div>
     </header>
