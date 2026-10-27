@@ -1,6 +1,7 @@
 import { defineConfig, type Plugin } from 'vite'
 import react from '@vitejs/plugin-react'
 import { fileURLToPath, URL } from 'node:url'
+import { contentPlugin } from './tools/vite-content.ts'
 
 const fromRoot = (path: string) => fileURLToPath(new URL(path, import.meta.url))
 
@@ -66,7 +67,7 @@ const cspMeta = (): Plugin => ({
 
 export default defineConfig({
   base: '/',
-  plugins: [react(), mapDirIndex(), cspMeta()],
+  plugins: [react(), mapDirIndex(), cspMeta(), contentPlugin(fromRoot('./content'))],
   resolve: {
     alias: {
       '@': fromRoot('./src'),

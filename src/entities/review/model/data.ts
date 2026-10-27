@@ -1,14 +1,10 @@
-export interface Review {
-  id: string
-  photo: string
-  photoAlt: string
-  author: string
-  meta: string
-  text: string
-  screenshot?: string
-  screenshotAlt?: string
-}
+import { collect } from '@/shared/content/collection'
+import type { ReviewContent } from '@/shared/content/schema'
 
-// Настоящие отзывы гостей добавляются сюда; пока список пуст,
+export type Review = ReviewContent
+
+// Настоящие отзывы гостей кладутся в content/reviews/<id>.json; пока папка пуста,
 // секция «Отзывы» и блоки отзывов внутри маршрутов скрыты.
-export const reviews: Review[] = []
+export const reviews: Review[] = collect<ReviewContent>(
+  import.meta.glob('/content/reviews/*.json', { eager: true, import: 'default' }),
+)

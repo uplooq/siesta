@@ -24,7 +24,8 @@ export const TripMap = ({ route }: { route: TripRoute }) => {
   const [failed, setFailed] = useState(false)
 
   useEffect(() => {
-    if (route.mapImage || route.mapPoints.length === 0) return
+    const points = route.mapPoints ?? []
+    if (route.mapImage || points.length === 0) return
     let cancelled = false
     let map: { remove: () => void } | undefined
     setFailed(false)
@@ -37,7 +38,6 @@ export const TripMap = ({ route }: { route: TripRoute }) => {
         ])
         if (cancelled || !containerRef.current) return
 
-        const points = route.mapPoints
         const coords = route.mapClosed
           ? [...points.map((p) => p.ll), points[0].ll]
           : points.map((p) => p.ll)
@@ -117,7 +117,7 @@ export const TripMap = ({ route }: { route: TripRoute }) => {
     )
   }
 
-  if (route.mapPoints.length === 0) {
+  if (!route.mapPoints?.length) {
     return (
       <div className={styles.fallback}>
         <StitchSketch />

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import { trips, tripGroups, selectTrip, type TripGroup } from '@/entities/trip'
+import { site } from '@/shared/content'
 import { Kicker } from '@/shared/ui/kicker'
 import { Reveal } from '@/shared/ui/reveal'
 import { cx } from '@/shared/lib/cx'
@@ -84,14 +85,11 @@ export const Trips = () => {
   return (
     <section className={styles.trips} id="trips" ref={sectionRef} aria-labelledby="trips-title">
       <Reveal className={styles.head}>
-        <Kicker>Сезон 2026–2027</Kicker>
+        <Kicker>{site.trips.kicker}</Kicker>
         <h2 className={cx('display', styles.title)} id="trips-title">
-          Куда пойдём под парусом
+          {site.trips.title}
         </h2>
-        <p>
-          Выберите формат и даты. Внутри каждой карточки — маршрут с картой, программа по дням,
-          условия и цена.
-        </p>
+        <p>{site.trips.lead}</p>
       </Reveal>
 
       <Reveal delay={0.06}>
