@@ -83,7 +83,7 @@
       { "href": "#captains", "label": "Капитаны" },
       { "href": "#reviews", "label": "Отзывы" },
       { "href": "/map/", "label": "Карта" },
-      { "href": "#book", "label": "Связаться" }
+      { "href": "#contact", "label": "Связаться" }
     ],
     "copyright": "© 2026 siesta · Средиземноморье под парусом",
     "credits": "Фотографии: архив siesta"

@@ -6,9 +6,10 @@ interface RevealProps {
   children: ReactNode
   className?: string
   delay?: number
+  id?: string
 }
 
-export const Reveal = ({ children, className, delay = 0 }: RevealProps) => {
+export const Reveal = ({ children, className, delay = 0, id }: RevealProps) => {
   const ref = useRef<HTMLDivElement>(null)
   const [shown, setShown] = useState(false)
 
@@ -37,6 +38,7 @@ export const Reveal = ({ children, className, delay = 0 }: RevealProps) => {
   return (
     <div
       ref={ref}
+      id={id}
       className={cx(styles.reveal, shown && styles.in, className)}
       style={{ '--d': `${delay}s` } as CSSProperties}
     >

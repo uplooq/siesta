@@ -41,6 +41,13 @@ a {
   scroll-margin-top: 76px;
 }
 
+/* шапка на телефоне скрыта — отступ под неё не нужен */
+@media (max-width: 760px) {
+  :where(section[id], h2[id]) {
+    scroll-margin-top: 16px;
+  }
+}
+
 .display {
   font-family: var(--font-display);
   font-weight: 400;

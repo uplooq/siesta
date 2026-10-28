@@ -1,4 +1,4 @@
-import { site } from '@/shared/content'
+import { contacts, site } from '@/shared/content'
 import { Button } from '@/shared/ui/button'
 import { Kicker } from '@/shared/ui/kicker'
 import { cx } from '@/shared/lib/cx'
@@ -19,7 +19,13 @@ export const Hero = () => (
         ))}
       </h1>
       <p className={styles.lead}>{copy.lead}</p>
-      <Button href="#book" className={styles.cta}>
+      <Button
+        href={contacts.telegram}
+        target="_blank"
+        rel="noopener"
+        className={styles.cta}
+        aria-label={`${copy.cta}: написать Софе в Telegram ${contacts.telegramLabel}`}
+      >
         {copy.cta}
         <span aria-hidden="true">↗</span>
       </Button>

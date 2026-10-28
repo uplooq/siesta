@@ -44,7 +44,7 @@ export const Header = () => {
             </a>
           ))}
         </nav>
-        <Button href="#book" className={styles.cta}>
+        <Button href="#contact" className={styles.cta}>
           {cta}
         </Button>
       </div>

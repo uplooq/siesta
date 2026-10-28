@@ -82,7 +82,7 @@ export const Booking = () => {
           </div>
         </Reveal>
 
-        <Reveal className={styles.manifest} delay={0.1}>
+        <Reveal className={styles.manifest} delay={0.1} id="contact">
           <div className={styles.manifestHead}>
             <h3>{copy.contactTitle}</h3>
             <span className={styles.tag}>{copy.contactTag}</span>

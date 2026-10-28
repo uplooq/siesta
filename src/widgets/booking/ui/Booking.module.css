@@ -96,6 +96,14 @@
   border: 1px solid oklch(0.965 0.008 196 / 0.16);
   border-radius: 12px;
   padding: clamp(24px, 3vw, 40px);
+  /* сюда ведут «Обсудить детали» и «Связаться»: на десктопе отступ под шапку */
+  scroll-margin-top: 100px;
+}
+
+@media (max-width: 760px) {
+  .manifest {
+    scroll-margin-top: 16px;
+  }
 }
 
 .manifest::before,
