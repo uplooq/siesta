@@ -27,7 +27,6 @@ export const Hero = () => (
         aria-label={`${copy.cta}: написать Софе в Telegram ${contacts.telegramLabel}`}
       >
         {copy.cta}
-        <span aria-hidden="true">↗</span>
       </Button>
     </div>
   </section>

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { chronicle, site } from '@/shared/content'
 import { Kicker } from '@/shared/ui/kicker'
+import { Lightbox } from '@/shared/ui/lightbox'
 import { Reveal } from '@/shared/ui/reveal'
 import { cx } from '@/shared/lib/cx'
 import { withBase } from '@/shared/lib/withBase'
@@ -31,6 +32,7 @@ const ArrowIcon = ({ flip = false }: { flip?: boolean }) => (
 
 export const Chronicle = () => {
   const [active, setActive] = useState(0)
+  const [photoIndex, setPhotoIndex] = useState<number | null>(null)
   const scrollerRef = useRef<HTMLDivElement>(null)
   const rafRef = useRef(0)
 
@@ -103,13 +105,18 @@ export const Chronicle = () => {
                   aria-roledescription="слайд"
                   aria-label={`Кадр ${i + 1} из ${gallery.length}`}
                 >
-                  <div className={styles.media}>
+                  <button
+                    type="button"
+                    className={styles.media}
+                    onClick={() => setPhotoIndex(i)}
+                    aria-label={`Открыть фото: ${photo.caption}`}
+                  >
                     <img loading="lazy" src={withBase(photo.src)} alt={photo.alt} />
                     <span className={styles.shade} aria-hidden="true" />
                     <span className={styles.count} aria-hidden="true">
                       {i + 1}/{gallery.length}
                     </span>
-                  </div>
+                  </button>
                   <figcaption className={styles.caption}>{photo.caption}</figcaption>
                 </figure>
               ))}
@@ -138,6 +145,7 @@ export const Chronicle = () => {
           </div>
         </Reveal>
       </div>
+      <Lightbox photos={gallery} index={photoIndex} onChange={setPhotoIndex} />
     </section>
   )
 }

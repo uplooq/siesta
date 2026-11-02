@@ -4,6 +4,7 @@ import { reviews, ReviewCard } from '@/entities/review'
 import { tripGroups, type Trip } from '@/entities/trip'
 import { contacts } from '@/shared/content'
 import { Button } from '@/shared/ui/button'
+import { Lightbox } from '@/shared/ui/lightbox'
 import { Modal } from '@/shared/ui/modal'
 import { withBase } from '@/shared/lib/withBase'
 import { TripMap } from './TripMap'
@@ -29,9 +30,11 @@ const CloseIcon = () => (
 
 export const TripDialog = ({ trip, onClose }: TripDialogProps) => {
   const [departureId, setDepartureId] = useState<string | null>(null)
+  const [photoIndex, setPhotoIndex] = useState<number | null>(null)
 
   useEffect(() => {
     setDepartureId(null)
+    setPhotoIndex(null)
     trip?.departures.forEach((d) => {
       if (d.route.mapImage) {
         new Image().src = withBase(d.route.mapImage)
@@ -185,9 +188,16 @@ export const TripDialog = ({ trip, onClose }: TripDialogProps) => {
             <section className={styles.block} aria-label="Фотографии">
               <h4 className={styles.blockTitle}>Как это выглядит</h4>
               <div className={styles.gallery}>
-                {trip.photos.map((photo) => (
+                {trip.photos.map((photo, i) => (
                   <figure key={photo.src}>
-                    <img src={withBase(photo.src)} alt={photo.alt} loading="lazy" />
+                    <button
+                      type="button"
+                      className={styles.zoom}
+                      onClick={() => setPhotoIndex(i)}
+                      aria-label={`Открыть фото: ${photo.caption ?? photo.alt}`}
+                    >
+                      <img src={withBase(photo.src)} alt={photo.alt} loading="lazy" />
+                    </button>
                     {photo.caption && <figcaption>{photo.caption}</figcaption>}
                   </figure>
                 ))}
@@ -248,6 +258,7 @@ export const TripDialog = ({ trip, onClose }: TripDialogProps) => {
           </button>
         </div>
       )}
+      <Lightbox photos={trip?.photos ?? []} index={photoIndex} onChange={setPhotoIndex} />
     </Modal>
   )
 }
