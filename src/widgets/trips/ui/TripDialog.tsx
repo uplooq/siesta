@@ -151,6 +151,16 @@ export const TripDialog = ({ trip, onClose }: TripDialogProps) => {
                   </ul>
                 </>
               )}
+              {trip.extras && trip.extras.length > 0 && (
+                <>
+                  <h5 className={styles.subTitle}>Дополнительно оплачивается</h5>
+                  <ul className={styles.includedPlain}>
+                    {trip.extras.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </>
+              )}
             </section>
 
             <section className={styles.block} aria-label="Программа по дням">

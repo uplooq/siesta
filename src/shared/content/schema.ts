@@ -75,6 +75,8 @@ export const tripSchema = z
     coverAlt: text,
     photos: z.array(photoSchema),
     included: z.array(text).optional(),
+    // «Дополнительно оплачивается»: что гость доплачивает сам
+    extras: z.array(text).optional(),
     // свои пункты «Условий»: заменяют пункт программы с тем же label, новые добавляются в конец
     conditions: z.array(z.object({ label: text, text: text })).optional(),
     video: z.object({ href: z.string().url(), label: text }).optional(),
