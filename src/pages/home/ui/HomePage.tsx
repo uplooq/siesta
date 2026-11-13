@@ -19,8 +19,8 @@ export const HomePage = () => (
       <Chronicle />
       <Captains />
       <Reviews />
-      <Builder />
       <Booking />
+      <Builder />
     </main>
     <Footer />
   </>
