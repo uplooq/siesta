@@ -1,11 +1,21 @@
+/* Секция на всю ширину: карта за карточкой уходит к краям экрана и обрезается секцией */
 .wrap {
+  overflow: hidden;
+}
+
+.inner {
   max-width: 1320px;
   margin: 0 auto;
-  padding: clamp(10px, 2vw, 30px) 6vw clamp(70px, 9vw, 110px);
+  padding: clamp(48px, 6vw, 84px) 6vw clamp(110px, 11vw, 150px);
+}
+
+.stage {
+  position: relative;
 }
 
 .builder {
   position: relative;
+  z-index: var(--z-base);
   isolation: isolate;
   overflow: hidden;
   background: var(--sea-deep);
@@ -14,18 +24,6 @@
   display: grid;
   gap: clamp(20px, 3vw, 36px);
   color: var(--on-dark);
-}
-
-.art {
-  position: absolute;
-  right: -24px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: min(360px, 46%);
-  z-index: -1;
-  color: var(--on-dark);
-  opacity: 0.16;
-  pointer-events: none;
 }
 
 .copy {
@@ -62,4 +60,72 @@
     grid-template-columns: 1fr auto;
     align-items: center;
   }
+}
+
+/* Карта: холст 2400×760 по центру карточки на всю площадь секции. На экранах шире 2400 px
+   и на телефоне, где карточка высокая, холст растягивается (slice), чтобы не было пустых краёв. */
+.chart {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: max(2400px, 100vw);
+  height: max(760px, calc(100% + 360px));
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+/* суша цветом подвала — секция перетекает в тёмный футер */
+.land {
+  fill: var(--sea-abyss);
+}
+
+/* мелководье вокруг берега — светлая полоса, как на навигационных картах */
+.shoal {
+  fill: none;
+  stroke: var(--sea);
+  stroke-opacity: 0.07;
+  stroke-linejoin: round;
+}
+
+.grid line {
+  stroke: var(--hairline);
+  stroke-width: 1;
+}
+
+.lat {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  fill: var(--muted);
+  opacity: 0.7;
+}
+
+.depth text {
+  font-size: 11px;
+  font-style: italic;
+  fill: var(--sea);
+  opacity: 0.8;
+}
+
+.route path {
+  fill: none;
+  stroke: var(--coral);
+  stroke-width: 2.5;
+  stroke-dasharray: 1 11;
+  stroke-linecap: round;
+}
+
+.route circle {
+  fill: var(--shell);
+  stroke: var(--coral);
+  stroke-width: 2.25;
+}
+
+.north {
+  fill: var(--sea-deep);
+  opacity: 0.55;
+}
+
+.north text {
+  font-size: 15px;
+  font-weight: 700;
 }
