@@ -10,7 +10,7 @@ content/
   trips/<id>.json    по одному файлу на путешествие или регату
   programs/<id>.json «Путешествия» и «Гонки» (общие условия, цена «от»)
   captains/<id>.json капитаны
-  reviews/<id>.json  отзывы гостей (пока пусто — секция скрыта)
+  reviews/<id>.json  отзывы гостей — скриншоты переписок (пока пусто — секция скрыта)
 ```
 
 Схемы всех файлов — в [`src/shared/content/schema.ts`](../src/shared/content/schema.ts).

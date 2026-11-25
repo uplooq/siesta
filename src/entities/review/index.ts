@@ -1,3 +1,2 @@
-export { reviews } from './model/data'
-export type { Review } from './model/data'
+export { reviews, reviewScreens, type Review } from './model/data'
 export { ReviewCard } from './ui/ReviewCard'

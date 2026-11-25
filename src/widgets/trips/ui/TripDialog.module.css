@@ -412,7 +412,8 @@
 
 .reviews {
   display: grid;
-  gap: 14px;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 18px;
 }
 
 .cta {

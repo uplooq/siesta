@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { programs } from '@/entities/program'
-import { reviews, ReviewCard } from '@/entities/review'
+import { reviews, reviewScreens, ReviewCard, type Review } from '@/entities/review'
 import { tripGroups, type Trip } from '@/entities/trip'
 import { contacts } from '@/shared/content'
 import { Button } from '@/shared/ui/button'
@@ -31,10 +31,12 @@ const CloseIcon = () => (
 export const TripDialog = ({ trip, onClose }: TripDialogProps) => {
   const [departureId, setDepartureId] = useState<string | null>(null)
   const [photoIndex, setPhotoIndex] = useState<number | null>(null)
+  const [openReview, setOpenReview] = useState<{ review: Review; index: number } | null>(null)
 
   useEffect(() => {
     setDepartureId(null)
     setPhotoIndex(null)
+    setOpenReview(null)
     trip?.departures.forEach((d) => {
       if (d.route.mapImage) {
         new Image().src = withBase(d.route.mapImage)
@@ -195,42 +197,48 @@ export const TripDialog = ({ trip, onClose }: TripDialogProps) => {
               <p className={styles.note}>{route.itinerary.note}</p>
             </section>
 
-            <section className={styles.block} aria-label="Фотографии">
-              <h4 className={styles.blockTitle}>Как это выглядит</h4>
-              <div className={styles.gallery}>
-                {trip.photos.map((photo, i) => (
-                  <figure key={photo.src}>
-                    <button
-                      type="button"
-                      className={styles.zoom}
-                      onClick={() => setPhotoIndex(i)}
-                      aria-label={`Открыть фото: ${photo.caption ?? photo.alt}`}
-                    >
-                      <img src={withBase(photo.src)} alt={photo.alt} loading="lazy" />
-                    </button>
-                    {photo.caption && <figcaption>{photo.caption}</figcaption>}
-                  </figure>
-                ))}
-              </div>
-              {trip.video && (
-                <a
-                  className={styles.videoLink}
-                  href={trip.video.href}
-                  target="_blank"
-                  rel="noopener"
-                >
-                  {trip.video.label}
-                  <span aria-hidden="true"> ↗</span>
-                </a>
-              )}
-            </section>
+            {(trip.photos.length > 0 || trip.video) && (
+              <section className={styles.block} aria-label="Фотографии">
+                <h4 className={styles.blockTitle}>Как это выглядит</h4>
+                <div className={styles.gallery}>
+                  {trip.photos.map((photo, i) => (
+                    <figure key={photo.src}>
+                      <button
+                        type="button"
+                        className={styles.zoom}
+                        onClick={() => setPhotoIndex(i)}
+                        aria-label={`Открыть фото: ${photo.caption ?? photo.alt}`}
+                      >
+                        <img src={withBase(photo.src)} alt={photo.alt} loading="lazy" />
+                      </button>
+                      {photo.caption && <figcaption>{photo.caption}</figcaption>}
+                    </figure>
+                  ))}
+                </div>
+                {trip.video && (
+                  <a
+                    className={styles.videoLink}
+                    href={trip.video.href}
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    {trip.video.label}
+                    <span aria-hidden="true"> ↗</span>
+                  </a>
+                )}
+              </section>
+            )}
 
             {tripReviews.length > 0 && (
               <section className={styles.block} aria-label="Отзывы">
                 <h4 className={styles.blockTitle}>Отзывы с этого маршрута</h4>
                 <div className={styles.reviews}>
                   {tripReviews.map((review) => (
-                    <ReviewCard key={review.id} review={review} />
+                    <ReviewCard
+                      key={review.id}
+                      review={review}
+                      onOpen={() => setOpenReview({ review, index: 0 })}
+                    />
                   ))}
                 </div>
               </section>
@@ -269,6 +277,13 @@ export const TripDialog = ({ trip, onClose }: TripDialogProps) => {
         </div>
       )}
       <Lightbox photos={trip?.photos ?? []} index={photoIndex} onChange={setPhotoIndex} />
+      <Lightbox
+        photos={openReview ? reviewScreens(openReview.review) : []}
+        index={openReview?.index ?? null}
+        onChange={(index) =>
+          setOpenReview(openReview && index !== null ? { ...openReview, index } : null)
+        }
+      />
     </Modal>
   )
 }

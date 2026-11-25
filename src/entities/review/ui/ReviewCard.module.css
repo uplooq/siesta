@@ -1,63 +1,114 @@
 .card {
+  margin: 0;
   display: grid;
-  gap: 12px;
-  padding: 16px 16px 18px;
-  background: #fff;
+  align-content: start;
+  gap: 14px;
+}
+
+/* цитата из переписки под скриншотом: читается сразу, без увеличения */
+.quote {
+  position: relative;
+  margin: 4px 0 0;
+  padding-left: 22px;
+  font-family: var(--font-display);
+  font-size: 1.12rem;
+  line-height: 1.35;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+
+.quote::before {
+  content: '«';
+  position: absolute;
+  left: 0;
+  top: -0.08em;
+  font-size: 1.6em;
+  line-height: 1;
+  color: var(--coral);
+}
+
+/* превью переписки: верх скриншота в рамке телефона, низ растворяется */
+.shot {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  padding: 0;
   border: 1px solid var(--hairline);
-  border-radius: 14px;
-  box-shadow: 0 18px 40px -32px oklch(0.315 0.04 197 / 0.5);
-  break-inside: avoid;
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--shell-2);
+  cursor: zoom-in;
+  box-shadow: 0 24px 50px -36px oklch(0.315 0.04 197 / 0.55);
+  transition:
+    transform 0.5s var(--ease-out),
+    box-shadow 0.5s var(--ease-out);
 }
 
-.head {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.shot img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
 }
 
-.avatar {
-  flex: none;
-  display: grid;
-  place-items: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: oklch(0.615 0.043 194 / 0.16);
-  color: var(--sea-deep);
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
+.shot::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: 46%;
+  background: linear-gradient(to bottom, oklch(0.985 0.006 195 / 0), var(--shell) 88%);
+  pointer-events: none;
+}
+
+.open {
+  position: absolute;
+  left: 50%;
+  bottom: 16px;
+  z-index: 1;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  padding: 0.55em 1.2em;
+  border-radius: 999px;
+  background: var(--sea-deep);
+  color: var(--on-dark);
+  font-size: 0.84rem;
+  font-weight: 600;
+  transition: background 0.3s var(--ease-out);
+}
+
+.shot:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 60px -36px oklch(0.315 0.04 197 / 0.65);
+}
+
+.shot:hover .open {
+  background: var(--coral-deep);
+}
+
+.shot:focus-visible {
+  outline: 2px solid var(--coral);
+  outline-offset: 3px;
 }
 
 .who {
   display: grid;
   gap: 2px;
-  min-width: 0;
 }
 
 .author {
-  font-size: 0.95rem;
   font-weight: 600;
   color: var(--ink);
 }
 
-.meta {
-  font-size: 0.8rem;
+.trip {
+  font-size: 0.86rem;
   color: var(--muted);
 }
 
-.bubble {
-  margin: 0;
-  padding: 12px 14px;
-  background: var(--shell-2);
-  border-radius: 4px 14px 14px 14px;
-  color: var(--body);
-  font-size: 0.95rem;
-  line-height: 1.6;
-  text-wrap: pretty;
-}
-
-.shot {
-  width: 100%;
-  border-radius: 12px;
+@media (prefers-reduced-motion: reduce) {
+  .shot:hover {
+    transform: none;
+  }
 }

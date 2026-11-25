@@ -130,16 +130,19 @@ export const captainSchema = z.object({
   photoRatio: z.number().positive().optional(),
 })
 
+// Отзыв — скриншоты переписки с гостем. Перед загрузкой с них убирают телефоны, ники и аватарки.
 export const reviewSchema = z.object({
   id: z.string().regex(/^[a-z0-9-]+$/),
   order: z.number().default(0),
-  photo: sitePath,
-  photoAlt: text,
+  published: z.boolean().default(true),
+  // как подписать карточку: «Анна», «Марина и Олег»
   author: text,
-  meta: text,
-  text: text,
-  screenshot: sitePath.optional(),
-  screenshotAlt: text.optional(),
+  // где и когда были: «Гёчек · сентябрь 2026»
+  trip: text.optional(),
+  // короткая цитата из переписки — крупно над скриншотом, чтобы отзыв читался без увеличения
+  quote: text.optional(),
+  // один отзыв может занимать несколько экранов: первый — превью, остальные листаются в просмотре
+  screenshots: z.array(z.object({ src: sitePath, alt: text })).min(1),
 })
 
 export const chronicleSchema = z.object({

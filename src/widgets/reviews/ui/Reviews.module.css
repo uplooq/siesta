@@ -1,45 +1,123 @@
 .reviews {
-  padding: clamp(70px, 9vw, 120px) 6vw;
+  padding: clamp(70px, 9vw, 120px) 0;
+  overflow: hidden;
 }
 
 .inner {
   max-width: 1320px;
   margin: 0 auto;
+  padding: 0 6vw;
 }
 
 .head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: clamp(30px, 4vw, 52px);
+}
+
+.headText {
   max-width: 52ch;
-  margin-bottom: clamp(30px, 4vw, 48px);
   display: grid;
   gap: 20px;
 }
 
 .title {
+  margin: 0;
   font-size: clamp(1.9rem, 1.3rem + 2.4vw, 3rem);
 }
 
-.head p {
+.headText p {
   color: var(--muted);
   margin: 0;
 }
 
-.wall {
-  columns: 1;
-  column-gap: 18px;
+.nav {
+  display: flex;
+  gap: 10px;
+  flex: none;
 }
 
-.wall > * {
-  margin-bottom: 18px;
+.navBtn {
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--hairline);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition:
+    background 0.3s var(--ease-out),
+    border-color 0.3s var(--ease-out),
+    opacity 0.3s var(--ease-out);
 }
 
-@media (min-width: 720px) {
-  .wall {
-    columns: 2;
+.navBtn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.navBtn:hover {
+  background: #fff;
+  border-color: var(--sea);
+}
+
+.navBtn:focus-visible {
+  outline: 2px solid var(--coral);
+  outline-offset: 3px;
+}
+
+.navBtn:disabled {
+  opacity: 0.35;
+  cursor: default;
+  background: transparent;
+  border-color: var(--hairline);
+}
+
+/* Лента переписок: листается пальцем и стрелками, карточки встают по сетке.
+   Чётные карточки чуть ниже — лента не выглядит строем одинаковых экранов. */
+.scroller {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: clamp(240px, 74vw, 300px);
+  align-items: start;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0 6vw;
+  /* место под тень и подъём карточки при наведении */
+  padding: 8px 6vw 30px;
+  margin: -8px -6vw -30px;
+  scrollbar-width: none;
+}
+
+.scroller::-webkit-scrollbar {
+  display: none;
+}
+
+.scroller > * {
+  scroll-snap-align: start;
+}
+
+@media (min-width: 900px) {
+  .scroller {
+    grid-auto-columns: clamp(250px, 22vw, 300px);
+  }
+
+  .scroller > :nth-child(even) {
+    margin-top: 48px;
   }
 }
 
-@media (min-width: 1100px) {
-  .wall {
-    columns: 3;
+@media (max-width: 640px) {
+  .head {
+    display: grid;
+  }
+
+  .nav {
+    display: none;
   }
 }
