@@ -1,4 +1,4 @@
-import { otherLang } from '@/shared/i18n'
+import { otherLang, rememberLang } from '@/shared/i18n'
 import { cx } from '@/shared/lib/cx'
 import styles from './LangSwitch.module.css'
 
@@ -18,6 +18,7 @@ export const LangSwitch = ({ onDark, className }: LangSwitchProps) => (
     title={otherLang.title}
     aria-label={otherLang.title}
     onClick={(e) => {
+      rememberLang(otherLang.lang)
       e.currentTarget.href = otherLang.href + window.location.hash
     }}
   >
