@@ -83,7 +83,7 @@
       "caption": "Полароиды гоночной недели"
     }
   ],
-  "reviewIds": [],
+  "reviewIds": ["olga", "artem"],
   "harbor": {
     "port": "Мармарис, Турция",
     "coords": "36°51′N · 28°16′E",

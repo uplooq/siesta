@@ -3,6 +3,7 @@
   border-top: 1px solid var(--hairline);
   border-bottom: 1px solid var(--hairline);
   padding: clamp(70px, 9vw, 120px) 6vw;
+  overflow-x: clip;
 }
 
 .inner {
@@ -37,7 +38,9 @@
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
-  padding: 6px 0;
+  /* лента идёт от края до края экрана: кадры уезжают за край окна, а не обрезаются по колонке */
+  padding: 6px calc(50vw - 50%);
+  margin: 0 calc(50% - 50vw);
 }
 
 .scroller::-webkit-scrollbar {
