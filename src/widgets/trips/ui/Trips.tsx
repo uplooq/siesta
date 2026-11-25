@@ -7,6 +7,7 @@ import { cx } from '@/shared/lib/cx'
 import { withBase } from '@/shared/lib/withBase'
 import { TripDialog } from './TripDialog'
 import styles from './Trips.module.css'
+import { ui } from '@/shared/i18n'
 
 const tripHash = /^#trip-(.+)$/
 
@@ -93,7 +94,7 @@ export const Trips = () => {
       </Reveal>
 
       <Reveal delay={0.06}>
-        <div className={styles.tabs} role="tablist" aria-label="Форматы выходов в море">
+        <div className={styles.tabs} role="tablist" aria-label={ui.tabsLabel}>
           {tripGroups.map((g, index) => {
             const selected = g.id === group
             return (
@@ -163,7 +164,7 @@ export const Trips = () => {
                       <span className={styles.cardMeta}>
                         {trip.price} <span className={styles.cardMetaUnit}>{trip.priceUnit}</span>
                       </span>
-                      <span className={styles.cardHint}>Смотреть программу</span>
+                      <span className={styles.cardHint}>{ui.cardHint}</span>
                     </span>
                   </span>
                 </button>

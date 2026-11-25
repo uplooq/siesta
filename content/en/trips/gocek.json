@@ -1,0 +1,155 @@
+{
+  "id": "gocek",
+  "order": 10,
+  "published": true,
+  "group": "travel",
+  "geo": "Göcek, Turkey",
+  "year": "2027",
+  "price": "1 600 €",
+  "priceUnit": "per guest",
+  "priceNote": "plus ~150 € for restaurants and marinas",
+  "tagline": "The pine-fringed bays of the Gulf of Göcek and a chain of islands: short passages, swims in turquoise coves and anchorages right by the shore.",
+  "cover": "/photos/covers/marina-sunset.webp",
+  "coverAlt": "A pink sunset over Göcek marina: pines on the shore and yacht masts at the quay",
+  "photos": [
+    {
+      "src": "/photos/covers/marina-sunset.webp",
+      "alt": "A pink and lilac sunset sky over Göcek marina, pines in the foreground and yacht masts at the quay",
+      "caption": "Sunset over Göcek marina"
+    },
+    {
+      "src": "/photos/turkey/sunset-flags.webp",
+      "alt": "White and blue flags along the yacht’s guardrail, with the bay and the mountains of Ölüdeniz in the sunset light beyond",
+      "caption": "Evening on the approach to Ölüdeniz"
+    },
+    {
+      "src": "/photos/turkey/awning-view.webp",
+      "alt": "View from under the yacht’s awning of a rocky headland and the blue sea of the gulf",
+      "caption": "A passage between bays, from under the awning"
+    },
+    {
+      "src": "/photos/turkey/hammock-wine.webp",
+      "alt": "A guest relaxes in a hammock on the yacht’s deck with a glass of wine, the rocky shore of a bay beyond the rail",
+      "caption": "A hammock on deck, at anchor in a bay"
+    },
+    {
+      "src": "/photos/turkey/winch-work.webp",
+      "alt": "The captain in a sun hat works a sheet at the winch on a heeling yacht, foam rushing past the hull",
+      "caption": "Working the sails under way"
+    },
+    {
+      "src": "/photos/turkey/night-mast.webp",
+      "alt": "The yacht’s mast seen from below against a starry sky with the band of the Milky Way",
+      "caption": "Stars above the mast, a night at anchor"
+    },
+    {
+      "src": "/photos/turkey/swim-platform.webp",
+      "alt": "The yacht’s teak stern with a swim ladder by emerald water, inflatable rings on deck",
+      "caption": "The swim platform at anchor"
+    },
+    {
+      "src": "/photos/turkey/polaroid.webp",
+      "alt": "A Polaroid of the whole crew at dinner on deck, held in a hand above the rope clutches and coiled sheets",
+      "caption": "A Polaroid from dinner on deck"
+    }
+  ],
+  "included": [
+    "Accommodation on the yacht in a double cabin",
+    "A professional skipper",
+    "Sailing instruction",
+    "Meals on the boat",
+    "SUP board",
+    "Fuel",
+    "Bed linen and a towel"
+  ],
+  "extras": [
+    "Flights",
+    "Transfer to the marina — we can help you book it",
+    "Restaurant meals and marina fees — about 150 €"
+  ],
+  "reviewIds": [],
+  "harbor": {
+    "port": "Göcek, Turkey",
+    "coords": "36°45′N · 28°57′E",
+    "season": "May — October",
+    "crew": "up to 8 guests",
+    "note": "Home port — Göcek, Turkey. The sailing season runs from May to October."
+  },
+  "routes": [
+    {
+      "id": "osenniy-briz",
+      "name": "Autumn Breeze",
+      "duration": "7 days",
+      "extent": "6 stops",
+      "mapCaption": "Map of the “Autumn Breeze” route",
+      "mapImage": "/routes/osenniy-briz-1010.png",
+      "mapImageAlt": "Chart of the “Autumn Breeze” route: Göcek — Sarsala — Dalyan — Ölüdeniz — Gemiler — Boynuz Bükü",
+      "itinerary": {
+        "title": "A week of “Autumn Breeze”, day by day",
+        "summary": {
+          "title": "A loop around the bays of the Turquoise Coast",
+          "stops": ["Göcek", "Sarsala", "Dalyan", "Ölüdeniz", "Gemiler", "Boynuz Bükü", "Göcek"]
+        },
+        "intro": "The order of the stops depends on the wind and the mood of the crew.",
+        "days": [
+          {
+            "label": "Day 1",
+            "title": "Boarding in Göcek",
+            "text": "We meet at the marina in the afternoon: settling into cabins, getting to know the boat and a safety briefing. In the evening, a first dinner with the whole crew and plans for the week."
+          },
+          {
+            "label": "Day 2",
+            "title": "Sarsala Bay",
+            "text": "A short passage to the south of the gulf: anchoring in Sarsala, a swim in turquoise water and lunch on board. In the evening, a quiet shore and stars."
+          },
+          {
+            "label": "Day 3",
+            "title": "Dalyan",
+            "text": "The longest passage of the week — west, to Dalyan. Open sea and wind along the way; in the evening, a walk ashore and dinner at a restaurant."
+          },
+          {
+            "label": "Days 4–5",
+            "title": "Ölüdeniz and Gemiler",
+            "text": "We return by way of the eastern bays: the famous Ölüdeniz lagoon and Gemiler Island with its Byzantine ruins. Swims, walks and sunsets you will be talking about afterwards."
+          },
+          {
+            "label": "Day 6",
+            "title": "Boynuz Bükü",
+            "text": "A quiet pine-fringed bay at the entrance to the Gulf of Göcek — the last stop on the route. A long swim, coffee on deck and a farewell dinner."
+          },
+          {
+            "label": "Day 7",
+            "title": "Disembarkation",
+            "text": "Breakfast on board, an unhurried passage to Göcek marina, packing and disembarkation before noon. We help with transfers and share the week’s photos."
+          }
+        ],
+        "note": "The schedule is flexible: the sea and the forecast may change the order of the days, but not the holiday itself."
+      }
+    },
+    {
+      "id": "pending",
+      "name": "In the works",
+      "duration": "7 days",
+      "extent": "route to be confirmed",
+      "mapCaption": "We are still charting this week’s route",
+      "itinerary": {
+        "title": "This week’s programme is being prepared",
+        "intro": "The captains are charting this week’s route right now: checking the forecast, the bays and the anchorages. We will send the day-by-day programme when you book.",
+        "days": [],
+        "note": "Everything else stays the same: a week at sea, up to 8 guests and two captains on board."
+      }
+    }
+  ],
+  "departures": [
+    {
+      "id": "gocek-1",
+      "dates": "18.09–25.09",
+      "routeId": "pending"
+    },
+    {
+      "id": "gocek-2",
+      "dates": "2.10–9.10",
+      "routeId": "osenniy-briz"
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "id": "kochang",
+  "order": 20,
+  "published": true,
+  "group": "travel",
+  "geo": "Koh Chang, Thailand",
+  "year": "2026–2027",
+  "price": "Price to be confirmed",
+  "priceUnit": "",
+  "tagline": "A New Year week around the Gulf of Thailand archipelago: Koh Chang, the protected Koh Rang, quiet Koh Mak and Koh Kood. Warm water in December, long stops at anchor and New Year on deck.",
+  "cover": "/photos/thailand/catamaran-aerial.webp",
+  "coverAlt": "White catamaran on turquoise water, seen from above",
+  "photos": [
+    {
+      "src": "/photos/thailand/catamaran-aerial.webp",
+      "alt": "White catamaran on the smooth turquoise-green surface of open water, drone view from above",
+      "caption": "Catamaran on passage, seen from above"
+    },
+    {
+      "src": "/photos/thailand/pier-palms.webp",
+      "alt": "Wooden pier reaching out into a turquoise sea, shot from under leaning coconut palms",
+      "caption": "Island pier, stepping ashore"
+    },
+    {
+      "src": "/photos/thailand/catamaran-sandbar.webp",
+      "alt": "White catamaran at anchor off a sandbar with a palm-covered island in the background",
+      "caption": "Anchorage off a sandbar"
+    },
+    {
+      "src": "/photos/thailand/lagoon-aerial.webp",
+      "alt": "Drone view of a lagoon between green hills: a palm-lined spit separates the turquoise water from the open sea",
+      "caption": "Lagoon behind a palm-lined spit, drone view"
+    },
+    {
+      "src": "/photos/thailand/pier-clear-water.webp",
+      "alt": "Wooden pier reaching out into clear turquoise water, a guest walking along it, an island and boats at anchor in the distance",
+      "caption": "Pier over clear water"
+    },
+    {
+      "src": "/photos/thailand/palm-beach-kayak.webp",
+      "alt": "Sandy beach under leaning coconut palms, a kayak on the shore and a person swimming in the sea",
+      "caption": "Palm beach and a kayak"
+    },
+    {
+      "src": "/photos/thailand/catamaran-channel.webp",
+      "alt": "View from above of a catamaran in a blue channel between two wooded islands with white beaches and coral reefs",
+      "caption": "Catamaran in a channel between islands"
+    },
+    {
+      "src": "/photos/thailand/palm-beach.webp",
+      "alt": "Empty sandy beach under leaning palms, leaf shadows on the sand, a green headland and calm water in the distance",
+      "caption": "Empty beach under the palms"
+    },
+    {
+      "src": "/photos/thailand/sandbar-boulders.webp",
+      "alt": "Drone view of a white sandbar with black boulders in turquoise water, forest and a pier behind it, islands on the horizon",
+      "caption": "Sandbar and black boulders"
+    }
+  ],
+  "reviewIds": [],
+  "harbor": {
+    "port": "Koh Chang, Thailand",
+    "coords": "12°03′N · 102°19′E",
+    "season": "New Year week",
+    "crew": "up to 8 guests",
+    "note": "Departure port — Bang Bao, Koh Chang island. A New Year voyage around the Gulf of Thailand archipelago."
+  },
+  "routes": [
+    {
+      "id": "ko-chang",
+      "name": "New Year in Thailand",
+      "duration": "12 stops",
+      "extent": "8 islands",
+      "mapCaption": "Map of the “New Year in Thailand” route",
+      "mapImage": "/routes/ko-chang.png",
+      "mapImageAlt": "Chart of the “New Year in Thailand” route: Koh Chang — Koh Ngam — Koh Wai — Koh Rang — Koh Mak — Koh Kham — Koh Kood — Ao Salat — Bang Bao — Koh Mai Si",
+      "itinerary": {
+        "title": "New Year week on Koh Chang, day by day",
+        "summary": {
+          "title": "A loop around the islands of the Gulf of Thailand",
+          "stops": ["Koh Chang", "Koh Ngam", "Koh Wai", "Koh Rang", "Koh Mak", "Koh Kood", "Koh Chang"]
+        },
+        "days": [
+          {
+            "label": "Day 1",
+            "title": "Boarding on Koh Chang",
+            "text": "We meet on Koh Chang, move aboard, settle into our cabins and talk through the route. We stock up for the week and get to know life on board and the captain. In the evening — our first dinner together and a chance to meet the crew."
+          },
+          {
+            "label": "Day 2",
+            "title": "Koh Ngam and Koh Wai",
+            "text": "A short passage south to Koh Ngam: the two halves of the island are joined by a narrow sandbar where you can swim on either side. After lunch we sail to Koh Wai, a small island with coral reefs right off the shore. Snorkelling and our first sunset at anchor."
+          },
+          {
+            "label": "Day 3",
+            "title": "Koh Rang and Koh Mak",
+            "text": "In the morning — Koh Rang, the protected part of Mu Koh Chang Marine National Park: clear water, corals and shoals of fish, the best snorkelling of the week. In the afternoon we cross to Koh Mak, a flat green island with coconut groves and quiet beaches. Dinner ashore in the evening."
+          },
+          {
+            "label": "Day 4",
+            "title": "Koh Kham and the passage to Koh Kood",
+            "text": "In the morning we swim off tiny Koh Kham, next door to Koh Mak, then head south to Koh Kood — the wildest island of the archipelago, with jungle, waterfalls and almost empty beaches. We drop anchor off the north shore."
+          },
+          {
+            "label": "Day 5",
+            "title": "Ao Salat and Bang Bao on Koh Kood",
+            "text": "We call at Ao Salat, a fishing village on stilts, where we try fresh seafood right by the water. Then we round the southern cape of Koh Kood and anchor in Bang Bao bay on the west coast: white sand, warm shallows and a sunset over the sea."
+          },
+          {
+            "label": "Day 6",
+            "title": "Koh Mai Si and back to Koh Mak",
+            "text": "In the morning we drop by the Koh Mai Si islets off the north shore of Koh Kood for a swim and some snorkelling. Then we set a course north and by evening anchor off Koh Mak again: our last quiet night among the islands."
+          },
+          {
+            "label": "Day 7",
+            "title": "Bang Bao on Koh Chang",
+            "text": "The final passage north, to the southern tip of Koh Chang. Bang Bao is a fishing village on stilts with a long pier, souvenir stalls and fish restaurants. In the evening — a farewell dinner."
+          },
+          {
+            "label": "Day 8",
+            "title": "Disembarkation",
+            "text": "Breakfast on board, packing and disembarkation in the morning. We help with transfers and share the photos of the week."
+          }
+        ],
+        "note": "The schedule is flexible: wind and weather may change the order of the days, but not the route itself. We see in the New Year on deck."
+      }
+    }
+  ],
+  "departures": [
+    {
+      "id": "kochang-1",
+      "dates": "dates to be confirmed",
+      "routeId": "ko-chang"
+    }
+  ]
+}

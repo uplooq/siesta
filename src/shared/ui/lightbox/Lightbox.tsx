@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import { cx } from '@/shared/lib/cx'
 import { withBase } from '@/shared/lib/withBase'
 import styles from './Lightbox.module.css'
+import { ui } from '@/shared/i18n'
 
 export interface LightboxPhoto {
   src: string
@@ -73,7 +74,7 @@ export const Lightbox = ({ photos, index, onChange }: LightboxProps) => {
     <dialog
       ref={ref}
       className={styles.lightbox}
-      aria-label={photo ? `Фото ${index! + 1} из ${photos.length}` : 'Просмотр фото'}
+      aria-label={photo ? ui.photoOf(index! + 1, photos.length) : ui.photoView}
       // close не всплывает в DOM, но всплывает по дереву React — иначе закроется и карточка под нами
       onClose={(e) => {
         e.stopPropagation()
@@ -116,7 +117,7 @@ export const Lightbox = ({ photos, index, onChange }: LightboxProps) => {
         type="button"
         className={styles.close}
         onClick={() => onChange(null)}
-        aria-label="Закрыть просмотр"
+        aria-label={ui.closeView}
       >
         <Icon d="M6 6l12 12M18 6L6 18" />
       </button>
@@ -127,7 +128,7 @@ export const Lightbox = ({ photos, index, onChange }: LightboxProps) => {
             className={cx(styles.nav, styles.prev)}
             onClick={() => go(-1)}
             disabled={index === 0}
-            aria-label="Предыдущее фото"
+            aria-label={ui.prevPhoto}
           >
             <Icon d="M15 6l-6 6 6 6" />
           </button>
@@ -136,7 +137,7 @@ export const Lightbox = ({ photos, index, onChange }: LightboxProps) => {
             className={cx(styles.nav, styles.next)}
             onClick={() => go(1)}
             disabled={index === photos.length - 1}
-            aria-label="Следующее фото"
+            aria-label={ui.nextPhoto}
           >
             <Icon d="M9 6l6 6-6 6" />
           </button>

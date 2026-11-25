@@ -1,14 +1,19 @@
 import { contacts, site } from '@/shared/content'
 import { Button } from '@/shared/ui/button'
+import { LangSwitch } from '@/shared/ui/lang-switch'
 import { Kicker } from '@/shared/ui/kicker'
 import { cx } from '@/shared/lib/cx'
 import styles from './Hero.module.css'
+import { ui } from '@/shared/i18n'
 
 const copy = site.hero
 
 export const Hero = () => (
   <section className={styles.hero} id="top" aria-labelledby="hero-title">
-    <div className={styles.brand}>{site.brand}</div>
+    <div className={styles.top}>
+      <div className={styles.brand}>{site.brand}</div>
+      <LangSwitch onDark />
+    </div>
     <div className={styles.content}>
       <Kicker className={styles.kicker}>{copy.kicker}</Kicker>
       <h1 className={cx('display', styles.title)} id="hero-title">
@@ -24,7 +29,7 @@ export const Hero = () => (
         target="_blank"
         rel="noopener"
         className={styles.cta}
-        aria-label={`${copy.cta}: написать Софе в Telegram ${contacts.telegramLabel}`}
+        aria-label={ui.heroCta(copy.cta, contacts.telegramLabel)}
       >
         {copy.cta}
       </Button>

@@ -5,6 +5,7 @@ import { Kicker } from '@/shared/ui/kicker'
 import { Reveal } from '@/shared/ui/reveal'
 import { cx } from '@/shared/lib/cx'
 import styles from './Booking.module.css'
+import { ui } from '@/shared/i18n'
 
 const CompassRose = () => (
   <svg className={styles.compass} viewBox="0 0 200 200" aria-hidden="true" fill="currentColor">
@@ -56,10 +57,10 @@ const copy = site.booking
 export const Booking = () => {
   const { harbor } = useSelectedTrip()
   const log = [
-    { label: 'Порт приписки', value: harbor.port },
-    { label: 'Координаты', value: harbor.coords, coord: true },
-    { label: 'Навигация', value: harbor.season },
-    { label: 'На борту', value: harbor.crew },
+    { label: ui.harborPort, value: harbor.port },
+    { label: ui.harborCoords, value: harbor.coords, coord: true },
+    { label: ui.harborSeason, value: harbor.season },
+    { label: ui.harborCrew, value: harbor.crew },
   ]
 
   return (
@@ -94,7 +95,7 @@ export const Booking = () => {
               target="_blank"
               rel="noopener"
               className={styles.tg}
-              aria-label={`${copy.telegramCtaSofia} в Telegram ${contacts.telegramLabel}`}
+              aria-label={ui.inTelegram(copy.telegramCtaSofia, contacts.telegramLabel)}
             >
               <TelegramIcon />
               {copy.telegramCtaSofia}
@@ -104,7 +105,7 @@ export const Booking = () => {
               target="_blank"
               rel="noopener"
               className={styles.tg}
-              aria-label={`${copy.telegramCtaIgor} в Telegram ${contacts.telegramIgorLabel}`}
+              aria-label={ui.inTelegram(copy.telegramCtaIgor, contacts.telegramIgorLabel)}
             >
               <TelegramIcon />
               {copy.telegramCtaIgor}
@@ -116,7 +117,7 @@ export const Booking = () => {
               href={contacts.whatsapp}
               target="_blank"
               rel="noopener"
-              aria-label="Написать в WhatsApp"
+              aria-label={ui.writeWhatsApp}
             >
               <span className={styles.ci} aria-hidden="true">
                 <WhatsAppIcon />
@@ -128,7 +129,7 @@ export const Booking = () => {
               href={contacts.instagram}
               target="_blank"
               rel="noopener"
-              aria-label={`Открыть Instagram ${contacts.instagramLabel}`}
+              aria-label={ui.openInstagram(contacts.instagramLabel)}
             >
               <span className={styles.ci} aria-hidden="true">
                 <InstagramIcon />

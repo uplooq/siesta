@@ -1,0 +1,182 @@
+{
+  "id": "seychelles",
+  "order": 40,
+  "published": true,
+  "group": "travel",
+  "geo": "Seychelles",
+  "year": "2027",
+  "price": "2 200 €",
+  "priceUnit": "per guest",
+  "priceNote": "plus ~400 € for food and restaurants",
+  "tagline": "The Indian Ocean under sail: snow-white beaches, giant granite boulders, palm groves and clear water with coral reefs. By day — islands by yacht and bicycle; in the evening — dinners on board and sunsets.",
+  "cover": "/photos/seychelles/catamaran-boulders.webp",
+  "coverAlt": "A white sailing catamaran at anchor in a turquoise lagoon off a Seychelles beach with granite boulders and palms, seen from above",
+  "photos": [
+    {
+      "src": "/photos/seychelles/catamaran-boulders.webp",
+      "alt": "Drone view: a white sailing catamaran at anchor in clear turquoise water off a white beach, with giant granite boulders and palms on the shore",
+      "caption": "At anchor by the granite boulders"
+    },
+    {
+      "src": "/photos/seychelles/anse-lazio-aerial.webp",
+      "alt": "View from above of Anse Lazio beach: white sand, granite boulders in turquoise water and a sailing yacht at anchor",
+      "caption": "Anse Lazio"
+    },
+    {
+      "src": "/photos/seychelles/anse-lazio-boulders.webp",
+      "alt": "Pink granite boulders on a white beach, with the turquoise sea and a catamaran at anchor behind them",
+      "caption": "Anse Lazio"
+    },
+    {
+      "src": "/photos/seychelles/giant-tortoise.webp",
+      "alt": "A giant Seychelles tortoise walks across the sand, with a lagoon and the island’s granite rocks behind it",
+      "caption": "Curieuse Island"
+    },
+    {
+      "src": "/photos/seychelles/granite-islet.webp",
+      "alt": "Clear turquoise water by an islet with granite boulders and palms under a clear sky",
+      "caption": "Félicité"
+    },
+    {
+      "src": "/photos/seychelles/vallee-de-mai-path.webp",
+      "alt": "A stone path leads into a dense thicket of tall palms with huge fan-shaped leaves",
+      "caption": "Vallée de Mai"
+    },
+    {
+      "src": "/photos/seychelles/coco-de-mer.webp",
+      "alt": "A coco de mer palm seen from below: giant nuts by the trunk and fan-shaped leaves against the sun",
+      "caption": "Praslin"
+    },
+    {
+      "src": "/photos/seychelles/anse-source-dargent.webp",
+      "alt": "Anse Source d’Argent beach: turquoise water, white sand, smooth granite boulders and a palm tree",
+      "caption": "Anse Source d’Argent"
+    },
+    {
+      "src": "/photos/seychelles/boulders-swim.webp",
+      "alt": "A guest wades into a clear lagoon among tall granite boulders and palms",
+      "caption": "Anse Source d’Argent"
+    },
+    {
+      "src": "/photos/seychelles/bikes-la-digue.webp",
+      "alt": "Two bicycles by a railing on a path along the shore, with palms, boulders in the water and a green island in the distance behind them",
+      "caption": "La Digue"
+    },
+    {
+      "src": "/photos/seychelles/island-signpost.webp",
+      "alt": "A wooden post with colourful arrow signs pointing to the neighbouring islands, a white beach and a lagoon behind it",
+      "caption": "Praslin"
+    },
+    {
+      "src": "/photos/seychelles/snorkel-batfish.webp",
+      "alt": "A half-underwater shot: a snorkeller’s fins and a school of fish, with the catamaran’s stern and guests above the water",
+      "caption": "Snorkelling"
+    },
+    {
+      "src": "/photos/seychelles/ste-anne-aerial.webp",
+      "alt": "Drone view of green islands ringed by reefs and a catamaran at anchor in turquoise water, the mountains of Mahé on the horizon",
+      "caption": "Sainte Anne"
+    },
+    {
+      "src": "/photos/seychelles/under-sail-reef.webp",
+      "alt": "A sailing yacht under white sails crosses turquoise water above the reefs, with granite rocks and green mountains along the shore",
+      "caption": "A yacht off the Seychelles islands"
+    },
+    {
+      "src": "/photos/seychelles/sunset-anchorage.webp",
+      "alt": "A catamaran at anchor near the shore at sunset, the sky full of golden clouds, the sun sinking into the ocean",
+      "caption": "The yacht at sunset"
+    }
+  ],
+  "included": [
+    "Accommodation on the yacht in a double cabin",
+    "A professional skipper and an introduction to the basics of sailing",
+    "Tourist tax, entrance tickets to national parks and paid beaches",
+    "Mooring and anchorage fees along the route",
+    "A transfer on one of the islands and bicycle hire",
+    "Snorkelling and fishing gear",
+    "Fuel"
+  ],
+  "reviewIds": [],
+  "harbor": {
+    "port": "Eden Island, Mahé",
+    "coords": "4°38′S · 55°28′E",
+    "season": "February — March 2027",
+    "crew": "up to 8 guests",
+    "note": "The trip starts and ends at the Eden Island marina on Mahé. Two departures: 20–27 February and 6–13 March 2027. Flights are separate; we will help you book a transfer to the marina."
+  },
+  "routes": [
+    {
+      "id": "inner-islands",
+      "name": "Inner Seychelles",
+      "duration": "8 days",
+      "extent": "7 islands",
+      "mapCaption": "Map of the “Inner Seychelles” route",
+      "mapImage": "/routes/seychelles.webp",
+      "mapImageAlt": "Chart of the “Inner Seychelles” route: Mahé — Praslin — Curieuse — St Pierre — Vallée de Mai — La Digue — Félicité — Sainte Anne — Mahé",
+      "itinerary": {
+        "title": "A week in the Seychelles, day by day",
+        "summary": {
+          "title": "A loop around the inner islands of the Seychelles",
+          "stops": ["Mahé", "Praslin", "Curieuse", "La Digue", "Félicité", "Sainte Anne", "Mahé"]
+        },
+        "intro": "We explore the islands by yacht and bicycle, snorkel over coral reefs and meet giant tortoises.",
+        "days": [
+          {
+            "label": "Day 1",
+            "title": "Meeting on Mahé",
+            "text": "We meet at the marina on the island of Mahé, get to know the captain and crew, settle into our cabins and stock up on everything we need for the week. In the evening, a first dinner, a chance to get better acquainted and a safety briefing."
+          },
+          {
+            "label": "Day 2",
+            "title": "Praslin",
+            "text": "The first big passage — about four hours across the Indian Ocean: we sunbathe on deck, catch the wind and try trolling for fish. On Praslin — Anse Lazio beach: snow-white sand, huge granite boulders and clear turquoise water."
+          },
+          {
+            "label": "Day 3",
+            "title": "Curieuse and St Pierre",
+            "text": "In the morning — Curieuse Island, a national park with giant Seychelles tortoises and a trail through the mangroves; after the walk, the beach and the warm ocean. Then tiny St Pierre, where palms grow right among the granite rocks: snorkelling, and in the evening dinner on the yacht under the stars."
+          },
+          {
+            "label": "Day 4",
+            "title": "Vallée de Mai and Côte d’Or",
+            "text": "After breakfast — the Vallée de Mai national park, a UNESCO World Heritage site and home to the famous coco de mer palm. We walk the shady trails, then have a picnic on Côte d’Or beach and a swim. Towards evening we return to the yacht: dinner, games and one more sunset over the ocean."
+          },
+          {
+            "label": "Day 5",
+            "title": "La Digue by bicycle",
+            "text": "We leave the yacht and explore La Digue by bicycle: cosy cafés, vanilla plantations, giant tortoises and Anse Source d’Argent beach with its huge granite boulders and incredible shades of water. We have lunch at a local café and return on board towards evening."
+          },
+          {
+            "label": "Day 6",
+            "title": "Félicité and the marine reserve islands",
+            "text": "We say goodbye to La Digue and head out to the small islands of the marine reserve — Félicité, Coco Island or Big Sister. Snorkelling among the coral reefs: bright tropical fish and, with luck, rays and sea turtles. For those who like, a SUP board or fishing straight from the yacht."
+          },
+          {
+            "label": "Day 7",
+            "title": "Sainte Anne and the return to Mahé",
+            "text": "Early in the morning we set off for Mahé: breakfast with a view of the islands, the wind and, if you like, the yacht in your hands under the captain’s eye. By lunchtime we anchor off Sainte Anne Island in the national marine park — a last snorkel on the reefs. After lunch we return to the Eden Island marina: the waterfront, shops and a farewell dinner."
+          },
+          {
+            "label": "Day 8",
+            "title": "Breakfast and goodbyes",
+            "text": "In the morning we have breakfast on board, recall the brightest moments and swap photos. At 9:00 we check out of the yacht — with salty hair and memories that will keep us warm long after we get home."
+          }
+        ],
+        "note": "The schedule is flexible: the ocean and the forecast may change the order of the days, but not the route itself."
+      }
+    }
+  ],
+  "departures": [
+    {
+      "id": "seychelles-1",
+      "dates": "20–27.02",
+      "routeId": "inner-islands"
+    },
+    {
+      "id": "seychelles-2",
+      "dates": "6–13.03",
+      "routeId": "inner-islands"
+    }
+  ]
+}

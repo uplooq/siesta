@@ -6,6 +6,7 @@ import { Reveal } from '@/shared/ui/reveal'
 import { cx } from '@/shared/lib/cx'
 import { withBase } from '@/shared/lib/withBase'
 import styles from './Captains.module.css'
+import { ui } from '@/shared/i18n'
 
 const copy = site.captains
 
@@ -43,7 +44,7 @@ export const Captains = () => (
                   style={captain.photoPosition ? { objectPosition: captain.photoPosition } : undefined}
                 />
               ) : (
-                <div className={styles.photoFallback}>фото капитана</div>
+                <div className={styles.photoFallback}>{ui.captainPhoto}</div>
               )}
             </figure>
             <div className={styles.copy}>

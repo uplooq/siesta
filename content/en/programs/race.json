@@ -1,0 +1,36 @@
+{
+  "order": 20,
+  "id": "race",
+  "eyebrow": "Regatta",
+  "title": "Races",
+  "hint": "View the programme",
+  "cover": "/photos/race/start-line.webp",
+  "flip": true,
+  "detail": {
+    "title": "Thrill and adrenaline",
+    "description": "Become part of the team. A real competitive regatta: speed, wind and a fight for the win. We sail a racing yacht with three professionals in the crew — they will teach amateurs to handle a big yacht in real racing conditions, from hoisting the sails to rounding the mark.",
+    "image": "/photos/race/crew-rail.webp",
+    "imageAlt": "Seven crew members sit in a row on the yacht's rail, legs dangling over the water, a green shore in the background",
+    "imageCaption": "The crew hiking out",
+    "included": [
+      {
+        "label": "Role",
+        "text": "A place in the crew, manoeuvre debriefs, work on the winches and at the helm"
+      },
+      {
+        "label": "School",
+        "text": "Pre-start briefings, the theory of knots and race tactics"
+      },
+      {
+        "label": "Finish",
+        "text": "Timing, a race debrief and a team dinner in the marina"
+      },
+      {
+        "label": "Lodging",
+        "text": "You can sleep on the yacht, but it is more comfortable to rent a hotel or a house ashore for the whole team"
+      }
+    ],
+    "price": "150 000 ₽",
+    "priceUnit": "per guest / regatta"
+  }
+}

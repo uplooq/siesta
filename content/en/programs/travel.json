@@ -1,0 +1,36 @@
+{
+  "order": 10,
+  "id": "travel",
+  "eyebrow": "Relax",
+  "title": "Trips",
+  "hint": "View the programme",
+  "cover": "/photos/covers/marina-sunset.webp",
+  "flip": false,
+  "detail": {
+    "title": "Relaxation and beauty",
+    "description": "Secluded coves, unhurried breakfasts on deck and complete oneness with the sea. Signature routes for those who value comfort, good food and sunsets with the people close to them. We don't chase distance — we let the sea decide the day.",
+    "image": "/photos/turkey/hammock-wine.webp",
+    "imageAlt": "A guest relaxes in a hammock on the yacht's deck with a glass of wine, the rocky shore of a cove beyond the rail",
+    "imageCaption": "A hammock on deck, anchored in a cove",
+    "included": [
+      {
+        "label": "Boat",
+        "text": "A sailing yacht for up to 8 guests, 3–4 cabins, accommodation in comfortable double cabins"
+      },
+      {
+        "label": "Comfort",
+        "text": "Shower, toilet, galley and a cosy spot on deck to relax"
+      },
+      {
+        "label": "Food",
+        "text": "Breakfasts on the water, hearty snacks at sea, dinners in restaurants or on the yacht and, of course, local wine"
+      },
+      {
+        "label": "Pace",
+        "text": "2–5 hours at sea, the rest is swimming, strolls around town and shopping, exploring uninhabited places"
+      }
+    ],
+    "price": "1 600 — 2 200 €",
+    "priceUnit": "per guest / week"
+  }
+}

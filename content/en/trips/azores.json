@@ -1,0 +1,172 @@
+{
+  "id": "azores",
+  "order": 30,
+  "published": true,
+  "group": "travel",
+  "geo": "Azores",
+  "year": "2027",
+  "price": "1 800 €",
+  "priceUnit": "per guest",
+  "tagline": "A week in the open Atlantic around the central group of the Azores: Faial, São Jorge, Terceira and Pico. Volcanic shores, lava terraces above the ocean and Horta marina, its walls painted by crews who have crossed the ocean.",
+  "cover": "/photos/azores/under-sail.webp",
+  "coverAlt": "A yacht heeling under sail off a green Azorean shore, white foam along the hull",
+  "photos": [
+    {
+      "src": "/photos/azores/under-sail.webp",
+      "alt": "View from the deck of a heeling yacht: white foam along the hull, a green volcanic island ahead under a blue sky",
+      "caption": "A passage between the islands"
+    },
+    {
+      "src": "/photos/azores/coast-peak.webp",
+      "alt": "A green slope drops steeply into the ocean, with rocks and a line of surf at its foot",
+      "caption": "Green slopes above the ocean"
+    },
+    {
+      "src": "/photos/azores/cockpit-dusk.webp",
+      "alt": "A yacht’s cockpit at sunset: the wheel, coiled lines and a flag at the stern, mountain silhouettes in the distance",
+      "caption": "Sunset from the cockpit"
+    },
+    {
+      "src": "/photos/azores/crater-lakes.webp",
+      "alt": "View from above of the Sete Cidades crater lakes among green slopes",
+      "caption": "The Sete Cidades crater lakes"
+    },
+    {
+      "src": "/photos/azores/green-cliffs.webp",
+      "alt": "Aerial view of patchwork green fields ending in black cliffs that drop into the ocean, low clouds above",
+      "caption": "Patchwork fields above the cliff"
+    },
+    {
+      "src": "/photos/azores/deck-dinner.webp",
+      "alt": "A table set in the yacht’s cockpit at dusk: candles, glasses, olives, a rocky shore beyond the rail",
+      "caption": "Dinner in the cockpit at anchor"
+    },
+    {
+      "src": "/photos/azores/cliff-surf.webp",
+      "alt": "View from a cliff over the dark ocean: waves breaking on black lava rocks, a headland in the clouds in the distance",
+      "caption": "Surf on the lava shore"
+    },
+    {
+      "src": "/photos/azores/deck-evening.webp",
+      "alt": "Evening on the yacht’s deck: string lights under the awning, a table set with a stack of plates, dark water beyond the rail",
+      "caption": "An evening on board under string lights"
+    },
+    {
+      "src": "/photos/azores/pico-ferry.webp",
+      "alt": "The cone of Pico volcano ringed with clouds above a dark slope, a white-and-blue ferry by the shore below",
+      "caption": "Pico volcano in the clouds"
+    },
+    {
+      "src": "/photos/azores/helm-bird.webp",
+      "alt": "A helmsman at the wheel of a yacht in the open ocean, a brown seabird sitting on the deck beside him",
+      "caption": "A fellow traveller on passage"
+    },
+    {
+      "src": "/photos/azores/lava-shore.webp",
+      "alt": "A young woman in a white shirt stands on black lava rocks, watching the waves break on the shore",
+      "caption": "Lava shore and surf"
+    },
+    {
+      "src": "/photos/azores/bow-sunset.webp",
+      "alt": "Guests sit on the bow of a yacht under sail, a pink sunset over the ocean ahead",
+      "caption": "Sunset from the bow"
+    },
+    {
+      "src": "/photos/azores/field-path.webp",
+      "alt": "A man walks along a path between green fields and hydrangea bushes, the setting sun above a hill",
+      "caption": "A path through the fields at sunset"
+    },
+    {
+      "src": "/photos/azores/island-dusk.webp",
+      "alt": "Dusk over the island: green cliffs in the foreground, mountains under a pink sky in the distance",
+      "caption": "Dusk over the island"
+    },
+    {
+      "src": "/photos/azores/forest-trail.webp",
+      "alt": "A wooden footbridge along a mountain stream amid dense green forest and ferns",
+      "caption": "A forest trail along the stream"
+    },
+    {
+      "src": "/photos/azores/rigging-sunset.webp",
+      "alt": "An orange sunset sky seen through the shrouds and sail, the yacht’s bow and dark water below",
+      "caption": "A fiery sunset at sea"
+    }
+  ],
+  "reviewIds": [],
+  "harbor": {
+    "port": "Horta, Faial",
+    "coords": "38°32′N · 28°37′W",
+    "season": "May 2027",
+    "crew": "up to 8 guests",
+    "note": "The trip starts and ends at Horta marina on the island of Faial. Departure: 15–22 May 2027."
+  },
+  "routes": [
+    {
+      "id": "central-group",
+      "name": "Central Group of the Azores",
+      "duration": "8 days",
+      "extent": "4 islands, ~146 miles",
+      "mapCaption": "Map of the “Central Group of the Azores” route",
+      "mapImage": "/routes/azores.webp",
+      "mapImageAlt": "Chart of the “Central Group of the Azores” route: Horta — São Jorge — Terceira — Pico — Horta",
+      "itinerary": {
+        "title": "A week in the Azores, day by day",
+        "summary": {
+          "title": "A loop around the central group of the Azores",
+          "stops": ["Horta", "São Jorge", "Terceira", "Pico", "Horta"]
+        },
+        "intro": "About 146 miles in a week — the passages are longer than in the Mediterranean; this is the open Atlantic.",
+        "days": [
+          {
+            "label": "Day 1",
+            "title": "Boarding in Horta",
+            "text": "We meet at the marina on the island of Faial: settling into cabins, meeting the captain and a safety briefing. The quay walls here have been painted by hundreds of crews who have crossed the Atlantic. In the evening, dinner at Peter Café Sport."
+          },
+          {
+            "label": "Day 2",
+            "title": "Passage to São Jorge",
+            "text": "We hoist the sails and leave Horta — 22 miles of open water, with dolphins often showing up along the way. By evening we enter Velas, a small port squeezed between the ocean and two-hundred-metre cliffs."
+          },
+          {
+            "label": "Day 3",
+            "title": "The fajãs of São Jorge",
+            "text": "A day on the island: we walk down to the fajãs — narrow lava terraces at the foot of the cliffs, beyond the reach of the tourist trails. The finest is Fajã de Santo Cristo, with its lagoon of emerald water. In the evening in Velas we taste a cheese that is made only here."
+          },
+          {
+            "label": "Day 4",
+            "title": "Passage to Terceira",
+            "text": "A long leg along the coast — 49 miles. By evening we arrive in Angra do Heroísmo: cobbled streets, a 16th-century cathedral and fortress walls, with the whole centre on the UNESCO World Heritage list."
+          },
+          {
+            "label": "Day 5",
+            "title": "A day on Terceira",
+            "text": "A day without sails. We stroll around Angra: old squares, white-stone churches and fish restaurants in the port. For those who like, a descent into the Algar do Carvão volcanic cave with its underground lake."
+          },
+          {
+            "label": "Day 6",
+            "title": "Passage to Pico",
+            "text": "The longest passage of the week — 54 miles. Pico is visible long before we get close: the volcanic cone rises straight out of the ocean. We moor in Lajes do Pico, the former whaling capital."
+          },
+          {
+            "label": "Day 7",
+            "title": "Pico and the return to Faial",
+            "text": "In the morning — Pico’s vineyards on solidified lava, also a UNESCO site, and the whaling museum. In the afternoon, a short passage back to Horta, 21 miles. In the evening, a farewell dinner on board."
+          },
+          {
+            "label": "Day 8",
+            "title": "Disembarkation",
+            "text": "Breakfast on board, packing and disembarkation in the morning. We help with transfers and share the week’s photos."
+          }
+        ],
+        "note": "The schedule is flexible: the ocean and the forecast may change the order of the days, but not the route itself."
+      }
+    }
+  ],
+  "departures": [
+    {
+      "id": "azores-1",
+      "dates": "15–22.05",
+      "routeId": "central-group"
+    }
+  ]
+}

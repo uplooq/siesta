@@ -75,9 +75,10 @@ export default defineConfig({
   },
   build: {
     rollupOptions: {
-      // две страницы: лендинг и конструктор маршрутов
+      // страницы: лендинг (русский и английский) и конструктор маршрутов
       input: {
         main: fromRoot('./index.html'),
+        en: fromRoot('./en/index.html'),
         map: fromRoot('./map/index.html'),
       },
     },

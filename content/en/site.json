@@ -1,0 +1,92 @@
+{
+  "brand": "siesta",
+  "contacts": {
+    "telegram": "https://t.me/shpiilberg",
+    "telegramLabel": "shpiilberg",
+    "telegramIgor": "https://t.me/magdeev_igor",
+    "telegramIgorLabel": "magdeev_igor",
+    "whatsapp": "https://wa.me/79089933225",
+    "instagram": "https://instagram.com/shpiilberg",
+    "instagramLabel": "shpiilberg"
+  },
+  "header": {
+    "links": [
+      { "href": "#travel", "label": "Trips" },
+      { "href": "#race", "label": "Races" },
+      { "href": "#builder", "label": "Routes", "wide": true },
+      { "href": "#chronicle", "label": "Photo log", "wide": true },
+      { "href": "#reviews", "label": "Reviews", "wide": true }
+    ],
+    "cta": "Contact us"
+  },
+  "hero": {
+    "kicker": "Signature trips around the world",
+    "title": ["One day you simply head out to sea.", "And everything falls into place."],
+    "lead": "Islands, hidden coves and people on the same wavelength. Freedom, adventure and sailing trips that will stay with you for life.",
+    "cta": "Discuss the details"
+  },
+  "trips": {
+    "kicker": "Season 2026–2027",
+    "title": "Where we'll sail",
+    "lead": "Choose a format and dates. Inside each card you'll find the route with a map, a day-by-day programme, terms and the price."
+  },
+  "intro": {
+    "kicker": "The Mediterranean under sail",
+    "title": "The sea sets the pace,",
+    "titleAccent": "not the schedule",
+    "lead": [
+      "siesta is a chance to see countries from a side that's new to you. We pick places you can't reach from the shore, stay where we feel like lingering, and change plans to follow the wind.",
+      "With you are experienced captains who know the coast and their craft. And on board there is room for real rest and activities, for a living connection with the sea and the crew, and of course for the special everyday life of a yacht."
+    ]
+  },
+  "chronicle": {
+    "kicker": "Photo log",
+    "title": "How it looks from the water",
+    "lead": "Shots from past outings: coves, passages and evenings on deck."
+  },
+  "captains": {
+    "kicker": "Who's on board",
+    "title": "Two captains",
+    "lead": "On board you are accompanied by two experienced captains who create an atmosphere of confidence, comfort and inspiration.",
+    "noteLead": "Together they will make your trip warm, safe and unforgettable.",
+    "noteBody": [
+      "We are experienced captains and have been living by the sea for months now. Right now our route runs through sunny Thailand — and it is pure magic: turquoise water, quiet coves, fresh fruit and a feeling of freedom.",
+      "We love sharing this atmosphere and help others plan their sea routes — whether it's a short break on a yacht or a real island-hopping trip."
+    ]
+  },
+  "reviews": {
+    "kicker": "Reviews",
+    "title": "What people write after the sea",
+    "lead": "Our guests tell it themselves — these are their messages after trips and regattas, word for word."
+  },
+  "builder": {
+    "title": "Dream up your own route",
+    "text": "Ready-made routes are not the limit. In the map builder you can drop points, connect passages and see the miles right away. Put together your dream route and send it to us for review straight from the map: we'll check the anchorages, count the days and come back with dates and a price.",
+    "cta": "Build your own route",
+    "note": "The “Send to the captains” button is already on the map"
+  },
+  "booking": {
+    "kicker": "Course plotted",
+    "title": "Take your place on board",
+    "lead": "Write to us — we'll check the dates and match a boat and a route to your crew. Places are few each season and the crews are small, and that is a matter of principle.",
+    "contactTitle": "Contact us",
+    "contactTag": "Direct contact",
+    "contactLead": "The quickest way is Telegram or WhatsApp: we'll reply within a day, talk through the dates and find a route to suit your group.",
+    "telegramCtaSofia": "Message Sofa",
+    "telegramCtaIgor": "Message Igor"
+  },
+  "footer": {
+    "links": [
+      { "href": "#travel", "label": "Trips" },
+      { "href": "#race", "label": "Races" },
+      { "href": "#intro-title", "label": "About us" },
+      { "href": "#chronicle", "label": "Photo log" },
+      { "href": "#captains", "label": "Captains" },
+      { "href": "#reviews", "label": "Reviews" },
+      { "href": "/map/", "label": "Map" },
+      { "href": "#contact", "label": "Contact us" }
+    ],
+    "copyright": "© 2026 siesta · The Mediterranean under sail",
+    "credits": "Photos: siesta archive"
+  }
+}

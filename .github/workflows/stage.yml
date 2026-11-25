@@ -40,7 +40,7 @@ jobs:
           rm -f dist/CNAME
           touch dist/.nojekyll
           # стенд не должен попадать в поиск рядом с продом
-          sed -i 's|<head>|<head><meta name="robots" content="noindex, nofollow">|' dist/index.html dist/map/index.html
+          sed -i 's|<head>|<head><meta name="robots" content="noindex, nofollow">|' dist/index.html dist/en/index.html dist/map/index.html
       - name: Запушить в gh-pages стенда
         env:
           DEPLOY_KEY: ${{ secrets.STAGE_DEPLOY_KEY }}

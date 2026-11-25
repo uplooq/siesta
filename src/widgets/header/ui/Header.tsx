@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
 import { site } from '@/shared/content'
 import { Button } from '@/shared/ui/button'
+import { LangSwitch } from '@/shared/ui/lang-switch'
 import { cx } from '@/shared/lib/cx'
 import styles from './Header.module.css'
+import { ui } from '@/shared/i18n'
 
 const { links, cta } = site.header
 
@@ -30,10 +32,10 @@ export const Header = () => {
   return (
     <header className={cx(styles.header, shown && styles.shown)}>
       <div className={styles.inner}>
-        <a className={styles.brand} href="#top" aria-label={`${site.brand} — к началу страницы`}>
+        <a className={styles.brand} href="#top" aria-label={ui.toTop(site.brand)}>
           {site.brand}
         </a>
-        <nav className={styles.nav} aria-label="Разделы сайта">
+        <nav className={styles.nav} aria-label={ui.siteSections}>
           {links.map((link) => (
             <a
               key={link.href}
@@ -44,6 +46,7 @@ export const Header = () => {
             </a>
           ))}
         </nav>
+        <LangSwitch />
         <Button href="#contact" className={styles.cta}>
           {cta}
         </Button>

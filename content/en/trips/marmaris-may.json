@@ -1,0 +1,157 @@
+{
+  "id": "marmaris-may",
+  "order": 15,
+  "published": true,
+  "group": "travel",
+  "geo": "Marmaris, Turkey",
+  "year": "2027",
+  "price": "1 600 €",
+  "priceUnit": "per guest",
+  "priceNote": "plus ~150 € for restaurants and marinas",
+  "tagline": "An expedition to the Hisarönü Gulf: 7 nights under sail in search of wild nature and ancient ruins. Pines by turquoise water, the fortress of Loryma and Knidos, the Kızkumu sandbar and nights in bays the big boats never enter.",
+  "cover": "/photos/marmaris/cover.webp",
+  "coverAlt": "A bay with a marina among pine-covered mountains, yachts at the quay and catamarans at anchor in blue water, drone view",
+  "photos": [
+    {
+      "src": "/photos/marmaris/coffee-pontoon.webp",
+      "alt": "A guest with a cup of coffee sits on a wooden pontoon between the sterns of yachts, her feet dangling towards the clear water",
+      "caption": "Morning coffee on the pontoon"
+    },
+    {
+      "src": "/photos/marmaris/polaroids.webp",
+      "alt": "A hand holds three Polaroid photos of guests on the yacht, with the marina at night and a steering wheel in the background",
+      "caption": "Polaroids of the week"
+    },
+    {
+      "src": "/photos/marmaris/anchor-bay.webp",
+      "alt": "White sailing yacht at anchor in a narrow bay between green rocky slopes, guests and a Turkish flag at the stern",
+      "caption": "At anchor in a rocky bay"
+    },
+    {
+      "src": "/photos/marmaris/river-terrace.webp",
+      "alt": "A laid table on a terrace under flowering bougainvillea, across the river a cliff with ancient tombs",
+      "caption": "Dinner on a riverside terrace"
+    },
+    {
+      "src": "/photos/marmaris/pine-bay.webp",
+      "alt": "View from above through the pines of a bay with yachts at anchor, beyond it the gulf and mountains in the morning haze",
+      "caption": "A bay among the pines, seen from the hill"
+    },
+    {
+      "src": "/photos/marmaris/ruins-bay.webp",
+      "alt": "Wooden gulets at anchor in a turquoise bay, remains of ancient walls on the rocky shore",
+      "caption": "A bay by the ancient walls"
+    },
+    {
+      "src": "/photos/marmaris/swim-ring.webp",
+      "alt": "A guest with an inflatable ring walks along the quay after a swim, behind her the gulf, yachts and wooded mountains",
+      "caption": "After a swim"
+    },
+    {
+      "src": "/photos/marmaris/kizkumu.webp",
+      "alt": "View from above of the Kızkumu sandbar: people walk through the shallows in the middle of a turquoise gulf, yachts nearby",
+      "caption": "The Kızkumu sandbar — walking on the sea"
+    },
+    {
+      "src": "/photos/marmaris/marina-bay.webp",
+      "alt": "A bay with a marina among pine-covered mountains and cliffs, yachts at the quay and two catamarans at anchor, drone view",
+      "caption": "A bay with a marina among the pines"
+    },
+    {
+      "src": "/photos/marmaris/swim-yacht.webp",
+      "alt": "Guests float on air mattresses and inflatable rings towards a yacht at anchor in open sea, mountains on the horizon",
+      "caption": "A swim off the boat in open sea"
+    }
+  ],
+  "included": [
+    "Accommodation on the yacht in a double cabin",
+    "A professional skipper",
+    "An introduction to the basics of sailing",
+    "Fuel",
+    "SUP board",
+    "Food on the boat",
+    "Bed linen and towels"
+  ],
+  "extras": [
+    "Flights",
+    "Transfer to the Marmaris marina — we can help you book it",
+    "Restaurant meals and marina fees — about 150 €"
+  ],
+  "reviewIds": [],
+  "harbor": {
+    "port": "Marmaris, Turkey",
+    "coords": "36°51′N · 28°16′E",
+    "season": "May",
+    "crew": "up to 8 guests",
+    "note": "Departure port — the Marmaris marina. Boarding on Saturday after 15:00, disembarkation the following Saturday at 9:00."
+  },
+  "routes": [
+    {
+      "id": "hisaronu",
+      "name": "Turkey in May",
+      "duration": "8 days",
+      "extent": "9 stops",
+      "mapCaption": "Map of the “Turkey in May” route",
+      "mapImage": "/routes/marmaris-may.webp",
+      "mapImageAlt": "Chart of the “Turkey in May” route: Marmaris — Çiftlik — Bozukkale — Knidos — Bozburun — Selimiye — Orhaniye — Bencik — Marmaris",
+      "itinerary": {
+        "title": "An expedition to the Hisarönü Gulf, day by day",
+        "summary": {
+          "title": "A loop around the Hisarönü Gulf",
+          "stops": ["Marmaris", "Çiftlik", "Bozukkale", "Knidos", "Bozburun", "Selimiye", "Dirsekbükü", "Orhaniye", "Bencik", "Marmaris"]
+        },
+        "intro": "A week where time runs to the rhythm of the sea: we leave the noisy resorts behind for places where pines come right down to turquoise water and the ruins of forgotten cities stand on the cliffs. We explore hidden bays, walk on the water, swim among the fish and spend the nights where the big boats never go. By day — wind, sun and history; in the evening — dinners under the stars and sunsets.",
+        "days": [
+          {
+            "label": "Day 1",
+            "title": "Marmaris marina",
+            "text": "The adventure begins at the Marmaris marina after 15:00. We move aboard the yacht and meet the captain and the crew. Then we set off to buy provisions for the week — our strategic mission. In the evening we gather for our first dinner together, listen to the safety briefing and get ready for our first day at sea."
+          },
+          {
+            "label": "Day 2",
+            "title": "Çiftlik bay or Cennet Island",
+            "text": "We leave the marina and set a course south-west. A couple of hours under way — and we drop anchor in the wild bay of Çiftlik or off Cennet Island. Pines come right down to the water, and the clarity of the sea is astonishing. Our first snorkelling, a leisurely swim and dinner under incredibly bright stars."
+          },
+          {
+            "label": "Day 3",
+            "title": "Bozukkale",
+            "text": "We go deeper into the Hisarönü Gulf, to Bozukkale. Here the ancient ruins of the fortress of Loryma loom over turquoise water. We climb up to the fortress to watch the sunset with a panoramic view of the sea. After the walk down, dinner awaits in a characterful restaurant on stilts that serves the freshest seafood."
+          },
+          {
+            "label": "Day 4",
+            "title": "Knidos and Bozburun",
+            "text": "We sail to the westernmost point of the peninsula — ancient Knidos, where the Aegean and the Mediterranean meet. We explore the ruins of the amphitheatre and swim in the bay. After lunch we change course for Bozburun, a small town whose shipyards build traditional wooden gulets. In the evening we shelter from the winds in one of the wild bays nearby."
+          },
+          {
+            "label": "Day 5",
+            "title": "The village of Selimiye",
+            "text": "A short passage to the village of Selimiye, buried in greenery. Narrow lanes and little waterside restaurants make it feel as if time has stood still. You can hire quad bikes and ride out to the ruins of ancient Hydas. For the night we tuck into a bay near the village — a perfect natural bastion, sheltered from the winds."
+          },
+          {
+            "label": "Day 6",
+            "title": "Orhaniye and Bencik",
+            "text": "We set off for Orhaniye bay to see a wonder of nature — the Kızkumu sandbar. The water here is so shallow that you can walk across the sea. After a swim and some photos we make our last passage to Bencik bay — a narrow canyon surrounded by pines and cliffs. A true secret world for our last night out in nature."
+          },
+          {
+            "label": "Day 7",
+            "title": "Return to Marmaris",
+            "text": "In the morning we weigh anchor and set a course for Marmaris — the longest passage of the trip. Along the way we swim and enjoy our last hours at sea. By evening we are back in our home marina, where the whole crew's last dinner together awaits — in one of the best restaurants in Marmaris or on the boat where we have spent so much time together. We raise our glasses, recall the brightest moments and celebrate the end of the trip."
+          },
+          {
+            "label": "Day 8",
+            "title": "Disembarkation and goodbyes",
+            "text": "The morning begins with a cup of coffee on deck and a swap of impressions and photos: we send each other the best sunset shots, dolphin videos and funny moments. At 9:00 we officially say goodbye to the yacht and step ashore, taking with us a tan and stories of the wild coast."
+          }
+        ],
+        "note": "The schedule is flexible: wind and weather may change the order of the stops, but not the route itself."
+      }
+    }
+  ],
+  "departures": [
+    {
+      "id": "marmaris-may-1",
+      "dates": "8.05–15.05",
+      "routeId": "hisaronu"
+    }
+  ]
+}

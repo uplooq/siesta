@@ -6,6 +6,7 @@ import { Lightbox } from '@/shared/ui/lightbox'
 import { Reveal } from '@/shared/ui/reveal'
 import { cx } from '@/shared/lib/cx'
 import styles from './Reviews.module.css'
+import { ui } from '@/shared/i18n'
 
 const copy = site.reviews
 
@@ -76,7 +77,7 @@ export const Reviews = () => {
                 className={styles.navBtn}
                 onClick={() => scrollBy(-1)}
                 disabled={edges.start}
-                aria-label="Предыдущие отзывы"
+                aria-label={ui.prevReviews}
               >
                 <ArrowIcon flip />
               </button>
@@ -85,7 +86,7 @@ export const Reviews = () => {
                 className={styles.navBtn}
                 onClick={() => scrollBy(1)}
                 disabled={edges.end}
-                aria-label="Следующие отзывы"
+                aria-label={ui.nextReviews}
               >
                 <ArrowIcon />
               </button>

@@ -3,6 +3,7 @@ import type { Review } from '../model/data'
 import { cx } from '@/shared/lib/cx'
 import { withBase } from '@/shared/lib/withBase'
 import styles from './ReviewCard.module.css'
+import { ui } from '@/shared/i18n'
 
 interface ReviewCardProps {
   review: Review
@@ -30,7 +31,7 @@ export const ReviewCard = ({ review, onOpen }: ReviewCardProps) => {
           onClick={() => setExpanded(!expanded)}
           aria-expanded={expanded}
         >
-          {expanded ? 'Свернуть' : 'Читать целиком'}
+          {expanded ? ui.readLess : ui.readMore}
         </button>
       )}
       <figcaption className={styles.foot}>
@@ -42,10 +43,10 @@ export const ReviewCard = ({ review, onOpen }: ReviewCardProps) => {
           type="button"
           className={styles.proof}
           onClick={onOpen}
-          aria-label={`Открыть оригинал сообщения: ${review.author}`}
+          aria-label={ui.openOriginal(review.author)}
         >
           <img src={withBase(first.src)} alt="" loading="lazy" />
-          <span>Оригинал</span>
+          <span>{ui.original}</span>
         </button>
       </figcaption>
     </figure>

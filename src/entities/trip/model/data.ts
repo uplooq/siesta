@@ -1,5 +1,6 @@
 import { collect } from '@/shared/content/collection'
 import type { TripContent, RouteContent } from '@/shared/content/schema'
+import { byLang, ui } from '@/shared/i18n'
 
 export type TripGroup = TripContent['group']
 export type TripRoute = RouteContent
@@ -21,8 +22,8 @@ export interface Trip extends Omit<TripContent, 'routes' | 'departures'> {
 }
 
 export const tripGroups: { id: TripGroup; label: string; noun: string }[] = [
-  { id: 'travel', label: 'Путешествия', noun: 'Путешествие' },
-  { id: 'race', label: 'Гонки', noun: 'Регата' },
+  { id: 'travel', label: ui.tripTab.travel, noun: ui.tripNoun.travel },
+  { id: 'race', label: ui.tripTab.race, noun: ui.tripNoun.race },
 ]
 
 const resolveTrip = (content: TripContent): Trip => {
@@ -40,5 +41,8 @@ const resolveTrip = (content: TripContent): Trip => {
 // Каждое путешествие — отдельный файл content/trips/<id>.json.
 // Порядок на сайте задаёт поле order, черновики помечаются published: false.
 export const trips: Trip[] = collect<TripContent>(
-  import.meta.glob('/content/trips/*.json', { eager: true, import: 'default' }),
+  byLang(
+    import.meta.glob('/content/trips/*.json', { eager: true, import: 'default' }),
+    import.meta.glob('/content/en/trips/*.json', { eager: true, import: 'default' }),
+  ),
 ).map(resolveTrip)

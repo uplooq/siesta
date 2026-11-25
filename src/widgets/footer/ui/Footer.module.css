@@ -23,18 +23,19 @@
 
 .nav {
   display: flex;
-  gap: 28px;
+  align-items: center;
+  gap: 16px 28px;
   flex-wrap: wrap;
 }
 
-.nav a {
+.nav a:not(.lang) {
   text-decoration: none;
   font-size: 0.95rem;
   color: var(--on-dark-mut);
   transition: color 0.3s;
 }
 
-.nav a:hover {
+.nav a:not(.lang):hover {
   color: var(--coral);
 }
 

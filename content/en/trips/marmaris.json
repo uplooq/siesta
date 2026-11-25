@@ -1,0 +1,127 @@
+{
+  "id": "marmaris",
+  "order": 50,
+  "published": true,
+  "group": "race",
+  "geo": "Marmaris, Turkey",
+  "year": "2026",
+  "price": "150 000 ₽",
+  "priceUnit": "per guest",
+  "priceNote": "half when the yacht is booked, the other half on site",
+  "tagline": "The 37th Marmaris International Race Week: two training days, five race days and three race formats — from starts in the bay to an offshore race of 35–50 miles. A racing yacht with three professionals in the crew.",
+  "cover": "/photos/race/heeling.webp",
+  "coverAlt": "Racing yacht with black sails heeling over, the crew hiking out on the windward side",
+  "photos": [
+    {
+      "src": "/photos/race/heeling.webp",
+      "alt": "Racing yacht with black sails heeling over, four crew members hiking out on the rail",
+      "caption": "Fully heeled on the course"
+    },
+    {
+      "src": "/photos/race/start-line.webp",
+      "alt": "A fleet of identical yachts with black sails lined up on the start line along a breakwater",
+      "caption": "Minutes before the start"
+    },
+    {
+      "src": "/photos/race/winch-crew.webp",
+      "alt": "A hand in a racing glove loads a sheet onto a winch, beyond the lifelines blue water and the wash along the hull",
+      "caption": "Working the winch"
+    },
+    {
+      "src": "/photos/race/bow-to-bow.webp",
+      "alt": "Two racing yachts sailing close alongside each other, their sails overlapping",
+      "caption": "Side by side on the course"
+    },
+    {
+      "src": "/photos/race/crew-rail.webp",
+      "alt": "Seven crew members sit in a row on the side of the yacht, legs dangling over the water, a green shore in the background",
+      "caption": "The crew hiking out"
+    },
+    {
+      "src": "/photos/race/fleet.webp",
+      "alt": "Three racing yachts sailing close together, crews sitting on the rails, sails blocking out the horizon",
+      "caption": "A tight pack on the course"
+    },
+    {
+      "src": "/photos/race/venture.webp",
+      "alt": "Racing yacht number 32 on a beam reach, the crew sitting on the rail, green mountains in the background",
+      "caption": "On a beam reach along the shore"
+    },
+    {
+      "src": "/photos/race/fleet-start.webp",
+      "alt": "A tight formation of racing yachts with black and white sails beating upwind against the wooded mountains of the bay",
+      "caption": "The fleet beating upwind below the Marmaris mountains"
+    },
+    {
+      "src": "/photos/race/crew-19.webp",
+      "alt": "A crew in orange-and-white kit aboard yacht number 19, alongside a yacht with white sails and a Turkish flag at the stern",
+      "caption": "The crew at work on the course"
+    },
+    {
+      "src": "/photos/race/spinnakers-buoy.webp",
+      "alt": "Yachts under white, red and green spinnakers head for a yellow inflatable mark, behind them the Marmaris waterfront and mountains",
+      "caption": "Spinnakers at the turning mark"
+    },
+    {
+      "src": "/photos/race/rainbow.webp",
+      "alt": "Racing yacht with black sails heeling over on a stormy sea, behind it a rainbow and mountains veiled in rain",
+      "caption": "A rainbow over a stormy race"
+    },
+    {
+      "src": "/photos/race/crew-stern.webp",
+      "alt": "The crew of a racing yacht in orange-and-white kit poses at the stern by the quay of the Marmaris marina",
+      "caption": "The crew after the race"
+    },
+    {
+      "src": "/photos/race/helm-smile.webp",
+      "alt": "A smiling crew member holding a line by the boom under a dark racing sail, mountains beyond the rail",
+      "caption": "Smiles on the course"
+    },
+    {
+      "src": "/photos/race/polaroids.webp",
+      "alt": "Seven Polaroid photos of the crew on deck: crew members at the helm, on the bow and the whole team together",
+      "caption": "Polaroids of race week"
+    }
+  ],
+  "reviewIds": ["olga", "artem"],
+  "harbor": {
+    "port": "Marmaris, Turkey",
+    "coords": "36°51′N · 28°16′E",
+    "season": "24–30 October",
+    "crew": "amateurs + 3 pros",
+    "note": "Regatta port — Marmaris, Turkey. Marmaris Race Week, 24–30 October 2026."
+  },
+  "routes": [
+    {
+      "id": "mirw",
+      "name": "Marmaris Race Week",
+      "duration": "7 days",
+      "extent": "2 training + 5 race days",
+      "mapCaption": "The week's courses — Marmaris Bay, map in the works",
+      "itinerary": {
+        "title": "Marmaris Race Week, day by day",
+        "intro": "The 37th Marmaris International Race Week: a week on the waters of Marmaris Bay, around 150–200 yachts and sailors from all over the world. We sail a racing yacht: three professionals in the crew, the rest amateurs who already have sailing experience.",
+        "days": [
+          {
+            "label": "Days 1–2",
+            "title": "Training",
+            "text": "Two full days on the water: we get to grips with the racing yacht, assign roles, practise sail hoists and bring the crew together before the starts."
+          },
+          {
+            "label": "Days 3–7",
+            "title": "Race days",
+            "text": "Five scoring days in three formats: inshore — course races in Marmaris Bay, coastal — short passage races along the coast, and offshore — a long race of 35 or 50 nautical miles."
+          }
+        ],
+        "note": "Our goals: to have a great time, to teach amateurs to handle a big yacht and to fight for a podium place. We book the yacht about three months before the start. You can live on the yacht, but it is more comfortable to rent a hotel or a house ashore for the whole team."
+      }
+    }
+  ],
+  "departures": [
+    {
+      "id": "marmaris-1",
+      "dates": "24–30.10",
+      "routeId": "mirw"
+    }
+  ]
+}

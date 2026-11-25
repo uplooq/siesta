@@ -6,6 +6,7 @@ import { Reveal } from '@/shared/ui/reveal'
 import { cx } from '@/shared/lib/cx'
 import { withBase } from '@/shared/lib/withBase'
 import styles from './Chronicle.module.css'
+import { ui } from '@/shared/i18n'
 
 // Лента живёт в content/chronicle.json: кадры идут вперемешку по всем направлениям,
 // два соседних никогда не из одного места.
@@ -84,15 +85,15 @@ export const Chronicle = () => {
           <div
             className={styles.carousel}
             role="group"
-            aria-roledescription="карусель"
-            aria-label={`Фотографии из выходов ${site.brand}`}
+            aria-roledescription={ui.carousel}
+            aria-label={ui.chronicleLabel(site.brand)}
           >
             <button
               type="button"
               className={cx(styles.navBtn, styles.prev)}
               onClick={() => scrollTo(active - 1)}
               disabled={active === 0}
-              aria-label="Предыдущий кадр"
+              aria-label={ui.prevShot}
             >
               <ArrowIcon flip />
             </button>
@@ -102,14 +103,14 @@ export const Chronicle = () => {
                   key={photo.src}
                   className={styles.slide}
                   role="group"
-                  aria-roledescription="слайд"
-                  aria-label={`Кадр ${i + 1} из ${gallery.length}`}
+                  aria-roledescription={ui.slide}
+                  aria-label={ui.shotOf(i + 1, gallery.length)}
                 >
                   <button
                     type="button"
                     className={styles.media}
                     onClick={() => setPhotoIndex(i)}
-                    aria-label={`Открыть фото: ${photo.caption}`}
+                    aria-label={ui.openPhoto(photo.caption)}
                   >
                     <img loading="lazy" src={withBase(photo.src)} alt={photo.alt} />
                     <span className={styles.shade} aria-hidden="true" />
@@ -126,7 +127,7 @@ export const Chronicle = () => {
               className={cx(styles.navBtn, styles.next)}
               onClick={() => scrollTo(active + 1)}
               disabled={active === gallery.length - 1}
-              aria-label="Следующий кадр"
+              aria-label={ui.nextShot}
             >
               <ArrowIcon />
             </button>
@@ -137,7 +138,7 @@ export const Chronicle = () => {
                   type="button"
                   className={styles.dot}
                   aria-current={i === active}
-                  aria-label={`Кадр ${i + 1}: ${photo.caption}`}
+                  aria-label={ui.shotNamed(i + 1, photo.caption)}
                   onClick={() => scrollTo(i)}
                 />
               ))}

@@ -1,0 +1,154 @@
+{
+  "photos": [
+    {
+      "src": "/photos/covers/marina-sunset.webp",
+      "alt": "Pink and lilac sunset sky over the Göcek marina, pines in the foreground and yacht masts at the dock",
+      "caption": "Pink sunset over the marina"
+    },
+    {
+      "src": "/photos/marmaris/marina-bay.webp",
+      "alt": "A bay with a marina among pine-covered mountains, yachts at the dock and catamarans at anchor, drone view",
+      "caption": "A bay with a marina among the pines"
+    },
+    {
+      "src": "/photos/chronicle/booby-helm.webp",
+      "alt": "A booby seabird has landed on the side of the yacht, behind it a guest at the helm and foaming waves",
+      "caption": "A guest on board — a booby"
+    },
+    {
+      "src": "/photos/azores/under-sail.webp",
+      "alt": "View from the deck of a heeling yacht: white foam along the side, a green volcanic island ahead under a blue sky",
+      "caption": "Under sail along a green island"
+    },
+    {
+      "src": "/photos/marmaris/swim-yacht.webp",
+      "alt": "Guests float on inflatable mattresses towards a yacht anchored in the open sea",
+      "caption": "A swim by the boat"
+    },
+    {
+      "src": "/photos/race/heeling.webp",
+      "alt": "A racing yacht with black sails heeling over, the crew hiking out on the windward side",
+      "caption": "Fully heeled on the course"
+    },
+    {
+      "src": "/photos/chronicle/yacht-lights.webp",
+      "alt": "The stern of a yacht at the dock at dusk, the awning decorated with a string of lights",
+      "caption": "String lights over the cockpit"
+    },
+    {
+      "src": "/photos/thailand/pier-palms.webp",
+      "alt": "A wooden pier stretches into the turquoise sea, shot from under leaning coconut palms",
+      "caption": "A pier stretching into turquoise water"
+    },
+    {
+      "src": "/photos/chronicle/sea-cave.webp",
+      "alt": "A rocky shore with pines and a sea cave right at the waterline, the smooth blue water of the bay",
+      "caption": "A sea cave in a pine-lined cove"
+    },
+    {
+      "src": "/photos/turkey/night-mast.webp",
+      "alt": "A yacht mast seen from below against a starry sky with the band of the Milky Way",
+      "caption": "The Milky Way above the mast"
+    },
+    {
+      "src": "/photos/azores/deck-dinner.webp",
+      "alt": "A laid table in the yacht's cockpit at dusk: candles, glasses, olives, a rocky shore beyond the rail",
+      "caption": "Candles and dinner in the cockpit"
+    },
+    {
+      "src": "/photos/marmaris/pine-bay.webp",
+      "alt": "View through the pines of a cove with yachts, beyond it the gulf and mountains in the morning haze",
+      "caption": "A cove among the pines, seen from the hill"
+    },
+    {
+      "src": "/photos/turkey/swim-platform.webp",
+      "alt": "The teak stern of a yacht with a swim ladder by emerald water, inflatable rings on deck",
+      "caption": "The swim platform at anchor"
+    },
+    {
+      "src": "/photos/marmaris/coffee-pontoon.webp",
+      "alt": "A guest with a cup of coffee sits on the pontoon between the sterns of yachts, her feet dangling towards the clear water",
+      "caption": "Morning coffee on the pontoon"
+    },
+    {
+      "src": "/photos/race/bow-to-bow.webp",
+      "alt": "Two racing yachts sail close alongside each other, their sails overlapping",
+      "caption": "Side by side on the course"
+    },
+    {
+      "src": "/photos/chronicle/sunset-sails.webp",
+      "alt": "A fiery orange sunset over the sea, seen from the bow of a yacht under way through the shrouds and the jib",
+      "caption": "Sunset under way, under sail"
+    },
+    {
+      "src": "/photos/thailand/lagoon-aerial.webp",
+      "alt": "Drone view of a lagoon between green hills: a palm-covered spit separates the turquoise water from the open sea",
+      "caption": "A lagoon behind the palm spit"
+    },
+    {
+      "src": "/photos/chronicle/crew-stern.webp",
+      "alt": "A crew of guests poses on the stern platform of a yacht at anchor, mountains and blue sky behind them",
+      "caption": "The whole crew on the stern"
+    },
+    {
+      "src": "/photos/turkey/awning-view.webp",
+      "alt": "View from under the yacht's awning of a rocky headland and the blue sea of the gulf",
+      "caption": "A headland from under the awning"
+    },
+    {
+      "src": "/photos/chronicle/rocks-swim.webp",
+      "alt": "Guests on the coastal rocks after a swim, next to them a paddleboard, an inflatable ring and a mattress, mountains across the gulf",
+      "caption": "A rest on the rocks"
+    },
+    {
+      "src": "/photos/race/winch-crew.webp",
+      "alt": "A hand in a racing glove wraps a sheet around a winch, beyond the lifelines blue water and foam along the side",
+      "caption": "Sheet on the winch, mid-race"
+    },
+    {
+      "src": "/photos/turkey/hammock-wine.webp",
+      "alt": "A guest relaxes in a hammock on the yacht's deck with a glass of wine, the rocky shore of a cove beyond the rail",
+      "caption": "A hammock and a glass on deck"
+    },
+    {
+      "src": "/photos/chronicle/morning-mug.webp",
+      "alt": "A guest with a mug sits on deck by a lifeline hung with flags, a sheer cliff and blue sea beyond the rail",
+      "caption": "Morning by a sheer cliff"
+    },
+    {
+      "src": "/photos/azores/green-cliffs.webp",
+      "alt": "Aerial view of patchwork green fields dropping off as black cliffs into the ocean, low clouds above them",
+      "caption": "Patchwork fields above the cliff"
+    },
+    {
+      "src": "/photos/race/fleet.webp",
+      "alt": "Three racing yachts sail close together, crews sitting on the rails, sails blocking out the horizon",
+      "caption": "A tight pack on the course"
+    },
+    {
+      "src": "/photos/chronicle/rain-dinner.webp",
+      "alt": "An evening after rain: a wet dock, lights on a yacht and a restaurant under the pines in the mist",
+      "caption": "Dinner after the rain"
+    },
+    {
+      "src": "/photos/azores/deck-evening.webp",
+      "alt": "An evening on the yacht's deck: string lights under the awning, a laid table with a stack of plates, dark water beyond the rail",
+      "caption": "String lights over the table on deck"
+    },
+    {
+      "src": "/photos/turkey/polaroid.webp",
+      "alt": "A hand holds a Polaroid with a group photo of friends at the table in the yacht's cockpit",
+      "caption": "A Polaroid from last week"
+    },
+    {
+      "src": "/photos/chronicle/breakfast.webp",
+      "alt": "Breakfast in the cockpit from above: fruit plates, grapes and coffee on a teak table",
+      "caption": "Breakfast in the cockpit"
+    },
+    {
+      "src": "/photos/race/venture.webp",
+      "alt": "A racing yacht with the number 32 sails on a beam reach, the crew sitting on the rail, green mountains in the background",
+      "caption": "On a beam reach along the coast"
+    }
+  ]
+}

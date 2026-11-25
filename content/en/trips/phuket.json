@@ -1,0 +1,159 @@
+{
+  "id": "phuket",
+  "order": 25,
+  "published": true,
+  "group": "travel",
+  "geo": "Phuket, Thailand",
+  "year": "2027",
+  "price": "1 950 €",
+  "priceUnit": "per guest",
+  "tagline": "A week under sail on the Andaman Sea: the limestone cliffs of Phang Nga Bay, hidden lagoons, the tropical islands of Krabi and the turquoise bays of Phi Phi. We swim in clear water, explore caves by kayak, discover island villages and watch the sunsets from the deck. Sea, freedom and life at your own pace.",
+  "cover": "/photos/phuket/cover.webp",
+  "coverAlt": "View from above of Maya Bay: a white beach and turquoise water ringed by green cliffs",
+  "photos": [
+    {
+      "src": "/photos/phuket/phang-nga-kayak.webp",
+      "alt": "A guest in a kayak paddles out of a sea cave under an overhanging limestone cliff, green crags above turquoise water ahead",
+      "caption": "The caves of Phang Nga Bay by kayak"
+    },
+    {
+      "src": "/photos/phuket/maya-bay-aerial.webp",
+      "alt": "View from above of Maya Bay: a white beach ringed by green cliffs, turquoise water and boats at the entrance",
+      "caption": "Maya Bay from above"
+    },
+    {
+      "src": "/photos/phuket/koh-naka-yai.webp",
+      "alt": "Drone view of Koh Naka Yai: a white beach along clear shallows, tropical forest and villas among the palms",
+      "caption": "Koh Naka Yai"
+    },
+    {
+      "src": "/photos/phuket/phang-nga-bow.webp",
+      "alt": "Guests sit on the bow of the yacht looking at limestone islands in turquoise water, a sailing yacht at anchor nearby",
+      "caption": "Among the cliffs of Phang Nga Bay"
+    },
+    {
+      "src": "/photos/phuket/phang-nga-rock.webp",
+      "alt": "A tall limestone pillar rises out of the water of the bay, a sailing yacht at anchor at its foot",
+      "caption": "The rock pillars of Phang Nga Bay"
+    },
+    {
+      "src": "/photos/phuket/james-bond-island.webp",
+      "alt": "The Ko Tapu rock at James Bond Island: a limestone pillar topped with trees standing right in the water of the bay",
+      "caption": "James Bond Island"
+    },
+    {
+      "src": "/photos/phuket/maya-bay-beach.webp",
+      "alt": "The white sandy beach of Maya Bay and a turquoise cove surrounded by sheer cliffs",
+      "caption": "Maya Bay"
+    },
+    {
+      "src": "/photos/phuket/koh-hong-lagoon.webp",
+      "alt": "An emerald lagoon between sheer cliffs overgrown with greenery, boats at the entrance in the distance",
+      "caption": "The Koh Hong lagoon"
+    },
+    {
+      "src": "/photos/phuket/phi-phi-le-catamaran.webp",
+      "alt": "White catamaran at anchor in a turquoise bay off a beach, tall green cliffs all around, guests relaxing on deck",
+      "caption": "Catamaran off Phi Phi Leh"
+    },
+    {
+      "src": "/photos/phuket/white-beach.webp",
+      "alt": "Empty beach with white sand and boulders, clear turquoise water, islands on the horizon",
+      "caption": "White sand and clear water"
+    }
+  ],
+  "conditions": [
+    {
+      "label": "Food",
+      "text": "Breakfasts and lunches on board, dinners on the yacht or in restaurants ashore. Fresh tropical fruit, Thai cuisine, seafood and dinners under a starry sky"
+    },
+    {
+      "label": "Pace",
+      "text": "2–5 hours at sea depending on the passage and the weather, the rest of the time — swimming, snorkelling, island walks, kayaks and relaxing on deck. The programme has both full days of exploring new places and time to simply unwind"
+    }
+  ],
+  "reviewIds": [],
+  "harbor": {
+    "port": "Phuket, Thailand",
+    "coords": "7°53′N · 98°23′E",
+    "season": "January — February 2027",
+    "crew": "up to 8 guests",
+    "note": "Start and finish port — a marina on Phuket. Departures 9–16 January and 30 January — 6 February 2027."
+  },
+  "routes": [
+    {
+      "id": "andaman",
+      "name": "Andaman Sea",
+      "duration": "7 days",
+      "extent": "10 stops",
+      "mapCaption": "Map of the “Andaman Sea” route",
+      "mapImage": "/routes/phuket.webp",
+      "mapImageAlt": "Chart of the “Andaman Sea” route: Phuket — Koh Phanak — James Bond Islands — Koh Panyee — Koh Yao Noi — Koh Hong — Railay Beach — Phi Phi Don — Phi Phi Leh — Koh Yao Yai — Koh Naka Yai — Phuket",
+      "itinerary": {
+        "title": "A week on the Andaman Sea, day by day",
+        "summary": {
+          "title": "A loop around the islands of the Andaman Sea",
+          "stops": [
+            "Phuket",
+            "Phang Nga Bay",
+            "Koh Yao Noi",
+            "Krabi",
+            "Phi Phi",
+            "Koh Yao Yai",
+            "Phuket"
+          ]
+        },
+        "days": [
+          {
+            "label": "Day 1",
+            "title": "Saturday — boarding the catamaran",
+            "text": "We meet at the marina on Phuket, move into our home on the water, settle into our cabins and talk through the route. We stock up on food for the week, get to know life on board and get ready for the trip. In the evening — our first dinner together and a chance to meet the crew."
+          },
+          {
+            "label": "Day 2",
+            "title": "Sunday — Koh Phanak and Phang Nga Bay",
+            "text": "We head out into Phang Nga Bay, where fantastically shaped limestone cliffs rise from the calm water. We explore Koh Phanak and venture into sea caves and hidden lagoons by kayak or dinghy, if the tide and conditions allow. We swim, relax on deck and watch our first sunset at anchor among the islands."
+          },
+          {
+            "label": "Day 3",
+            "title": "Monday — James Bond Islands, Koh Panyee and Koh Yao Noi",
+            "text": "In the morning we make for the famous rock of James Bond Island — one of the symbols of Thailand. Then we call at Koh Panyee, a floating village on stilts, where you can get a feel for local life and try Thai food. In the afternoon we sail to Koh Yao Noi, a green island with quiet beaches and an unhurried atmosphere. In the evening we relax on board or have dinner ashore."
+          },
+          {
+            "label": "Day 4",
+            "title": "Tuesday — Koh Hong and Railay Beach",
+            "text": "Today the islands of Krabi await. We call at Koh Hong with its turquoise lagoon, sheer cliffs and picturesque beaches. After a swim and a rest we head for Railay, a peninsula surrounded by towering limestone crags. We go ashore, walk along the beach, explore the surroundings and spend the evening in one of the most beautiful corners of the coast."
+          },
+          {
+            "label": "Day 5",
+            "title": "Wednesday — passage to Phi Phi Don",
+            "text": "We leave the cliffs of Railay astern and make for the Phi Phi archipelago. On the way, if the route allows, we stop at Chicken Island for a swim and some snorkelling. On Phi Phi Don you can stroll around the island, drop into a café, relax on the beach or spend the evening in one of the local restaurants. For those who fancy it — a fire show on the beach."
+          },
+          {
+            "label": "Day 6",
+            "title": "Thursday — Phi Phi Leh and Koh Yao Yai",
+            "text": "Early in the morning we set off for Phi Phi Leh, an island of sheer cliffs and famous lagoons. We visit Maya Bay in line with the national park rules, then head for Pileh Lagoon, where tall cliffs enclose clear emerald water. Having got to know Phi Phi, we set a course north to Koh Yao Yai. In the evening we anchor in a bay, swim, have dinner on board and enjoy our last night among the islands."
+          },
+          {
+            "label": "Day 7",
+            "title": "Friday — Koh Naka Yai and return to Phuket",
+            "text": "In the morning we leave the anchorage and head for Koh Naka Yai. If time allows, we stop for a swim and a rest before the final passage. Then we return to Phuket, to our catamaran's home marina. Arrival is planned for no later than 17:00."
+          }
+        ],
+        "note": "The schedule is flexible: tides, wind and weather may change the order of the days, but not the route itself."
+      }
+    }
+  ],
+  "departures": [
+    {
+      "id": "phuket-1",
+      "dates": "9–16.01",
+      "routeId": "andaman"
+    },
+    {
+      "id": "phuket-2",
+      "dates": "30.01–6.02",
+      "routeId": "andaman"
+    }
+  ]
+}

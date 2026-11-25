@@ -17,7 +17,7 @@ const listJson = (dir: string): string[] => {
     .map((name) => join(dir, name))
 }
 
-export const validateContent = (contentDir: string): ContentIssue[] => {
+const validateLocale = (contentDir: string, prefix = ''): ContentIssue[] => {
   const issues: ContentIssue[] = []
   const seenIds = new Map<string, Set<string>>()
 
@@ -30,7 +30,7 @@ export const validateContent = (contentDir: string): ContentIssue[] => {
     seenIds.set(collection, ids)
 
     for (const file of files) {
-      const rel = relative(contentDir, file)
+      const rel = prefix + relative(contentDir, file)
       let data: unknown
       try {
         data = JSON.parse(readFileSync(file, 'utf8'))
@@ -50,6 +50,33 @@ export const validateContent = (contentDir: string): ContentIssue[] => {
         if (ids.has(id)) issues.push({ file: rel, message: `id «${id}» уже занят другим файлом` })
         ids.add(id)
       }
+    }
+  }
+  return issues
+}
+
+// Переводы лежат в content/<язык>/ с той же структурой файлов, что и русский контент.
+const LOCALES = ['en']
+
+const relFiles = (contentDir: string): string[] =>
+  Object.keys(contentCollections).flatMap((pattern) =>
+    pattern.endsWith('/*.json')
+      ? listJson(join(contentDir, pattern.replace('/*.json', ''))).map((f) => relative(contentDir, f))
+      : [pattern],
+  )
+
+export const validateContent = (contentDir: string): ContentIssue[] => {
+  const issues = validateLocale(contentDir)
+  for (const locale of LOCALES) {
+    const dir = join(contentDir, locale)
+    issues.push(...validateLocale(dir, `${locale}/`))
+    const base = new Set(relFiles(contentDir))
+    const translated = new Set(relFiles(dir))
+    for (const file of base) {
+      if (!translated.has(file)) issues.push({ file: `${locale}/${file}`, message: 'нет перевода этого файла' })
+    }
+    for (const file of translated) {
+      if (!base.has(file)) issues.push({ file: `${locale}/${file}`, message: 'нет русского оригинала' })
     }
   }
   return issues

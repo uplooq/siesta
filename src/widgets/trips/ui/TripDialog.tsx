@@ -9,6 +9,7 @@ import { Modal } from '@/shared/ui/modal'
 import { withBase } from '@/shared/lib/withBase'
 import { TripMap } from './TripMap'
 import styles from './TripDialog.module.css'
+import { ui } from '@/shared/i18n'
 
 interface TripDialogProps {
   trip: Trip | null
@@ -44,7 +45,7 @@ export const TripDialog = ({ trip, onClose }: TripDialogProps) => {
     })
   }, [trip])
 
-  const noun = tripGroups.find((g) => g.id === trip?.group)?.noun ?? 'Путешествие'
+  const noun = tripGroups.find((g) => g.id === trip?.group)?.noun ?? ui.tripNoun.travel
   const baseConditions = programs.find((p) => p.id === trip?.group)?.detail.included ?? []
   const ownConditions = trip?.conditions ?? []
   const conditions = [
@@ -80,12 +81,14 @@ export const TripDialog = ({ trip, onClose }: TripDialogProps) => {
 
             <div className={styles.facts}>
               <div className={styles.fact}>
-                <span className={styles.factLabel}>Даты · {trip.year}</span>
+                <span className={styles.factLabel}>
+                  {ui.dates} · {trip.year}
+                </span>
                 {trip.departures.length > 1 ? (
                   <span
                     className={styles.dates}
                     role="group"
-                    aria-label="Выбор даты выхода"
+                    aria-label={ui.datesPick}
                   >
                     {trip.departures.map((d) => (
                       <button
@@ -105,27 +108,27 @@ export const TripDialog = ({ trip, onClose }: TripDialogProps) => {
                   </span>
                 )}
                 {multiRoute && (
-                  <span className={styles.datesNote}>у каждой даты — своя нитка</span>
+                  <span className={styles.datesNote}>{ui.datesNote}</span>
                 )}
               </div>
               <div className={styles.fact}>
-                <span className={styles.factLabel}>Маршрут</span>
+                <span className={styles.factLabel}>{ui.route}</span>
                 <span className={styles.factValue}>{route.name}</span>
               </div>
               <div className={styles.fact}>
-                <span className={styles.factLabel}>В море</span>
+                <span className={styles.factLabel}>{ui.atSea}</span>
                 <span className={styles.factValue}>
                   {route.duration} · {route.extent}
                 </span>
               </div>
               <div className={styles.fact}>
-                <span className={styles.factLabel}>Цена</span>
+                <span className={styles.factLabel}>{ui.price}</span>
                 <span className={styles.factValue}>
                   <b>{trip.price}</b> {trip.priceUnit}
                 </span>
               </div>
               <p className={styles.priceNotes}>
-                {[trip.priceNote, 'перелёт в стоимость не входит']
+                {[trip.priceNote, ui.flightNote]
                   .filter(Boolean)
                   .map((note) => (
                     <span key={note}>{note}</span>
@@ -133,8 +136,8 @@ export const TripDialog = ({ trip, onClose }: TripDialogProps) => {
               </p>
             </div>
 
-            <section className={styles.block} aria-label="Условия">
-              <h4 className={styles.blockTitle}>Условия</h4>
+            <section className={styles.block} aria-label={ui.conditions}>
+              <h4 className={styles.blockTitle}>{ui.conditions}</h4>
               <ul className={styles.included}>
                 {conditions.map((item) => (
                   <li key={item.label}>
@@ -145,7 +148,7 @@ export const TripDialog = ({ trip, onClose }: TripDialogProps) => {
               </ul>
               {trip.included && trip.included.length > 0 && (
                 <>
-                  <h5 className={styles.subTitle}>Включено в стоимость</h5>
+                  <h5 className={styles.subTitle}>{ui.included}</h5>
                   <ul className={styles.includedPlain}>
                     {trip.included.map((item) => (
                       <li key={item}>{item}</li>
@@ -155,7 +158,7 @@ export const TripDialog = ({ trip, onClose }: TripDialogProps) => {
               )}
               {trip.extras && trip.extras.length > 0 && (
                 <>
-                  <h5 className={styles.subTitle}>Дополнительно оплачивается</h5>
+                  <h5 className={styles.subTitle}>{ui.extras}</h5>
                   <ul className={styles.includedPlain}>
                     {trip.extras.map((item) => (
                       <li key={item}>{item}</li>
@@ -165,8 +168,8 @@ export const TripDialog = ({ trip, onClose }: TripDialogProps) => {
               )}
             </section>
 
-            <section className={styles.block} aria-label="Программа по дням">
-              <h4 className={styles.blockTitle}>Программа по дням</h4>
+            <section className={styles.block} aria-label={ui.program}>
+              <h4 className={styles.blockTitle}>{ui.program}</h4>
               {route.itinerary.summary && (
                 <div className={styles.summary}>
                   <p className={styles.summaryTitle}>{route.itinerary.summary.title}</p>
@@ -198,8 +201,8 @@ export const TripDialog = ({ trip, onClose }: TripDialogProps) => {
             </section>
 
             {(trip.photos.length > 0 || trip.video) && (
-              <section className={styles.block} aria-label="Фотографии">
-                <h4 className={styles.blockTitle}>Как это выглядит</h4>
+              <section className={styles.block} aria-label={ui.photos}>
+                <h4 className={styles.blockTitle}>{ui.photosTitle}</h4>
                 <div className={styles.gallery}>
                   {trip.photos.map((photo, i) => (
                     <figure key={photo.src}>
@@ -207,7 +210,7 @@ export const TripDialog = ({ trip, onClose }: TripDialogProps) => {
                         type="button"
                         className={styles.zoom}
                         onClick={() => setPhotoIndex(i)}
-                        aria-label={`Открыть фото: ${photo.caption ?? photo.alt}`}
+                        aria-label={ui.openPhoto(photo.caption ?? photo.alt)}
                       >
                         <img src={withBase(photo.src)} alt={photo.alt} loading="lazy" />
                       </button>
@@ -230,8 +233,8 @@ export const TripDialog = ({ trip, onClose }: TripDialogProps) => {
             )}
 
             {tripReviews.length > 0 && (
-              <section className={styles.block} aria-label="Отзывы">
-                <h4 className={styles.blockTitle}>Отзывы с этого маршрута</h4>
+              <section className={styles.block} aria-label={ui.tripReviewsLabel}>
+                <h4 className={styles.blockTitle}>{ui.tripReviews}</h4>
                 <div className={styles.reviews}>
                   {tripReviews.map((review) => (
                     <ReviewCard
@@ -256,12 +259,12 @@ export const TripDialog = ({ trip, onClose }: TripDialogProps) => {
                 href={contacts.telegram}
                 target="_blank"
                 rel="noopener"
-                aria-label={`Написать в Telegram ${contacts.telegramLabel} про «${trip.geo}»`}
+                aria-label={ui.writeTelegramAbout(contacts.telegramLabel, trip.geo)}
               >
-                Написать в Telegram
+                {ui.writeTelegram}
               </Button>
               <p className={styles.ctaNote}>
-                Ответим в течение дня: сверим даты и забронируем места.
+                {ui.replyNote}
               </p>
             </footer>
           </div>
@@ -270,7 +273,7 @@ export const TripDialog = ({ trip, onClose }: TripDialogProps) => {
             data-autofocus
             className={styles.close}
             onClick={onClose}
-            aria-label="Закрыть и вернуться на сайт"
+            aria-label={ui.closeDialog}
           >
             <CloseIcon />
           </button>

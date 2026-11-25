@@ -1,0 +1,37 @@
+.switch {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  min-width: 44px;
+  height: 36px;
+  padding: 0 10px;
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--ink);
+  text-decoration: none;
+  transition:
+    border-color 0.3s var(--ease-out),
+    background 0.3s var(--ease-out);
+}
+
+.switch:hover {
+  border-color: var(--sea);
+}
+
+.switch:focus-visible {
+  outline: 2px solid var(--coral);
+  outline-offset: 3px;
+}
+
+.onDark {
+  border-color: oklch(0.965 0.008 196 / 0.45);
+  color: #fff;
+}
+
+.onDark:hover {
+  border-color: #fff;
+  background: oklch(0.965 0.008 196 / 0.12);
+}

@@ -1,0 +1,10 @@
+{
+  "id": "igor",
+  "order": 10,
+  "name": "Igor Magdeev",
+  "role": "Skipper",
+  "bio": "More than 20 years under sail. Experience of routes in Thailand, Turkey, Greece and Russia. A specialist in organising signature yacht trips.",
+  "photo": "/captains/igor.webp",
+  "photoAlt": "Igor in a life jacket and glasses sits by the rail of a racing yacht, looking up at the sails",
+  "photoRatio": 0.8707
+}
