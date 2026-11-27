@@ -1,0 +1,134 @@
+{
+  "id": "imyc",
+  "order": 42,
+  "published": true,
+  "group": "race",
+  "geo": "Marmaris, Turkey",
+  "year": "2027",
+  "price": "1 350 €",
+  "priceUnit": "per guest",
+  "tagline": "International Mediterranean Yacht Championship 2027: two training days and four race days in Marmaris Bay, with a prize-giving every evening. No experience needed: two professional racers are on board and we handle all the organisation.",
+  "cover": "/photos/race/spinnakers-buoy.webp",
+  "coverAlt": "Yachts under white, red and green spinnakers head for a yellow inflatable mark, behind them the Marmaris waterfront and mountains",
+  "photos": [
+    {
+      "src": "/photos/race/spinnakers-buoy.webp",
+      "alt": "Yachts under white, red and green spinnakers head for a yellow inflatable mark, behind them the Marmaris waterfront and mountains",
+      "caption": "Spinnakers at the turning mark"
+    },
+    {
+      "src": "/photos/race/start-line.webp",
+      "alt": "A fleet of identical yachts with black sails lined up on the start line along a breakwater",
+      "caption": "Minutes before the start"
+    },
+    {
+      "src": "/photos/race/heeling.webp",
+      "alt": "Racing yacht with black sails heeling over, four crew members hiking out on the rail",
+      "caption": "Fully heeled on the course"
+    },
+    {
+      "src": "/photos/race/crew-rail.webp",
+      "alt": "Seven crew members sit in a row on the side of the yacht, legs dangling over the water, a green shore in the background",
+      "caption": "The crew hiking out"
+    },
+    {
+      "src": "/photos/race/winch-crew.webp",
+      "alt": "A hand in a racing glove loads a sheet onto a winch, beyond the lifelines blue water and the wash along the hull",
+      "caption": "Working the winch"
+    },
+    {
+      "src": "/photos/race/fleet.webp",
+      "alt": "Three racing yachts sailing close together, crews sitting on the rails, sails blocking out the horizon",
+      "caption": "A tight pack on the course"
+    },
+    {
+      "src": "/photos/race/crew-stern.webp",
+      "alt": "The crew of a racing yacht in orange-and-white kit poses at the stern by the quay of the Marmaris marina",
+      "caption": "The crew after the race"
+    },
+    {
+      "src": "/photos/race/helm-smile.webp",
+      "alt": "A smiling crew member holding a line by the boom under a dark racing sail, mountains beyond the rail",
+      "caption": "Smiles on the course"
+    }
+  ],
+  "included": [
+    "Charter of a racing yacht for the whole regatta and the training days",
+    "Entry fee for the IMYC 2027 championship",
+    "Two professional sailors — a skipper and a tactician",
+    "Daily briefings and training on the water",
+    "Organisational support ashore"
+  ],
+  "extras": [
+    "Flights to Marmaris and back",
+    "Hotel accommodation — we will find and book one near the marina at special rates",
+    "Meals ashore, transfers and personal expenses"
+  ],
+  "conditions": [
+    {
+      "label": "Lodging",
+      "text": "We stay in a hotel ashore, paid separately. We will find and book a comfortable hotel near the marina at special rates"
+    }
+  ],
+  "reviewIds": [],
+  "harbor": {
+    "port": "Marmaris, Turkey",
+    "coords": "36°51′N · 28°16′E",
+    "season": "24 April – 1 May",
+    "crew": "beginners and amateurs + 2 pros",
+    "note": "Regatta port — Marmaris, Turkey. International Mediterranean Yacht Championship, 24 April – 1 May 2027. You can also fly out on Friday evening after the gala dinner."
+  },
+  "routes": [
+    {
+      "id": "imyc",
+      "name": "IMYC 2027",
+      "duration": "8 days",
+      "extent": "2 training + 4 race days",
+      "mapCaption": "The championship courses — Marmaris Bay, map in the works",
+      "itinerary": {
+        "title": "The IMYC week, day by day",
+        "intro": "A prestigious regatta in the heart of the Turkish Riviera: daily races, prize-giving ceremonies and evenings in the company of sailors from all over the world. We put the crew together so that beginners feel at ease: a racing skipper and a tactician sail the yacht and teach the basics of the sport right on the water. The yacht, the entry and the paperwork are on us — all you do is buy a ticket and pack a bag.",
+        "days": [
+          {
+            "label": "24 Apr, Sat",
+            "title": "Arrival day",
+            "text": "We check in to the hotel, meet the team and get together for an informal dinner."
+          },
+          {
+            "label": "25 Apr, Sun",
+            "title": "First training day",
+            "text": "Briefing at 11:00: theory and assigning roles. From 12:00 to 17:00 — training on the water, practising manoeuvres."
+          },
+          {
+            "label": "26 Apr, Mon",
+            "title": "Second training day",
+            "text": "Briefing and theory at 11:00, then back on the water from 12:00 to 17:00, bringing the crew together before the starts."
+          },
+          {
+            "label": "27–29 Apr, Tue–Thu",
+            "title": "Race days",
+            "text": "We head out at 11:00 and race from 12:00 to 17:00. Prize-giving and a cocktail party at 20:00."
+          },
+          {
+            "label": "30 Apr, Fri",
+            "title": "Final and gala dinner",
+            "text": "We head out at 10:00, the final races run from 12:00 to 16:00. The closing prize-giving and gala dinner start at 20:00."
+          },
+          {
+            "label": "1 May, Sat",
+            "title": "Departure",
+            "text": "We say goodbye and leave at 10:00. If you need to, you can fly out on Friday evening after the dinner."
+          }
+        ],
+        "note": "No experience is required: before heading out we run detailed briefings and training sessions, and roles are assigned to match your ability. We race by day and meet crews from all over the world at dinners and cocktail parties in the evening."
+      }
+    }
+  ],
+  "departures": [
+    {
+      "id": "imyc-1",
+      "dates": "24.04–1.05",
+      "routeId": "imyc"
+    }
+  ]
+}

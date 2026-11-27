@@ -1,0 +1,156 @@
+{
+  "id": "loryma-cup",
+  "order": 44,
+  "published": true,
+  "group": "race",
+  "geo": "Marmaris, Turkey",
+  "year": "2027",
+  "price": "1 350 €",
+  "priceUnit": "per guest",
+  "tagline": "Loryma Cup 2027 — an offshore regatta around the Datça peninsula: four long passage races, night watches and a week of living on board. No experience needed: two professional racers will teach you to handle a yacht on the open sea.",
+  "cover": "/photos/race/rainbow.webp",
+  "coverAlt": "Racing yacht with black sails heeling over on a stormy sea, behind it a rainbow and mountains veiled in rain",
+  "photos": [
+    {
+      "src": "/photos/race/rainbow.webp",
+      "alt": "Racing yacht with black sails heeling over on a stormy sea, behind it a rainbow and mountains veiled in rain",
+      "caption": "A rainbow over a stormy race"
+    },
+    {
+      "src": "/photos/race/venture.webp",
+      "alt": "Racing yacht number 32 on a beam reach, the crew sitting on the rail, green mountains in the background",
+      "caption": "On a beam reach along the shore"
+    },
+    {
+      "src": "/photos/race/heeling.webp",
+      "alt": "Racing yacht with black sails heeling over, four crew members hiking out on the rail",
+      "caption": "Fully heeled on the course"
+    },
+    {
+      "src": "/photos/race/bow-to-bow.webp",
+      "alt": "Two racing yachts sailing close alongside each other, their sails overlapping",
+      "caption": "Side by side on the course"
+    },
+    {
+      "src": "/photos/race/winch-crew.webp",
+      "alt": "A hand in a racing glove loads a sheet onto a winch, beyond the lifelines blue water and the wash along the hull",
+      "caption": "Working the winch"
+    },
+    {
+      "src": "/photos/race/crew-19.webp",
+      "alt": "A crew in orange-and-white kit aboard yacht number 19, alongside a yacht with white sails and a Turkish flag at the stern",
+      "caption": "The crew at work on the course"
+    },
+    {
+      "src": "/photos/race/crew-rail.webp",
+      "alt": "Seven crew members sit in a row on the side of the yacht, legs dangling over the water, a green shore in the background",
+      "caption": "The crew hiking out"
+    },
+    {
+      "src": "/photos/race/helm-smile.webp",
+      "alt": "A smiling crew member holding a line by the boom under a dark racing sail, mountains beyond the rail",
+      "caption": "Smiles on the course"
+    }
+  ],
+  "included": [
+    "Charter of a racing yacht for the whole week, with accommodation on board",
+    "Entry fee for Loryma Cup 2027 — 4 races",
+    "Two professional sailors — a skipper and a tactician",
+    "Fuel and marina berths along the race route",
+    "Briefings, theory, training and masterclasses on the water",
+    "Organisational support"
+  ],
+  "extras": [
+    "Flights to Marmaris and back",
+    "Provisions for the boat — bought together, usually 80–120 € per person for the week",
+    "Restaurants on the free day and personal expenses",
+    "A hotel before or after the regatta — optional, we will help you book it"
+  ],
+  "conditions": [
+    {
+      "label": "Lodging",
+      "text": "We live on the yacht all week: falling asleep to the sound of the waves and waking up in a new bay. No hotel or transfers are needed during the regatta"
+    }
+  ],
+  "reviewIds": [],
+  "harbor": {
+    "port": "Marmaris, Turkey",
+    "coords": "36°51′N · 28°16′E",
+    "season": "1–8 May",
+    "crew": "beginners and amateurs + 2 pros",
+    "note": "Regatta port — Marmaris, Turkey. Loryma Cup, 1–8 May 2027. Boarding on Saturday, we leave the yacht the following Saturday at 10:00, the prize-giving is at 18:00."
+  },
+  "routes": [
+    {
+      "id": "loryma",
+      "name": "Loryma Cup 2027",
+      "duration": "8 days",
+      "extent": "4 passage races",
+      "mapCaption": "The Loryma Cup route around the Datça peninsula, map in the works",
+      "itinerary": {
+        "title": "The Loryma Cup week, day by day",
+        "summary": {
+          "title": "A loop around the Datça peninsula",
+          "stops": [
+            "Marmaris",
+            "Körmen",
+            "Palamutbükü",
+            "Datça",
+            "Marmaris"
+          ]
+        },
+        "intro": "These are not short sprints within sight of the shore but a real sea adventure: long passages between the bays of the Datça peninsula, watches at the helm, working with the wind and the currents. Some legs are sailed after dark — a night watch, the lights of the coast and a sky full of stars. Along the way: wild beaches, clear water and fishing villages. Two active racing sailors look after safety and tactics and teach everything from hoisting sails to night navigation.",
+        "days": [
+          {
+            "label": "1 May, Sat",
+            "title": "Arrival day",
+            "text": "We arrive in Marmaris and move onto the yacht. We meet the team, share out the cabins and head out for a first training session, practising manoeuvres."
+          },
+          {
+            "label": "2 May, Sun",
+            "title": "Final training",
+            "text": "Briefing, theory and a study of the route at 11:00. From 12:00 to 17:00 — the final training session before the start."
+          },
+          {
+            "label": "3 May, Mon",
+            "title": "Race 1: Marmaris → Körmen",
+            "text": "A long passage along the coast. We finish in the scenic bay of Körmen and spend the night at anchor."
+          },
+          {
+            "label": "4 May, Tue",
+            "title": "Free day",
+            "text": "We rest, swim in the clear water and wander around the village of Körmen. You can have lunch at a local taverna with fresh fish."
+          },
+          {
+            "label": "5 May, Wed",
+            "title": "Race 2: Palamutbükü → Körmen",
+            "text": "We sail over to the famous Palamutbükü beach and start from there. One of the most beautiful legs of the regatta."
+          },
+          {
+            "label": "6 May, Thu",
+            "title": "Race 3: Körmen → Datça",
+            "text": "A long offshore passage to the town of Datça: night navigation and work for the whole crew."
+          },
+          {
+            "label": "7 May, Fri",
+            "title": "Race 4: Datça → Marmaris",
+            "text": "The final long passage back to Marmaris and the ceremonial finish of the regatta."
+          },
+          {
+            "label": "8 May, Sat",
+            "title": "Prize-giving",
+            "text": "In the morning we get the yacht ready for handover and leave the boat at 10:00. At 18:00 — the prize-giving ceremony and a gala dinner with the regatta sailors."
+          }
+        ],
+        "note": "No experience is required: you can take home not just a medal but real seagoing skills. The race schedule is set by the organisers and the weather — the order of the legs may shift."
+      }
+    }
+  ],
+  "departures": [
+    {
+      "id": "loryma-cup-1",
+      "dates": "1.05–8.05",
+      "routeId": "loryma"
+    }
+  ]
+}

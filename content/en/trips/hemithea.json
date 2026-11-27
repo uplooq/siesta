@@ -1,0 +1,146 @@
+{
+  "id": "hemithea",
+  "order": 56,
+  "published": true,
+  "group": "race",
+  "geo": "Marmaris, Turkey",
+  "year": "2027",
+  "price": "1 350 €",
+  "priceUnit": "per guest",
+  "tagline": "Hemithea Regatta 2027 — the classic autumn regatta of the Marmaris yacht club: an offshore passage to Orhaniye and a series of races in Hisarönü Bay. Seven nights on board, a steady autumn breeze and two professional racers in the crew.",
+  "cover": "/photos/race/fleet-start.webp",
+  "coverAlt": "A tight formation of racing yachts with black and white sails beating upwind against the wooded mountains of the bay",
+  "photos": [
+    {
+      "src": "/photos/race/fleet-start.webp",
+      "alt": "A tight formation of racing yachts with black and white sails beating upwind against the wooded mountains of the bay",
+      "caption": "The fleet beating upwind below the Marmaris mountains"
+    },
+    {
+      "src": "/photos/race/bow-to-bow.webp",
+      "alt": "Two racing yachts sailing close alongside each other, their sails overlapping",
+      "caption": "Side by side on the course"
+    },
+    {
+      "src": "/photos/race/fleet.webp",
+      "alt": "Three racing yachts sailing close together, crews sitting on the rails, sails blocking out the horizon",
+      "caption": "A tight pack on the course"
+    },
+    {
+      "src": "/photos/race/venture.webp",
+      "alt": "Racing yacht number 32 on a beam reach, the crew sitting on the rail, green mountains in the background",
+      "caption": "On a beam reach along the shore"
+    },
+    {
+      "src": "/photos/race/crew-rail.webp",
+      "alt": "Seven crew members sit in a row on the side of the yacht, legs dangling over the water, a green shore in the background",
+      "caption": "The crew hiking out"
+    },
+    {
+      "src": "/photos/race/crew-19.webp",
+      "alt": "A crew in orange-and-white kit aboard yacht number 19, alongside a yacht with white sails and a Turkish flag at the stern",
+      "caption": "The crew at work on the course"
+    },
+    {
+      "src": "/photos/race/crew-stern.webp",
+      "alt": "The crew of a racing yacht in orange-and-white kit poses at the stern by the quay of the Marmaris marina",
+      "caption": "The crew after the race"
+    },
+    {
+      "src": "/photos/race/polaroids.webp",
+      "alt": "Seven Polaroid photos of the crew on deck: crew members at the helm, on the bow and the whole team together",
+      "caption": "Polaroids of race week"
+    }
+  ],
+  "included": [
+    "Charter of a racing yacht for the whole period: training, the offshore passage, the bay races and the passage back",
+    "Accommodation on board for all 7 nights — a berth in a cabin",
+    "Entry fee for Hemithea Regatta 2027",
+    "Two professional sailors throughout the regatta",
+    "Theory, briefings, race debriefs and practice on the water",
+    "Organisational support and crew coordination ashore"
+  ],
+  "extras": [
+    "Flights to Turkey and back — Dalaman or Bodrum airport",
+    "Transfer airport — Marmaris — airport",
+    "A hotel for the night before the start (28–29 October) and after the finish (5 November) — we will help you book it",
+    "Meals ashore, personal expenses and personal gear",
+    "The berth at Martı Marina in Orhaniye, if it is not covered by the entry fee — we are checking with the organisers"
+  ],
+  "conditions": [
+    {
+      "label": "Lodging",
+      "text": "We live on the yacht for all 7 nights: in the marinas of Marmaris and Orhaniye and at anchor in the coves of the bay. Cabins, a shared galley, a limited supply of fresh water. Bring a soft bag rather than a suitcase — we will send a full packing list in advance"
+    }
+  ],
+  "reviewIds": [],
+  "harbor": {
+    "port": "Marmaris, Turkey",
+    "coords": "36°51′N · 28°16′E",
+    "season": "29 October – 5 November",
+    "crew": "beginners and amateurs + 2 pros",
+    "note": "Regatta port — Marmaris, Turkey. Hemithea Regatta, 29 October – 5 November 2027. Arrival on Friday–Saturday, flights home on Saturday, 6 November."
+  },
+  "routes": [
+    {
+      "id": "hemithea",
+      "name": "Hemithea Regatta 2027",
+      "duration": "8 days",
+      "extent": "offshore passage + bay races",
+      "mapCaption": "The Hemithea Regatta route: Marmaris — Orhaniye — Hisarönü Bay, map in the works",
+      "itinerary": {
+        "title": "The Hemithea Regatta week, day by day",
+        "summary": {
+          "title": "From Marmaris to Hisarönü Bay and back",
+          "stops": [
+            "Marmaris",
+            "Orhaniye",
+            "Hisarönü Bay",
+            "Marmaris"
+          ]
+        },
+        "intro": "One of the most respected autumn regattas of the Turkish Riviera, run for many years by the Marmaris International Yacht Club (MIYC). Two formats in one week: a long sea passage and tactical races in a sheltered bay. In autumn the wind here is steady and predictable, the days are +22…+25 °C, the sea is still warm, the marinas and coves are empty, and experienced crews from all over Europe come to the start. Watches, sail handling, navigation and the galley — everyone in the crew has a place.",
+        "days": [
+          {
+            "label": "29–30 Oct, Fri–Sat",
+            "title": "Arrival day",
+            "text": "We arrive in Marmaris. We take over the yacht, register at the MIYC office, meet the crew and share out the cabins. A training sail."
+          },
+          {
+            "label": "31 Oct, Sun",
+            "title": "Preparation and opening",
+            "text": "Skippers’ briefing and the official practice race. In the evening — the opening ceremony of the regatta in Marmaris."
+          },
+          {
+            "label": "1 Nov, Mon",
+            "title": "Offshore race: Marmaris → Orhaniye",
+            "text": "A long passage along the coast — the first real test for the crew. The night is spent at Martı Marina in Orhaniye."
+          },
+          {
+            "label": "2–4 Nov, Tue–Thu",
+            "title": "Race series in Hisarönü Bay",
+            "text": "Passage races and short coastal races in one of the most beautiful bays in Turkey. A prize-giving every evening, nights at anchor in the coves of the bay."
+          },
+          {
+            "label": "5 Nov, Fri",
+            "title": "Final and gala dinner",
+            "text": "The fleet sails back from Orhaniye to Marmaris. The closing ceremony of the regatta and the team gala dinner."
+          },
+          {
+            "label": "6 Nov, Sat",
+            "title": "Flights home",
+            "text": "We head home — or stay on to relax in Marmaris, we will help arrange it."
+          }
+        ],
+        "note": "No experience is required: before the start there are briefings, theory and training sails, and roles on board are assigned to match your ability. The entry, the paperwork, preparing the yacht and dealing with the organisers are all on us."
+      }
+    }
+  ],
+  "departures": [
+    {
+      "id": "hemithea-1",
+      "dates": "29.10–5.11",
+      "routeId": "hemithea"
+    }
+  ]
+}
