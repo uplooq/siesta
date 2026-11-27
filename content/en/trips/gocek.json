@@ -48,6 +48,16 @@
       "caption": "The swim platform at anchor"
     },
     {
+      "src": "/photos/marmaris/swim-ring.webp",
+      "alt": "A guest with an inflatable ring walks along the quay after a swim, behind her the gulf, yachts and wooded mountains",
+      "caption": "After a swim"
+    },
+    {
+      "src": "/photos/marmaris/swim-yacht.webp",
+      "alt": "Guests float on air mattresses and inflatable rings towards a yacht at anchor in open sea, mountains on the horizon",
+      "caption": "A swim off the boat in open sea"
+    },
+    {
       "src": "/photos/turkey/polaroid.webp",
       "alt": "A Polaroid of the whole crew at dinner on deck, held in a hand above the rope clutches and coiled sheets",
       "caption": "A Polaroid from dinner on deck"
@@ -88,7 +98,15 @@
         "title": "A week of “Autumn Breeze”, day by day",
         "summary": {
           "title": "A loop around the bays of the Turquoise Coast",
-          "stops": ["Göcek", "Sarsala", "Dalyan", "Ölüdeniz", "Gemiler", "Boynuz Bükü", "Göcek"]
+          "stops": [
+            "Göcek",
+            "Sarsala",
+            "Dalyan",
+            "Ölüdeniz",
+            "Gemiler",
+            "Boynuz Bükü",
+            "Göcek"
+          ]
         },
         "intro": "The order of the stops depends on the wind and the mood of the crew.",
         "days": [

@@ -101,9 +101,9 @@
   "harbor": {
     "port": "Eden Island, Mahé",
     "coords": "4°38′S · 55°28′E",
-    "season": "February — March 2027",
+    "season": "February 2027",
     "crew": "up to 8 guests",
-    "note": "The trip starts and ends at the Eden Island marina on Mahé. Two departures: 20–27 February and 6–13 March 2027. Flights are separate; we will help you book a transfer to the marina."
+    "note": "The trip starts and ends at the Eden Island marina on Mahé. Departure: 20–27 February 2027. Flights are separate; we will help you book a transfer to the marina."
   },
   "routes": [
     {
@@ -171,11 +171,6 @@
     {
       "id": "seychelles-1",
       "dates": "20–27.02",
-      "routeId": "inner-islands"
-    },
-    {
-      "id": "seychelles-2",
-      "dates": "6–13.03",
       "routeId": "inner-islands"
     }
   ]
